@@ -82,7 +82,10 @@ jQuery.extend({
 
         });
 
+        $("#header").load("../components/header.html");
+
         $("#navbar").load("../components/navbar.html");
+
 
 
         $("#bestellbutton").on("click", function() {
