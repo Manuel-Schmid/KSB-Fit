@@ -82,7 +82,7 @@ jQuery.extend({
 
         });
 
-
+        $("#navbar").load("../components/navbar.html");
 
 
         $("#bestellbutton").on("click", function() {
@@ -131,12 +131,12 @@ jQuery.extend({
             }, 3000)
 
         })
-
-    },
-    start: function() {
-        alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
-
     }
+    // },
+    // start: function() {
+    //     alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
+
+    // }
 
 
 });
