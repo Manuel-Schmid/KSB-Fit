@@ -82,6 +82,9 @@ jQuery.extend({
 
         });
 
+        
+        $("#footer-nav").load("../components/navbar.html");
+
 
 
 
