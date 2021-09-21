@@ -82,9 +82,9 @@ jQuery.extend({
 
         });
 
-        
-        $("#footer-nav").load("../components/navbar.html");
+        $("#header").load("../components/header.html");
 
+        $("#navbar").load("../components/navbar.html");
 
 
 
@@ -134,12 +134,12 @@ jQuery.extend({
             }, 3000)
 
         })
-
-    },
-    start: function() {
-        alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
-
     }
+    // },
+    // start: function() {
+    //     alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
+
+    // }
 
 
 });
