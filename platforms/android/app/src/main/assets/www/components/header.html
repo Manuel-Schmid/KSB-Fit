@@ -1,5 +1,59 @@
 <div class="box header">
     <img src="../img/logo.svg" class="header-logo">
     <div class="divider"></div>
-    <button class="button is-white btn-anmelden" style="font-weight: bold;">Anmelden</button>
+    <a class="button is-white btn-anmelden" style="font-weight: bold;" href="#signup">Anmelden</a>
+</div>
+
+<div id="signup" class="overlay">
+	<form class="box signup-popup">
+		
+    <div class="signup-header">
+      <img src="../img/logo.svg" class="signup-logo">
+      <a class="close" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="30" height="30" style="top: auto;"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg></a>
+    </div>
+
+    <form class="signup-content">
+			<div class="field">
+        <label class="label">Vorname:</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Ihr Vorname ...">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Name:</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Ihr Name ...">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">KSB E-Mail:</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="Ihre E-Mail ...">
+        </div>
+      </div>
+
+      <div class="field number-input">
+        <label class="label">Gewicht:</label>
+        <div class="control">
+          <input class="input" type="number">
+        </div>
+        <label class="label unit-label">kg</label>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field number-input">
+        <label class="label">Grösse:</label>
+        <div class="control">
+          <input class="input" type="number">
+          <label class="label unit-label">cm</label>
+        </div>
+      </div>
+
+      <a class="button is-rounded btn-cancel" href="#" style="font-weight: bold;">Abbruch</a>
+      <button class="button is-rounded btn-save" style="font-weight: bold;">Speichern</button>
+		</form>
+	</form>
 </div>

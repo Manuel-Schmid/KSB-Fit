@@ -20,7 +20,7 @@ a {
     width: 100%;
     height: 13vh;
     background-color: white;
-    z-index: 9999999;
+    z-index: 100;
 }
 
 .header-logo {
@@ -254,5 +254,86 @@ a {
 
 #notes .plus-box {
     border: 1px solid #90B367;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+}
+  
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+  
+.signup-popup {
+    margin: auto;
+    padding: 20px;
+    background: #ffff;
+    border-radius: 10px;
+    width: 90%;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.signup-popup .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #0000;
+}
+
+.signup-popup .signup-content {
+    max-height: 30%;
+    overflow: auto;
+    padding: 10px;
+}
+
+.signup-logo {
+    width: 40vw;
+    margin: 0 auto;
+}
+
+.btn-save {
+    background-color: #90B367;
+    color: #FFFFFF;
+    position: absolute;
+    height: 7vh;
+    width: 16vh;
+    right: 20px;
+}
+
+.btn-cancel {
+    background-color: #E01272;
+    color: #FFFFFF;
+    height: 7vh;
+    width: 16vh;
+    right: -30px;
+}
+
+.number-input{
+    width: 30% !important;
+    display: inline-block;
+}
+
+.label{
+    margin: 0px !important;
+}
+
+.signup-header {
+    margin: 0px 0px 20px;
+}
+
+.unit-label {
+    display: inline-block;
 }
 
