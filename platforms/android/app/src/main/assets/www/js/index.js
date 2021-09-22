@@ -53,15 +53,16 @@ let tasks = [
 // Initialize Firebase - Anonymous
 // --------------------------------------------------------------------------
 const firebaseConfig = {
-    apiKey: "AIzaSyCLvTFmGKs-QtmcKCIf5Weu8iAItLifwQA",
-    authDomain: "sdfsdsdf-b197b.firebaseapp.com",
-    databaseURL: "https://sdfsdsdf-b197b-default-rtdb.firebaseio.com",
-    projectId: "sdfsdsdf-b197b",
-    storageBucket: "sdfsdsdf-b197b.appspot.com",
-    messagingSenderId: "874420367116",
-    appId: "1:874420367116:web:27b83e303ce6597d4e6329",
-    measurementId: "G-EHTY0MKSJY"
-  };
+    apiKey: "AIzaSyDJtK_EBn0vu_iGBI40TQVL17Rh2ZDF9Fo",
+    authDomain: "ksb-fit-d9512.firebaseapp.com",
+    databaseURL: "https://ksb-fit-d9512-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "ksb-fit-d9512",
+    storageBucket: "ksb-fit-d9512.appspot.com",
+    messagingSenderId: "916377612326",
+    appId: "1:916377612326:web:3b8ff037113373bafab6e7",
+    measurementId: "G-GME14G0GC1"
+};
+  
 
 firebase.initializeApp(firebaseConfig);
 
@@ -146,9 +147,10 @@ jQuery.extend({
 
         });
 
+        $("#home").load("../components/Startseite/startseite.html");
         $("#header").load("../components/header.html");
-
         $("#navbar").load("../components/navbar.html");
+        $("#tasks").load("../components/tasks.html");
 
         $("#bestellbutton").on("click", function() {
             alert("Es wurde geklickt1");
@@ -202,7 +204,6 @@ jQuery.extend({
     //     alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
 
     // }
-
 
 });
 
@@ -371,4 +372,18 @@ function login() {
     userData.height = 'known'
 
     // set name in header
+}
+
+function loadTasks() {
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[e]
+        newTask = ''
+
+        document.getElementById('tasks-container').innerHTML += newTask
+    }
+}
+
+function goToTasks() {
+    document.getElementById('tasks').className = ""
+    switchToTab('tasks')
 }
