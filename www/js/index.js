@@ -150,8 +150,6 @@ jQuery.extend({
 
         $("#navbar").load("../components/navbar.html");
 
-
-
         $("#bestellbutton").on("click", function() {
             alert("Es wurde geklickt1");
             $.ajax({
