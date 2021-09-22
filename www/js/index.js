@@ -147,6 +147,8 @@ jQuery.extend({
 
         });
 
+        $("#home").load("../components/Startseite/startseite.html");
+
         $("#header").load("../components/header.html");
         $("#navbar").load("../components/navbar.html");
         $("#tasks").load("../components/tasks.html");
