@@ -15,6 +15,69 @@ function meldung(text) {
 */
 let globalvarOS = "";
 let selectedIcon = "home-icon";
+let userData = {
+    firstName: 'unknown',
+    lastName: 'unknown',
+    email: 'unknown',
+    weight: 'unknown',
+    height: 'unknown'
+}
+let tasks = [
+    {
+        title: "Eagle Leg Extension",
+        image: "../img/task-images/task (5).jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Ab Abdominal",
+        image: "../img/task-images/task (13).jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Fly / Rear Delt",
+        image: "../img/task-images/task (12).jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Arm / Bicep Curl",
+        image: "../img/task-images/task (11).jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+]
+
+// --------------------------------------------------------------------------
+// Initialize Firebase - Anonymous
+// --------------------------------------------------------------------------
+const firebaseConfig = {
+    apiKey: "AIzaSyCLvTFmGKs-QtmcKCIf5Weu8iAItLifwQA",
+    authDomain: "sdfsdsdf-b197b.firebaseapp.com",
+    databaseURL: "https://sdfsdsdf-b197b-default-rtdb.firebaseio.com",
+    projectId: "sdfsdsdf-b197b",
+    storageBucket: "sdfsdsdf-b197b.appspot.com",
+    messagingSenderId: "874420367116",
+    appId: "1:874420367116:web:27b83e303ce6597d4e6329",
+    measurementId: "G-EHTY0MKSJY"
+  };
+
+firebase.initializeApp(firebaseConfig);
+
+// Reference message collection
+var userRef = firebase.database().ref('user');
+
+/*{
+"provider": "anonymous",
+"uid": "fe2b73cb-86ea-49d1-ba55-0be7d33e492f"
+}*/
+firebase.auth().signInAnonymously().catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+});
 
 
 (function($) {
@@ -204,6 +267,7 @@ function displayContents(err, text) {
     }
 }
 
+
 function switchToTab(tabName) {
     // reset other colors
     let icons = document.getElementsByClassName('icon-black')
@@ -223,4 +287,90 @@ function switchToTab(tabName) {
     txtID = tabName + "-txt"
     document.getElementById(iconID).setAttribute('fill', '#E01272')
     document.getElementById(txtID).className += 'selected-tab'
+}
+
+
+// --------------------------------------------------------------------------
+// alle Daten mit Mustache darstellen
+// --------------------------------------------------------------------------
+function showData() {
+    $('#info').html('Daten werden geladen.....');
+    var ref = firebase.database().ref();
+    ref.on("value", function(response) {
+        // console.log(response.val());
+        // Template in eine Variable speichern
+        var template = $('#template').html();
+        // Template mit Mustache verbinden
+        var html = Mustache.render(template, response.val());
+        // Ausgabe anzeigen 
+        $('#anzeige').html(html);
+    }, function(error) {
+        console.log("Error: " + error.message);
+    });
+}
+// --------------------------------------------------------------------------
+// nur einen Datensatz anzeigen
+// --------------------------------------------------------------------------
+function getEinDatenSatz(id) {
+    var ref = firebase.database().ref("user/" + id+"/nachname");
+    ref.on("value", function(snapshot) {
+        console.log(snapshot.val());
+    }, function(error) {
+        console.log("Error: " + error.message);
+    });
+}
+// --------------------------------------------------------------------------
+// Firebase delete Daten
+// --------------------------------------------------------------------------
+function deleteDaten(id) {
+    $('#info').html('deleteDaten');
+    // Löschen 
+    firebase.database().ref("user/" + id + "/").remove();
+}
+// --------------------------------------------------------------------------
+// Firebase insert Daten mit set 
+// oder push wenn id automatisch vergeben werden soll
+// --------------------------------------------------------------------------
+function insertDaten(id) {
+    $('#info').html('insertDaten');
+    firebase.database().ref("user/" + id + "/").set({
+        id: parseInt(id) + 1,
+        name: "Ein neuer User " + parseInt(id) + 1,
+        hobbies: "keine"
+    });
+}
+// --------------------------------------------------------------------------
+// Firebase update von Daten
+// --------------------------------------------------------------------------
+function updateDaten(id) {
+    $('#info').html('updateDaten');
+    firebase.database().ref("user/" + id + "/").set({
+        id: parseInt(id) + 1,
+        name: "Kurt",
+        hobbies: "keine"
+    });
+}
+
+
+// save user to firebase
+function saveUser(wunschtext, vorname, nachname, strasse, ort) {
+    var newUserRef = userRef.push();
+    newUserRef.set({
+        wunschtext: wunschtext,
+        vorname: vorname,
+        nachname: nachname,
+        strasse: strasse,
+        ort: ort
+
+    });
+}
+
+function login() {
+    userData.firstName = 'unknown'
+    userData.lastName = 'known'
+    userData.email = 'known'
+    userData.weight = 'known'
+    userData.height = 'known'
+
+    // set name in header
 }
