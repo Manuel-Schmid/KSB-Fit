@@ -384,6 +384,17 @@ function loadTasks() {
 }
 
 function goToTasks() {
+    // clear old tabs
+    document.getElementById('home').className = "hidden"
+
     document.getElementById('tasks').className = ""
     switchToTab('tasks')
+}
+
+function goToHome() {
+    // clear old tabs
+    document.getElementById('tasks').className = "hidden"
+
+    document.getElementById('home').className = ""
+    switchToTab('home')
 }
