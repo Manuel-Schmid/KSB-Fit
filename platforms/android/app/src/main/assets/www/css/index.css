@@ -175,3 +175,55 @@ a {
 .pfeil{
    float: right;
 }
+
+#training .btn-container{
+    margin: auto;
+    margin-top: 16vh;
+    width: max-content;
+}
+
+#training button  {
+    width: 30vw;
+    height: 5vh;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-color: #90B367;
+    color: #90B367;
+}
+
+#training .selected-btn {
+    background-color: #90B367;
+    border-color: #90B367;
+    color: white;
+}
+
+#checkboxes label {
+    float: left;
+}
+
+  #checkboxes ul {
+    margin: 0;
+    list-style: none;
+    float: left;
+}
+
+#checkboxes input{
+    position: relative;
+    opacity: 1;
+    /* pointer-events: all; */
+}
+
+#training .box {
+    border-radius: 12px;
+    margin: auto;
+    margin-top: 17px;    
+    width: 78vw;
+    height: 50vh;
+}
+
+#checkboxes li {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+

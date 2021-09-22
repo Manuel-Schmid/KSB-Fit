@@ -15,14 +15,7 @@ function meldung(text) {
 */
 let globalvarOS = "";
 let selectedIcon = "home-icon";
-
-let userData = {
-    firstName: 'unknown',
-    lastName: 'unknown',
-    email: 'unknown',
-    weight: 'unknown',
-    height: 'unknown'
-}
+let basicSelected = true;
 
 let tasks = [
     {
@@ -51,7 +44,7 @@ let tasks = [
     },
 ]
 
-let user = {
+let userData = {
     userID: 0,
     firstName: 'Anonym',
     lastName: '',
@@ -327,6 +320,21 @@ function switchToTab(tabName) {
     document.getElementById(txtID).className += 'selected-tab'
 }
 
+function changePlan() {
+    basicSelected = !basicSelected
+    if (basicSelected) {
+        document.getElementById('basic-btn').className = 'button is-rounded selected-btn'
+        document.getElementById('advanced-btn').className = 'button is-rounded'
+    } else {
+        document.getElementById('basic-btn').className = 'button is-rounded'
+        document.getElementById('advanced-btn').className = 'button is-rounded selected-btn'
+    }
+    let planElements = document.getElementsByClassName('advanced-check')
+    for (let i = 0; i < planElements.length; i++) {
+        planElements[i].checked = !(planElements[i].checked)
+    }
+}
+
 
 // --------------------------------------------------------------------------
 // alle Daten mit Mustache darstellen
@@ -404,13 +412,12 @@ function saveUser(wunschtext, vorname, nachname, strasse, ort) {
 }
 
 function login() {
-    userData.firstName = 'unknown'
-    userData.lastName = 'known'
-    userData.email = 'known'
-    userData.weight = 'known'
-    userData.height = 'known'
-
-    // set name in header
+    userData.userID = 'xxx'
+    userData.firstName = 'xxx'
+    userData.lastName = 'xxx'
+    userData.email = 'xxx'
+    userData.weight = 'xxx'
+    userData.height = 'xxx'
 }
 
 // $(document).ready(function(){
@@ -427,9 +434,14 @@ function loadTasks() {
     }
 }
 
-function loadTrainingPlans() {
-    
-}
+// function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
+//     newPlans = ''
+//     for (let i = 0; i < 9; i++) {
+//         // newPlans += '<li><input type="checkbox"> '+ 'task' +'</li>';
+
+//         document.getElementById('list-elements').innerHTML = newPlans;
+//     }
+// }
 
 function goToTasks() {
     // clear old tabs
