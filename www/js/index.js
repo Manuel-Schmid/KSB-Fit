@@ -15,6 +15,7 @@ function meldung(text) {
 */
 let globalvarOS = "";
 let selectedIcon = "home-icon";
+
 let userData = {
     firstName: 'unknown',
     lastName: 'unknown',
@@ -22,6 +23,7 @@ let userData = {
     weight: 'unknown',
     height: 'unknown'
 }
+
 let tasks = [
     {
         title: "Eagle Leg Extension",
@@ -48,6 +50,42 @@ let tasks = [
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 ]
+
+let user = {
+    userID: 0,
+    firstName: 'Anonym',
+    lastName: '',
+    email: '-',
+    weight: '-',
+    height: '-'
+}
+
+let basicPlan = {
+    legpress: true,
+    latissimus: true,
+    chestpress: true,
+    hipstretching: true,
+    complex: true,
+    squats: false,
+    pullUps: false,
+    benchPress: false,
+    kneeBends: false
+}
+
+let advancedPlan = {
+    legpress: false,
+    latissimus: false,
+    chestpress: false,
+    hipstretching: true,
+    complex: false,
+    squats: true,
+    pullUps: true,
+    benchPress: true,
+    kneeBends: true
+}
+
+// console.log(JSON.stringify(basicPlan));
+// console.log(JSON.stringify(advancedPlan));
 
 // --------------------------------------------------------------------------
 // Initialize Firebase - Anonymous
@@ -149,6 +187,9 @@ jQuery.extend({
         $("#header").load("../components/header.html");
         $("#navbar").load("../components/navbar.html");
         $("#tasks").load("../components/tasks.html");
+        $("#training").load("../components/training.html");
+        $("#notes").load("../components/notes.html");
+
 
         $("#bestellbutton").on("click", function() {
             alert("Es wurde geklickt1");
@@ -386,9 +427,15 @@ function loadTasks() {
     }
 }
 
+function loadTrainingPlans() {
+    
+}
+
 function goToTasks() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
+    document.getElementById('training').className = "hidden"
+    document.getElementById('notes').className = "hidden"
 
     document.getElementById('tasks').className = ""
     switchToTab('tasks')
@@ -398,7 +445,29 @@ function goToTasks() {
 function goToHome() {
     // clear old tabs
     document.getElementById('tasks').className = "hidden"
+    document.getElementById('training').className = "hidden"
+    document.getElementById('notes').className = "hidden"
 
     document.getElementById('home').className = ""
     switchToTab('home')
+}
+
+function goToTraining() {
+    // clear old tabs
+    document.getElementById('home').className = "hidden"
+    document.getElementById('tasks').className = "hidden"
+    document.getElementById('notes').className = "hidden"
+
+    document.getElementById('training').className = ""
+    switchToTab('training')
+}
+
+function goToNotes() {
+    // clear old tabs
+    document.getElementById('home').className = "hidden"
+    document.getElementById('tasks').className = "hidden"
+    document.getElementById('training').className = "hidden"
+
+    document.getElementById('notes').className = ""
+    switchToTab('notes')
 }

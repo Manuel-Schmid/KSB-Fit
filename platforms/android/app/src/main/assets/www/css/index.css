@@ -136,6 +136,11 @@ a {
     display: none;
 }
 
+.content-container {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
 #tasks {
     margin-top: 15vh;
     margin-bottom: 15vh;
