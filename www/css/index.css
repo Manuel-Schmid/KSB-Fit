@@ -106,7 +106,7 @@
 
 
 .hinweise {
-    width: 95vw;
+    width: 90vw;
     margin-left: auto;
     margin-right: auto;
     border-radius: 20px;
@@ -125,7 +125,7 @@
 
 .empty-header {
     margin-top: 15vh;
-    margin-bottom: 13vh;
+    margin-bottom: 15vh;
 }
 
 .hidden {
@@ -161,3 +161,6 @@
     margin-left: 41vw;
 }
 
+.pfeil{
+   float: right;
+}
