@@ -95,3 +95,26 @@
     color: #E01272;
     font-weight: 500;
 }
+
+.hinweise {
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.bild {
+    padding: 15px;
+    border-radius: 30px !important;
+
+}
+
+.content {
+    padding: 15px;
+   
+}
+
+.empty-header {
+    margin-top: 15vh;
+    margin-bottom: 13vh;
+}
