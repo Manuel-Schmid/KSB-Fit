@@ -91,8 +91,6 @@ firebase.auth().signInAnonymously().catch(function(error) {
             globalvarOS = 'ANDROID';
         }
         // $.start();
-
-
         // --------------------------------------------------------------------------
         // Darstellen der Daten
         // --------------------------------------------------------------------------
@@ -374,12 +372,17 @@ function login() {
     // set name in header
 }
 
-function loadTasks() {
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[e]
-        newTask = ''
+// $(document).ready(function(){
+//     loadTasks();
+// });
 
-        document.getElementById('tasks-container').innerHTML += newTask
+function loadTasks() {
+    newTasks = ''
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        newTasks += '<div class="box"> <p>'+task.title+'</p> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> <img src="'+task.image+'" alt="Leg Extension"> </div>';
+
+        document.getElementById('tasks').innerHTML = newTasks;
     }
 }
 
@@ -389,6 +392,7 @@ function goToTasks() {
 
     document.getElementById('tasks').className = ""
     switchToTab('tasks')
+    loadTasks();
 }
 
 function goToHome() {
