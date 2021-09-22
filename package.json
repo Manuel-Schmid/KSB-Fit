@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@primer/css": "^17.11.0",
-    "firebase": "^9.0.2"
+    "firebase": "^9.0.2",
+    "mysql": "^2.18.1"
   }
 }

@@ -159,6 +159,17 @@ function loadTasks() {
     }
 }
 
+function loadNotes() { 
+    let notes;
+    newNotes = ''
+    for (let i = 0; i < notes.length; i++) {
+        const note = notes[i];
+        newTasks += '<div class="box"> <p> Training vom <b>22.09.2021</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p> </div>';
+
+        document.getElementById('noteslist').innerHTML = newTasks;
+    }
+}
+
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
 //     newPlans = ''
 //     for (let i = 0; i < 9; i++) {

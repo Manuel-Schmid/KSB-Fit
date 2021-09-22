@@ -227,3 +227,32 @@ a {
     margin-bottom: 6px;
 }
 
+#notes .box{
+    border-radius: 12px;
+    margin: auto;
+    margin-top: 17px;    
+    width: 83vw;
+    height: 7vh;
+    padding: 0;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+}
+
+#notes p {
+    line-height: 7vh;
+}
+
+#notes svg {
+    position: relative;
+    right: -19vw;
+    transform: translate(0, 27%);
+}
+
+#notes .plus {
+    right: 0;
+}
+
+#notes .plus-box {
+    border: 1px solid #90B367;
+}
+
