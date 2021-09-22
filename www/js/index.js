@@ -65,6 +65,20 @@ let advancedPlan = {
 // console.log(JSON.stringify(basicPlan));
 // console.log(JSON.stringify(advancedPlan));
 
+// --------------------------------------------------------------------------
+// Initialize Firebase - Anonymous
+// --------------------------------------------------------------------------
+const firebaseConfig = {
+    apiKey: "AIzaSyDJtK_EBn0vu_iGBI40TQVL17Rh2ZDF9Fo",
+    authDomain: "ksb-fit-d9512.firebaseapp.com",
+    databaseURL: "https://ksb-fit-d9512-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "ksb-fit-d9512",
+    storageBucket: "ksb-fit-d9512.appspot.com",
+    messagingSenderId: "916377612326",
+    appId: "1:916377612326:web:3b8ff037113373bafab6e7",
+    measurementId: "G-GME14G0GC1"
+};
+  
 (function($) {
     $(function() {
         "use strict";
@@ -75,8 +89,8 @@ let advancedPlan = {
             globalvarOS = 'ANDROID';
         }
     });
-})(jQuery);
 
+})(jQuery);
 jQuery.extend({
     onDeviceReady: function() {
         $("#home").load("../components/Startseite/startseite.html");
@@ -123,6 +137,8 @@ function changePlan() {
         planElements[i].checked = !(planElements[i].checked)
     }
 }
+
+
 
 function login() {
     userData.userID = 'xxx'
