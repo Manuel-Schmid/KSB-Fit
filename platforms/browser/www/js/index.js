@@ -147,13 +147,10 @@ jQuery.extend({
         });
 
         $("#home").load("../components/Startseite/startseite.html");
-
         $("#header").load("../components/header.html");
-
         $("#navbar").load("../components/navbar.html");
-
-
-
+        $("#tasks").load("../components/tasks.html");
+      
         $("#bestellbutton").on("click", function() {
             alert("Es wurde geklickt1");
             $.ajax({

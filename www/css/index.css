@@ -6,7 +6,7 @@
 }
 
 .header{
-    position: absolute;
+    position: fixed;
     padding: 0px;
     margin-top: 0px;
     margin-right: 0px;
