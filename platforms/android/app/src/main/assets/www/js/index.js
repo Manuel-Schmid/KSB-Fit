@@ -13,7 +13,8 @@ function meldung(text) {
     };
 })();
 */
-var globalvarOS = "";
+let globalvarOS = "";
+let selectedIcon = "home-icon";
 
 
 (function($) {
@@ -25,7 +26,7 @@ var globalvarOS = "";
         } else {
             globalvarOS = 'ANDROID';
         }
-        $.start();
+        // $.start();
 
 
         // --------------------------------------------------------------------------
@@ -82,6 +83,9 @@ jQuery.extend({
 
         });
 
+        $("#header").load("../components/header.html");
+
+        $("#navbar").load("../components/navbar.html");
 
 
 
@@ -131,12 +135,12 @@ jQuery.extend({
             }, 3000)
 
         })
-
-    },
-    start: function() {
-        alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
-
     }
+    // },
+    // start: function() {
+    //     alert('APP - gestartet : ' + globalvarOS + ' / ' + globalvarFunc());
+
+    // }
 
 
 });
@@ -198,4 +202,25 @@ function displayContents(err, text) {
         });
 
     }
+}
+
+function switchToTab(tabName) {
+    // reset other colors
+    let icons = document.getElementsByClassName('icon-black')
+    for (let i = 0; i < icons.length; i++) {
+        icons[i].setAttribute('fill', 'black');
+    }
+    let selectedTabs = document.getElementsByClassName('selected-tab')
+    if (selectedTabs.length > 0) {
+        for (const el of document.getElementsByClassName('selected-tab')) {
+            el.className = ""
+        }
+    }
+    document.getElementById('qr-icon').setAttribute('fill', 'white')
+
+    // set highlightings
+    iconID = tabName + "-icon"
+    txtID = tabName + "-txt"
+    document.getElementById(iconID).setAttribute('fill', '#E01272')
+    document.getElementById(txtID).className += 'selected-tab'
 }
