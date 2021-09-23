@@ -389,6 +389,21 @@ a {
     border-bottom-style: none;
 }
 
+.task-popup {
+    position: relative;
+    top: 50vh;
+    margin-top: 0px !important;
+    width: 80% !important;
+    height: 40vh;
+}
+
+.play-icon {
+    width: 80% !important;
+    height: 27vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #CFCFCF;
+
 .bildkobelt{
     border-radius: 200px;
 	-moz-border-radius: 200px;
@@ -397,4 +412,5 @@ a {
     margin: auto; 
     width: 50%;
     margin-bottom: 19px;
+
 }
