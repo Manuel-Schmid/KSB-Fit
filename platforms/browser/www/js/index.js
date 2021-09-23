@@ -24,26 +24,92 @@ let userData = {
 }
 let tasks = [
     {
+        title: "Eagle Glute",
+        image: "../img/task-images/task (1)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Leg Press",
+        image: "../img/task-images/task (2)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Prone Leg Curl",
+        image: "../img/task-images/task (3)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Hip",
+        image: "../img/task-images/task (4)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
         title: "Eagle Leg Extension",
-        image: "../img/task-images/task (5).jpeg",
+        image: "../img/task-images/task (5)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Ab Abdominal",
-        image: "../img/task-images/task (13).jpeg",
+        title: "Eagle Lateral Raise",
+        image: "../img/task-images/task (6)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Fly / Rear Delt",
-        image: "../img/task-images/task (12).jpeg",
+        title: "Eagle Lat Pulldown",
+        image: "../img/task-images/task (7)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Chest Press",
+        image: "../img/task-images/task (8)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Overhead Press",
+        image: "../img/task-images/task (9)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Plate Loaded Smith",
+        image: "../img/task-images/task (10)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Arm / Bicep Curl",
-        image: "../img/task-images/task (11).jpeg",
+        image: "../img/task-images/task (11)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Fly / Rear Delt",
+        image: "../img/task-images/task (12)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Ab Abdominal",
+        image: "../img/task-images/task (13)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Arm Tricep",
+        image: "../img/task-images/task (14)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Back Extension",
+        image: "../img/task-images/task (15)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
@@ -91,8 +157,6 @@ firebase.auth().signInAnonymously().catch(function(error) {
             globalvarOS = 'ANDROID';
         }
         // $.start();
-
-
         // --------------------------------------------------------------------------
         // Darstellen der Daten
         // --------------------------------------------------------------------------
@@ -374,12 +438,17 @@ function login() {
     // set name in header
 }
 
-function loadTasks() {
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[e]
-        newTask = ''
+// $(document).ready(function(){
+//     loadTasks();
+// });
 
-        document.getElementById('tasks-container').innerHTML += newTask
+function loadTasks() {
+    newTasks = ''
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        newTasks += '<div class="box"> <p>'+task.title+'</p> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> <img src="'+task.image+'" alt="Leg Extension"> </div>';
+
+        document.getElementById('tasks').innerHTML = newTasks;
     }
 }
 
@@ -389,6 +458,7 @@ function goToTasks() {
 
     document.getElementById('tasks').className = ""
     switchToTab('tasks')
+    loadTasks();
 }
 
 function goToHome() {
