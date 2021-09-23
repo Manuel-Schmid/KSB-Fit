@@ -229,7 +229,7 @@ a {
     margin-bottom: 6px;
 }
 
-#notes .box{
+#listnotes .box{
     border-radius: 12px;
     margin: auto;
     margin-top: 17px;    
@@ -244,10 +244,14 @@ a {
     line-height: 7vh;
 }
 
-#notes svg {
+#notes .plus-icon{
     position: relative;
     right: -19vw;
     transform: translate(0, 27%);
+}
+
+.notes-textarea {
+    height: 30vh;
 }
 
 #notes .plus {
@@ -291,7 +295,7 @@ a {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: #0000;
+    color: #000000;
 }
 
 .signup-popup .signup-content {
@@ -383,4 +387,14 @@ a {
 
 #signup .tabs ul {
     border-bottom-style: none;
+}
+
+.bildkobelt{
+    border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+    display: block; 
+    margin: auto; 
+    width: 50%;
+    margin-bottom: 19px;
 }

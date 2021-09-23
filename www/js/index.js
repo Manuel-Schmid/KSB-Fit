@@ -347,11 +347,48 @@ function loadNotes() {
         for (const el of Object.entries(snapObj)) {
             for (const note of Object.entries(el)) {
                 if (note[1].date !== undefined && note[1].user === emailHash) {
-                    document.getElementById('notelist').innerHTML += '<div class="box"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p><p id="date-content" class="hidden">'+ note[1].date +'</p> <p id="text-content" class="hidden">'+ note[1].text +'</p></div>';
+                    let functionString = `editNote('`+el[0]+`', '`+note[1].date+`', '`+note[1].text+`')`;
+                    document.getElementById('notelist').innerHTML += '<div id="'+el[0]+'" class="box" onclick="'+functionString+'"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p><p id="date-content" class="hidden">'+ note[1].date +'</p> <p id="text-content" class="hidden">'+ note[1].text +'</p></div>';
                 }
             }
         }
     });
+}
+
+let tmstmp = '';
+
+function createNewNote() {
+    tmstmp = '';
+    document.getElementById('cur-date').innerHTML = getCurrentDate(true)
+    document.getElementById('note-text-area').value = ''
+    window.location.href = "#new-note";
+}
+
+function editNote(timestamp, date, text) {
+    tmstmp = timestamp;
+    document.getElementById('cur-date').innerHTML = date
+    document.getElementById('note-text-area').value = text
+    window.location.href = "#new-note";
+}
+
+function saveNote() {
+    if (tmstmp === '') { // create new note
+        insertNote(document.getElementById('note-text-area').value)
+    } else { // update existing note
+        updateNote(document.getElementById('cur-date').innerHTML, document.getElementById('note-text-area').value)
+    }
+    window.location.href = "#";
+}
+
+function updateNote(date, text) {
+    // console.log(tmstmp +" : "+date+" : "+text);
+    firebase.database().ref('/notes/'+tmstmp).set({
+        user:emailHash,
+        date:date,
+        text:text
+    });
+    // document.getElementById(tmstmp).onclick = editNote(tmstmp, date, text);
+    loadNotes()
 }
 
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
