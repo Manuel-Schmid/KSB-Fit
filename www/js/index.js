@@ -24,26 +24,92 @@ let userData = {
 }
 let tasks = [
     {
+        title: "Eagle Glute",
+        image: "../img/task-images/task (1)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Leg Press",
+        image: "../img/task-images/task (2)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Prone Leg Curl",
+        image: "../img/task-images/task (3)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Hip",
+        image: "../img/task-images/task (4)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
         title: "Eagle Leg Extension",
-        image: "../img/task-images/task (5).jpeg",
+        image: "../img/task-images/task (5)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Ab Abdominal",
-        image: "../img/task-images/task (13).jpeg",
+        title: "Eagle Lateral Raise",
+        image: "../img/task-images/task (6)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Fly / Rear Delt",
-        image: "../img/task-images/task (12).jpeg",
+        title: "Eagle Lat Pulldown",
+        image: "../img/task-images/task (7)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Chest Press",
+        image: "../img/task-images/task (8)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Overhead Press",
+        image: "../img/task-images/task (9)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Plate Loaded Smith",
+        image: "../img/task-images/task (10)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Arm / Bicep Curl",
-        image: "../img/task-images/task (11).jpeg",
+        image: "../img/task-images/task (11)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Fly / Rear Delt",
+        image: "../img/task-images/task (12)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Ab Abdominal",
+        image: "../img/task-images/task (13)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Arm Tricep",
+        image: "../img/task-images/task (14)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Back Extension",
+        image: "../img/task-images/task (15)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
