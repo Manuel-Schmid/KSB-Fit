@@ -295,7 +295,7 @@ a {
 .signup-popup .signup-content {
     max-height: 30%;
     overflow: auto;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 .signup-logo {
@@ -307,21 +307,21 @@ a {
     background-color: #90B367;
     color: #FFFFFF;
     position: absolute;
-    height: 7vh;
+    height: 6.5vh;    
     width: 16vh;
-    right: 20px;
+    right: 5vw;
 }
 
 .btn-cancel {
     background-color: #E01272;
     color: #FFFFFF;
-    height: 7vh;
+    height: 6.5vh;
     width: 16vh;
-    right: -30px;
+    right: -4vw;
 }
 
 .number-input{
-    width: 30% !important;
+    /* width: 30% !important; */
     display: inline-block;
 }
 
@@ -335,5 +335,8 @@ a {
 
 .unit-label {
     display: inline-block;
+    top: 5vh;
+    right: 1vh;
+    position: relative;
 }
 

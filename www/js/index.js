@@ -1,6 +1,7 @@
 let globalvarOS = "";
 let selectedIcon = "home-icon";
 let basicSelected = true;
+let emailHash = '';
 
 let tasks = [
     {
@@ -66,8 +67,8 @@ let advancedPlan = {
 // console.log(JSON.stringify(advancedPlan));
 
 // --------------------------------------------------------------------------
-// Initialize Firebase - Anonymous
-// --------------------------------------------------------------------------
+//  Firebase Database Handling
+
 const firebaseConfig = {
     apiKey: "AIzaSyDJtK_EBn0vu_iGBI40TQVL17Rh2ZDF9Fo",
     authDomain: "ksb-fit-d9512.firebaseapp.com",
@@ -78,7 +79,120 @@ const firebaseConfig = {
     appId: "1:916377612326:web:3b8ff037113373bafab6e7",
     measurementId: "G-GME14G0GC1"
 };
-  
+
+firebase.initializeApp(firebaseConfig);
+
+// Reference message collection
+var messagesRef = firebase.database().ref('messages');
+
+/*{
+"provider": "anonymous",
+"uid": "fe2b73cb-86ea-49d1-ba55-0be7d33e492f"
+}*/
+firebase.auth().signInAnonymously().catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+});
+
+// Readying data
+let nameV, passwordV, emailV, weightV, heightV;
+
+function setLoginData() {
+    nameV = document.getElementById('name-input').value
+    emailV = document.getElementById('email-input').value
+    passwordV = document.getElementById('password-input').value
+    weightV = document.getElementById('weight-input').value
+    heightV = document.getElementById('height-input').value
+
+    return !(emailV === "" || passwordV === "") && validateEmail(emailV)
+}
+
+function login() {
+    if(setLoginData()) {
+        firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
+            // if (user !== null) {console.log('exists');} else { console.log('doesnt exist');}
+            // create new user
+            if (nameV === "") {nameV = 'unknown'}
+            if (weightV === "") {weightV = 'unknown'} 
+            if (heightV === "") {heightV = 'unknown'}
+            
+            firebase.database().ref('user/'+ emailV.hashCode()).set({
+                name:nameV,
+                password:passwordV.hashCode(),
+                weight:weightV,
+                height:heightV
+            });
+            document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
+            emailHash = emailV.hashCode()
+            window.location.href = "#";
+        });
+    } else {
+        alert('Bitte geben Sie gültige Daten ein')
+    }
+}
+
+// function getUser(email) {
+//     var ref = firebase.database().ref("user/" + email.hashCode());
+//     ref.on("value", function(snapshot) {
+//         document.getElementById('store').innerHTML = snapshot.val().toString();
+//         console.log(document.getElementById('store').innerHTML);
+//         return snapshot.val()
+//     }, function(error) {
+//         console.log("Error: " + error.message);
+//         return null
+//     });
+// }
+
+// function getUser() {
+    // console.log(userWithEmailExists('manysch3@gmail.com'))
+    // console.log(lol);
+// }
+
+function insertNote(text) {
+    if (emailHash !== "") {
+        firebase.database().ref('/notes/'+Date.now()).set({
+            date:getCurrentDate(true),
+            text:text
+        });
+        loadNotes()
+    }
+    else {
+        alert('Sie müssen angemeldet sein um Notizen zu verfassen.')
+    }
+}
+
+function getCurrentDate(isSwissFormat) {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    let connector = isSwissFormat ? '.' : '-'
+    return dd + connector + mm + connector + yyyy;
+}
+
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+String.prototype.hashCode = function() {
+    var hash = 0, i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+      chr   = this.charCodeAt(i);
+      hash  = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+  };
+
+// Insert 
+
+
+// --------------------------------------------------------------------------
+
+
 (function($) {
     $(function() {
         "use strict";
@@ -140,14 +254,14 @@ function changePlan() {
 
 
 
-function login() {
-    userData.userID = 'xxx'
-    userData.firstName = 'xxx'
-    userData.lastName = 'xxx'
-    userData.email = 'xxx'
-    userData.weight = 'xxx'
-    userData.height = 'xxx'
-}
+// function login() {
+//     userData.userID = 'xxx'
+//     userData.firstName = 'xxx'
+//     userData.lastName = 'xxx'
+//     userData.email = 'xxx'
+//     userData.weight = 'xxx'
+//     userData.height = 'xxx'
+// }
 
 function loadTasks() {
     newTasks = ''
@@ -159,15 +273,18 @@ function loadTasks() {
     }
 }
 
-function loadNotes() { 
-    let notes;
-    newNotes = ''
-    for (let i = 0; i < notes.length; i++) {
-        const note = notes[i];
-        newTasks += '<div class="box"> <p> Training vom <b>22.09.2021</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p> </div>';
-
-        document.getElementById('noteslist').innerHTML = newTasks;
-    }
+function loadNotes() {
+    document.getElementById('notelist').innerHTML = ''
+    firebase.database().ref('/notes/').on('value', function(snapshot) {
+        let snapObj = snapshot.val();
+        for (const el of Object.entries(snapObj)) {
+            for (const note of Object.entries(el)) {
+                if (note[1].date !== undefined) {
+                    document.getElementById('notelist').innerHTML += '<div class="box"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p> </div>';
+                }
+            }
+        }
+    });
 }
 
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
@@ -218,4 +335,5 @@ function goToNotes() {
 
     document.getElementById('notes').className = ""
     switchToTab('notes')
+    loadNotes()
 }
