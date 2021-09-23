@@ -40,7 +40,8 @@ a {
     height: auto;
     width: auto;
     margin-top: 5.3vh;
-    margin-right: 2vh;
+    margin-right: 4vh;    
+    float: right;
 }
 
 .button {
@@ -124,6 +125,7 @@ a {
 
 .content {
     padding: 15px;
+    padding-top: 0px; 
    
 }
 
@@ -169,7 +171,7 @@ a {
 #tasks svg{
     /* margin-left: 41vw; */
     position: relative;
-    right: -27vw;
+    float: right;
 }
 
 .pfeil{
@@ -298,6 +300,11 @@ a {
     padding: 10px 10px 0px 10px;
 }
 
+.popup-logo {
+    width: 40vw;
+    margin: auto;
+}
+
 .signup-logo {
     width: 40vw;
     margin: 0 auto;
@@ -320,6 +327,29 @@ a {
     right: -4vw;
 }
 
+.tick {
+    color: #90B367;
+    border: 0px;
+    text-align: center;
+    padding: 5px;
+}
+
+.bullet {
+    border: none;
+    text-align: left;
+    padding: 5px;
+}
+
+.hinweise-txt {
+    border: 0px;
+    margin: auto;
+    
+}
+
+.table-text {
+    border: none;
+}
+
 .number-input{
     /* width: 30% !important; */
     display: inline-block;
@@ -333,9 +363,15 @@ a {
     margin: 0px 0px 20px;
 }
 
+.text-header {
+    font-weight: bold; 
+    font-size: large; 
+    line-height: 1.6;
+}
+
 .unit-label {
     display: inline-block;
-    top: 5vh;
+    top: 4vh;
     right: 1vh;
     position: relative;
 }
@@ -348,4 +384,4 @@ a {
 #signup .tabs ul {
     border-bottom-style: none;
 }
-    
+

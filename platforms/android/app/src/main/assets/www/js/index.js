@@ -6,39 +6,96 @@ let activeTab = 'login'
 
 let tasks = [
     {
+        title: "Eagle Glute",
+        image: "../img/task-images/task (1)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Leg Press",
+        image: "../img/task-images/task (2)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Prone Leg Curl",
+        image: "../img/task-images/task (3)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Hip",
+        image: "../img/task-images/task (4)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
         title: "Eagle Leg Extension",
-        image: "../img/task-images/task (5).jpeg",
+        image: "../img/task-images/task (5)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Ab Abdominal",
-        image: "../img/task-images/task (13).jpeg",
+        title: "Eagle Lateral Raise",
+        image: "../img/task-images/task (6)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Fly / Rear Delt",
-        image: "../img/task-images/task (12).jpeg",
+        title: "Eagle Lat Pulldown",
+        image: "../img/task-images/task (7)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Chest Press",
+        image: "../img/task-images/task (8)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Overhead Press",
+        image: "../img/task-images/task (9)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Plate Loaded Smith",
+        image: "../img/task-images/task (10)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Arm / Bicep Curl",
-        image: "../img/task-images/task (11).jpeg",
+        image: "../img/task-images/task (11)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Fly / Rear Delt",
+        image: "../img/task-images/task (12)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Ab Abdominal",
+        image: "../img/task-images/task (13)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Arm Tricep",
+        image: "../img/task-images/task (14)1.jpeg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+        title: "Eagle Back Extension",
+        image: "../img/task-images/task (15)1.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 ]
-
-let userData = {
-    userID: 0,
-    firstName: 'Anonym',
-    lastName: '',
-    email: '-',
-    weight: '-',
-    height: '-'
-}
 
 let basicPlan = {
     legpress: true,
@@ -95,7 +152,7 @@ firebase.auth().signInAnonymously().catch(function(error) {
     var errorMessage = error.message;
 });
 
-// Readying data
+// ready data
 let nameV, passwordV, emailV, weightV, heightV;
 
 function setLoginData() {
@@ -109,49 +166,48 @@ function setLoginData() {
 }
 
 function login() {
-    if(setLoginData()) {
-        firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
-            // if (user !== null) {console.log('exists');} else { console.log('doesnt exist');}
-            // create new user
-            if (nameV === "") {nameV = 'unknown'}
-            if (weightV === "") {weightV = 'unknown'} 
-            if (heightV === "") {heightV = 'unknown'}
-            
-            firebase.database().ref('user/'+ emailV.hashCode()).set({
-                name:nameV,
-                password:passwordV.hashCode(),
-                weight:weightV,
-                height:heightV
+    if(setLoginData()) { // login
+        if (activeTab === 'login') {
+            firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
+                try {
+                    if (snapshot.val().password === passwordV.hashCode()) {
+                        // login successful
+                        document.getElementById('login-link').innerHTML = (snapshot.val().name).split(' ')[0];
+                        emailHash = emailV.hashCode()
+                        window.location.href = "#";
+                        loadNotes()
+                    } else {
+                        alert('Falsche Kombination')
+                    }
+                } catch (error) {
+                    alert('Für diese Email wurde noch kein Konto registriert')
+                }
             });
-            document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
-            emailHash = emailV.hashCode()
-            window.location.href = "#";
-        });
+        } else { // signup
+            if ((nameV === "") || (weightV === "") || (heightV === "")) {
+                alert('Befüllen Sie bitte sämtliche Felder')
+            } else {
+                firebase.database().ref('user/'+ emailV.hashCode()).set({
+                    name:nameV,
+                    password:passwordV.hashCode(),
+                    weight:weightV,
+                    height:heightV
+                });
+                document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
+                emailHash = emailV.hashCode()
+                window.location.href = "#";
+                loadNotes()
+            }
+        }
     } else {
         alert('Bitte geben Sie gültige Daten ein')
     }
 }
 
-// function getUser(email) {
-//     var ref = firebase.database().ref("user/" + email.hashCode());
-//     ref.on("value", function(snapshot) {
-//         document.getElementById('store').innerHTML = snapshot.val().toString();
-//         console.log(document.getElementById('store').innerHTML);
-//         return snapshot.val()
-//     }, function(error) {
-//         console.log("Error: " + error.message);
-//         return null
-//     });
-// }
-
-// function getUser() {
-    // console.log(userWithEmailExists('manysch3@gmail.com'))
-    // console.log(lol);
-// }
-
 function insertNote(text) {
     if (emailHash !== "") {
         firebase.database().ref('/notes/'+Date.now()).set({
+            user:emailHash,
             date:getCurrentDate(true),
             text:text
         });
@@ -253,17 +309,6 @@ function changePlan() {
     }
 }
 
-
-
-// function login() {
-//     userData.userID = 'xxx'
-//     userData.firstName = 'xxx'
-//     userData.lastName = 'xxx'
-//     userData.email = 'xxx'
-//     userData.weight = 'xxx'
-//     userData.height = 'xxx'
-// }
-
 function loadTasks() {
     newTasks = ''
     for (let i = 0; i < tasks.length; i++) {
@@ -280,7 +325,7 @@ function loadNotes() {
         let snapObj = snapshot.val();
         for (const el of Object.entries(snapObj)) {
             for (const note of Object.entries(el)) {
-                if (note[1].date !== undefined) {
+                if (note[1].date !== undefined && note[1].user === emailHash) {
                     document.getElementById('notelist').innerHTML += '<div class="box"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p> </div>';
                 }
             }
@@ -347,9 +392,11 @@ function switchLogin(tab) {
         activeTab = 'login'
         document.getElementById('name-field').className = 'field hidden'
         document.getElementById('sizes-field').className = 'row hidden'
+        document.getElementById('login-btn').innerHTML = 'Anmelden'
     } else if (tab === 'signup') {
         activeTab = 'signup'
         document.getElementById('name-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
+        document.getElementById('login-btn').innerHTML = 'Speichern'
     }
 }
