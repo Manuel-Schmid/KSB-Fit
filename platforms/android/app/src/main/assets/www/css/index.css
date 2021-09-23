@@ -170,7 +170,7 @@ a {
 #tasks svg{
     /* margin-left: 41vw; */
     position: relative;
-    right: -27vw;
+    float: right;
 }
 
 .pfeil{
