@@ -388,3 +388,13 @@ a {
 #signup .tabs ul {
     border-bottom-style: none;
 }
+
+.bildkobelt{
+    border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+    display: block; 
+    margin: auto; 
+    width: 50%;
+    margin-bottom: 19px;
+}
