@@ -40,7 +40,8 @@ a {
     height: auto;
     width: auto;
     margin-top: 5.3vh;
-    margin-right: 2vh;
+    margin-right: 4vh;    
+    float: right;
 }
 
 .button {
@@ -335,7 +336,7 @@ a {
 
 .unit-label {
     display: inline-block;
-    top: 5vh;
+    top: 4vh;
     right: 1vh;
     position: relative;
 }
@@ -348,4 +349,3 @@ a {
 #signup .tabs ul {
     border-bottom-style: none;
 }
-    

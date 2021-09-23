@@ -109,39 +109,51 @@ function setLoginData() {
 }
 
 function login() {
-    if(setLoginData()) {
-        firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
-            // if (user !== null) {console.log('exists');} else { console.log('doesnt exist');}
-            // create new user
-            if (nameV === "") {nameV = 'unknown'}
-            if (weightV === "") {weightV = 'unknown'} 
-            if (heightV === "") {heightV = 'unknown'}
-            
-            firebase.database().ref('user/'+ emailV.hashCode()).set({
-                name:nameV,
-                password:passwordV.hashCode(),
-                weight:weightV,
-                height:heightV
+    if(setLoginData()) { // login
+        if (activeTab === 'login') {
+            firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
+                if (snapshot.val().password === passwordV.hashCode()) {
+                    // login successful
+                    document.getElementById('login-link').innerHTML = (snapshot.val().name).split(' ')[0];
+                    emailHash = emailV.hashCode()
+                    window.location.href = "#";
+                } else {
+                    alert('Falsches Passwort')
+                }
             });
-            document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
-            emailHash = emailV.hashCode()
-            window.location.href = "#";
-        });
+        } else { // signup
+            if ((nameV === "") || (weightV === "") || (heightV === "")) {
+                alert('Befüllen Sie bitte sämtliche Felder')
+            } else {
+                firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
+                
+                    firebase.database().ref('user/'+ emailV.hashCode()).set({
+                        name:nameV,
+                        password:passwordV.hashCode(),
+                        weight:weightV,
+                        height:heightV
+                    });
+                    document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
+                    emailHash = emailV.hashCode()
+                    window.location.href = "#";
+                });
+            }
+        }
     } else {
         alert('Bitte geben Sie gültige Daten ein')
     }
 }
 
 // function getUser(email) {
-//     var ref = firebase.database().ref("user/" + email.hashCode());
-//     ref.on("value", function(snapshot) {
-//         document.getElementById('store').innerHTML = snapshot.val().toString();
-//         console.log(document.getElementById('store').innerHTML);
-//         return snapshot.val()
-//     }, function(error) {
-//         console.log("Error: " + error.message);
-//         return null
-//     });
+    // var ref = firebase.database().ref("user/" + email.hashCode());
+    // ref.on("value", function(snapshot) {
+    //     document.getElementById('store').innerHTML = snapshot.val().toString();
+    //     console.log(document.getElementById('store').innerHTML);
+    //     return snapshot.val()
+    // }, function(error) {
+    //     console.log("Error: " + error.message);
+    //     return null
+    // });
 // }
 
 // function getUser() {
@@ -347,9 +359,11 @@ function switchLogin(tab) {
         activeTab = 'login'
         document.getElementById('name-field').className = 'field hidden'
         document.getElementById('sizes-field').className = 'row hidden'
+        document.getElementById('login-btn').innerHTML = 'Anmelden'
     } else if (tab === 'signup') {
         activeTab = 'signup'
         document.getElementById('name-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
+        document.getElementById('login-btn').innerHTML = 'Speichern'
     }
 }
