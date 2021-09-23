@@ -168,11 +168,18 @@ a {
     margin-bottom: 2vh;
 }
 
-#tasks svg{
+#task-popup-overlay svg {
     /* margin-left: 41vw; */
-    position: relative;
-    float: right;
+    margin: 0;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+/* 
+#tasks-list svg {
+    float:right;
+} */
 
 .pfeil{
    float: right;
@@ -402,7 +409,7 @@ a {
     height: 27vh;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #CFCFCF;
+    background-color: #cfcfcfd1;
 }
 
 .bildkobelt{
@@ -413,9 +420,18 @@ a {
     margin: auto; 
     width: 50%;
     margin-bottom: 19px;
-
 }
 
 tr {
     border: none !important;
+}
+
+.table-container-cstm {
+    height: 80%;
+    overflow: scroll;
+    width: 100%;
+}
+
+#tasks-list .col {
+    text-align: left;
 }
