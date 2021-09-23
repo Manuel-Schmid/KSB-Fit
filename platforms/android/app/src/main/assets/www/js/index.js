@@ -156,13 +156,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Reference message collection
 var messagesRef = firebase.database().ref('messages');
 
-/*{
-"provider": "anonymous",
-"uid": "fe2b73cb-86ea-49d1-ba55-0be7d33e492f"
-}*/
 firebase.auth().signInAnonymously().catch(function(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -351,7 +346,7 @@ function loadNotes() {
     document.getElementById('notelist').innerHTML = ''
     firebase.database().ref('/notes/').on('value', function(snapshot) {
         let snapObj = snapshot.val();
-        for (const el of Object.entries(snapObj)) {
+        for (const el of Object.entries(snapObj).reverse()) {
             for (const note of Object.entries(el)) {
                 if (note[1].date !== undefined && note[1].user === emailHash) {
                     let functionString = `editNote('`+el[0]+`', '`+note[1].date+`', '`+note[1].text+`')`;

@@ -3,6 +3,7 @@
 
 * {
     font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000000;
 }
 
 a {
@@ -176,13 +177,15 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* 
-#tasks-list svg {
-    float:right;
-} */
 
 .pfeil{
    float: right;
+}
+
+.pfeil svg {
+    bottom: 12px;
+    right: 16px;
+    position: absolute;
 }
 
 #training .btn-container{
@@ -267,6 +270,12 @@ a {
 
 #notes .plus-box {
     border: 1px solid #90B367;
+}
+
+#notelist p svg{
+    top: 16px;
+    float: right;
+    position: relative;
 }
 
 .overlay {
