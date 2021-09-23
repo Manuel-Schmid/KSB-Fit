@@ -2,6 +2,7 @@ let globalvarOS = "";
 let selectedIcon = "home-icon";
 let basicSelected = true;
 let emailHash = '';
+let activeTab = 'login'
 
 let tasks = [
     {
@@ -336,4 +337,19 @@ function goToNotes() {
     document.getElementById('notes').className = ""
     switchToTab('notes')
     loadNotes()
+}
+
+function switchLogin(tab) {
+    let loginClass = document.getElementById('login-tab').className
+    document.getElementById('login-tab').className = document.getElementById('signup-tab').className
+    document.getElementById('signup-tab').className = loginClass
+    if (tab === 'login') {
+        activeTab = 'login'
+        document.getElementById('name-field').className = 'field hidden'
+        document.getElementById('sizes-field').className = 'row hidden'
+    } else if (tab === 'signup') {
+        activeTab = 'signup'
+        document.getElementById('name-field').className = 'field'
+        document.getElementById('sizes-field').className = 'row'
+    }
 }

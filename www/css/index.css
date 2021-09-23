@@ -340,3 +340,12 @@ a {
     position: relative;
 }
 
+#signup .tabs li.is-active a {
+    border-bottom-color: #E01272;
+    color: #E01272;
+}
+
+#signup .tabs ul {
+    border-bottom-style: none;
+}
+    

@@ -13,7 +13,15 @@
     </div>
 
     <form class="signup-content">
-			<div class="field">
+
+      <div class="tabs">
+        <ul>
+          <li onclick="switchLogin('login')" id="login-tab" class="is-active"><a>Login</a></li>
+          <li onclick="switchLogin('signup')" id="signup-tab" class=""><a>Registrieren</a></li>
+        </ul>
+      </div>
+
+			<div id="name-field" class="field hidden">
         <label class="label">Vor- & Nachname:</label>
         <div class="control">
           <input id="name-input" class="input" type="text" placeholder="Ihr Vor- & Nachname ...">
@@ -21,20 +29,20 @@
       </div>
       
       <div class="field">
-        <label class="label">KSB E-Mail: *</label>
+        <label class="label">E-Mail-Adresse: </label>
         <div class="control">
           <input id="email-input" class="input" type="email" placeholder="Ihre E-Mail ...">
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Passwort: *</label>
+        <label class="label">Passwort: </label>
         <div class="control">
           <input id="password-input" class="input" type="text" placeholder="Ihr Passwort ...">
         </div>
       </div>
 
-      <div class="row">
+      <div id="sizes-field" class="row hidden">
         <div class="field number-input col s4">
           <label class="label">Gewicht:</label>
           <div class="control">
@@ -55,7 +63,7 @@
       
       <div style="margin-top: 10px;">
         <a class="button is-rounded btn-cancel" href="#" style="font-weight: bold;">Abbruch</a>
-        <button id="login-btn" type="submit" onclick="login()" class="button is-rounded btn-save" style="font-weight: bold;">Speichern</button>
+        <button id="login-btn" onclick="login()" class="button is-rounded btn-save" style="font-weight: bold;">Speichern</button>
       </div>
 		</form>
 	</div>
