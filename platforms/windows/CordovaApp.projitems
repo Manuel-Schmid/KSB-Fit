@@ -13,4 +13,7 @@
     </ItemGroup>
     <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppDebug.projitems') And '$(Configuration)'=='Debug'" Project="CordovaAppDebug.projitems" />
     <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppRelease.projitems') And '$(Configuration)'!='Debug'" Project="CordovaAppRelease.projitems" />
+    <ItemGroup>
+        <ProjectReference Include="..\..\plugins\cordova-plugin-qrscanner\src\windows\QRReader\QRReader.csproj" />
+    </ItemGroup>
 </Project>

@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "AppVorlage"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "AppVorlage"
     }
   },
   "dependent_plugins": {}

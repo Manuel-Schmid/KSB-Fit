@@ -152,7 +152,7 @@ firebase.auth().signInAnonymously().catch(function(error) {
     var errorMessage = error.message;
 });
 
-// Readying data
+// ready data
 let nameV, passwordV, emailV, weightV, heightV;
 
 function setLoginData() {

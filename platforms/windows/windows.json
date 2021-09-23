@@ -4,16 +4,82 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"QRScanner\"><param name=\"windows-package\" value=\"QRScanner\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "package.phone.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "package.windows.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "package.windows10.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "AppVorlage"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "AppVorlage"
     }
   },
   "dependent_plugins": {},
-  "modules": [],
+  "modules": [
+    {
+      "id": "cordova-plugin-qrscanner.QRScanner",
+      "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+      "pluginId": "cordova-plugin-qrscanner",
+      "clobbers": [
+        "QRScanner"
+      ]
+    },
+    {
+      "id": "cordova-plugin-qrscanner.qrScanner",
+      "file": "plugins/cordova-plugin-qrscanner/src/windows/lib/qrScanner.js",
+      "pluginId": "cordova-plugin-qrscanner",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-qrscanner.preview",
+      "file": "plugins/cordova-plugin-qrscanner/src/windows/lib/preview.js",
+      "pluginId": "cordova-plugin-qrscanner",
+      "runs": true
+    }
+  ],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.5"
+    "cordova-plugin-whitelist": "1.3.5",
+    "cordova-plugin-qrscanner": "3.0.1"
   }
 }
