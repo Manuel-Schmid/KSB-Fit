@@ -8,19 +8,28 @@ let tasks = [
     {
         title: "Eagle Glute",
         image: "../img/task-images/task (1)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen."+
+        "BEWEGUNG <br/>"+  
+        "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Ubebung entsprechen wiederholen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Leg Press",
         image: "../img/task-images/task (2)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+ 
+        "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten. <br/>"+
+        "BEWEGUNG <br/>"+
+        "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Prone Leg Curl",
         image: "../img/task-images/task (3)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.<br/>"+
+        "BEWEGUNG <br/>"+ 
+        "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
