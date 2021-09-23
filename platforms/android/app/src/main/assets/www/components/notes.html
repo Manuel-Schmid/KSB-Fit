@@ -1,9 +1,11 @@
-<div class="content-container">
+<div id="listnotes" class="content-container">
+    <a href="#new-note">
     <div class="box plus-box">
         <p style="text-align: center">
-            <svg class="plus" xmlns="http://www.w3.org/2000/svg" fill="#90B367" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M11.75 4.5a.75.75 0 01.75.75V11h5.75a.75.75 0 010 1.5H12.5v5.75a.75.75 0 01-1.5 0V12.5H5.25a.75.75 0 010-1.5H11V5.25a.75.75 0 01.75-.75z"></path></svg>        
+            <svg class="plus plus-icon" xmlns="http://www.w3.org/2000/svg" fill="#90B367" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M11.75 4.5a.75.75 0 01.75.75V11h5.75a.75.75 0 010 1.5H12.5v5.75a.75.75 0 01-1.5 0V12.5H5.25a.75.75 0 010-1.5H11V5.25a.75.75 0 01.75-.75z"></path></svg>        
         </p>
     </div>
+    </a>
 
     <div id="notelist">
         <div class="box">
@@ -16,4 +18,24 @@
         </div>
     </div>
     
+</div>
+
+<div id="new-note" class="overlay">
+	<div class="box signup-popup">
+		
+        <div class="signup-header">
+            <h1 class="text-header">Training von <span style="font-weight: bolder;">Heute</span></h1>
+            <a class="close" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="30" height="30" style="top: auto;"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg></a>
+        </div>
+
+        <form class="note-content">
+
+            <textarea class="textarea notes-textarea" placeholder="Wie ist Ihr Training Heute gegangen? Welche Übungen haben Sie gemacht? Wieviele Wiederholungen?"></textarea>
+        
+            <div style="margin-top: 10px;">
+                <a class="button is-rounded btn-cancel" href="#" style="font-weight: bold;">Löschen</a>
+                <button id="login-btn" onclick="login()" class="button is-rounded btn-save" style="font-weight: bold;">Speichern</button>
+            </div>
+        </form>
+	</div>
 </div>
