@@ -301,17 +301,24 @@ a {
 .signup-popup .signup-content {
     max-height: 30%;
     overflow: auto;
-    padding: 10px 10px 0px 10px;
+    padding: 40px 10px 0px 10px;
 }
 
 .popup-logo {
     width: 40vw;
     margin: auto;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
 }
 
 .signup-logo {
     width: 40vw;
     margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
 }
 
 .btn-save {
@@ -418,4 +425,37 @@ a {
 
 tr {
     border: none !important;
+}
+
+.qr-background{
+    background-image: url('../img/qr-dummy.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.qr-card {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 0 100%, 24% 100%, 23% 36%, 77% 36%, 77% 61%, 25% 61%, -32% 100%, 100% 100%, 100% 0);
+    margin: auto;
+    padding: 20px;
+    background: #363635a4;
+}
+
+.qr-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 29vh;
+    font-weight: bold; 
+    text-align: center; 
+    color: white;
+}
+
+.qr-svg {
+    top: 30%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
