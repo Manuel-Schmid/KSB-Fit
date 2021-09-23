@@ -3,6 +3,7 @@
 
 * {
     font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000000;
 }
 
 a {
@@ -168,14 +169,23 @@ a {
     margin-bottom: 2vh;
 }
 
-#tasks svg{
+#task-popup-overlay svg {
     /* margin-left: 41vw; */
-    position: relative;
-    float: right;
+    margin: 0;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .pfeil{
    float: right;
+}
+
+.pfeil svg {
+    bottom: 12px;
+    right: 16px;
+    position: absolute;
 }
 
 #training .btn-container{
@@ -260,6 +270,12 @@ a {
 
 #notes .plus-box {
     border: 1px solid #90B367;
+}
+
+#notelist p svg{
+    top: 16px;
+    float: right;
+    position: relative;
 }
 
 .overlay {
@@ -409,7 +425,7 @@ a {
     height: 27vh;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #CFCFCF;
+    background-color: #cfcfcfd1;
 }
 
 .bildkobelt{
@@ -420,7 +436,6 @@ a {
     margin: auto; 
     width: 50%;
     margin-bottom: 19px;
-
 }
 
 tr {
@@ -458,4 +473,14 @@ tr {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+}
+
+.table-container-cstm {
+    height: 80%;
+    overflow: scroll;
+    width: 100%;
+}
+
+#tasks-list .col {
+    text-align: left;
 }
