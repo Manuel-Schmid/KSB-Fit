@@ -8,25 +8,38 @@ let tasks = [
     {
         title: "Eagle Glute",
         image: "../img/task-images/task (1)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen."+
+        "BEWEGUNG <br/>"+  
+        "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Ubebung entsprechen wiederholen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Leg Press",
         image: "../img/task-images/task (2)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+ 
+        "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten. <br/>"+
+        "BEWEGUNG <br/>"+
+        "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Prone Leg Curl",
         image: "../img/task-images/task (3)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.<br/>"+
+        "BEWEGUNG <br/>"+ 
+        "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Hip",
+        title: "Eagle Hip Abduction / Adduction",
         image: "../img/task-images/task (4)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>"+
+        "Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel. <br/>"+
+        "BEWEGUNG <br/>"+
+        "Drücken Sie die Knie nach Innen, respektive nach aussen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
@@ -86,13 +99,21 @@ let tasks = [
     {
         title: "Eagle Arm Tricep",
         image: "../img/task-images/task (14)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG <br/>"+
+        "Sitzhöhe so einstellen, dass die Oberarme zum Oberkörper einen rechten Winkel bilden, während die Arme auf den Oberarmpolstern aufliegen. <br/>"+
+        "Handgriffe umfassen. <br/>"+
+        "BEWEGUNG <br/>"+
+        "Griffe nach vorne drücken.",        
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Eagle Back Extension",
         image: "../img/task-images/task (15)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "VORBEREITUNG<br/>"+
+        "Fußleiste so einstellen, dass die Knie leicht gebeugt sind und das Becken am Lendenpolster stabilisiert ist. Rücken leicht gegen das Rückenpolster stellen.<br/>"+
+        "BEWEGUNG<br/>"+
+        "Mit dem oberen Rücken das Rückenpolster nach hinten drücken.<br/>"+
+        "Rücken nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 ]
