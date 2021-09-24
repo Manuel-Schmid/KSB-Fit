@@ -3,6 +3,7 @@
 
 * {
     font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000000;
 }
 
 a {
@@ -168,14 +169,23 @@ a {
     margin-bottom: 2vh;
 }
 
-#tasks svg{
+#task-popup-overlay svg {
     /* margin-left: 41vw; */
-    position: relative;
-    float: right;
+    margin: 0;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .pfeil{
    float: right;
+}
+
+.pfeil svg {
+    bottom: 12px;
+    right: 16px;
+    position: absolute;
 }
 
 #training .btn-container{
@@ -262,6 +272,12 @@ a {
     border: 1px solid #90B367;
 }
 
+#notelist p svg{
+    top: 16px;
+    float: right;
+    position: relative;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -301,17 +317,24 @@ a {
 .signup-popup .signup-content {
     max-height: 30%;
     overflow: auto;
-    padding: 10px 10px 0px 10px;
+    padding: 40px 10px 0px 10px;
 }
 
 .popup-logo {
     width: 40vw;
     margin: auto;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
 }
 
 .signup-logo {
     width: 40vw;
     margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
 }
 
 .btn-save {
@@ -402,7 +425,7 @@ a {
     height: 27vh;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #CFCFCF;
+    background-color: #cfcfcfd1;
 }
 
 .bildkobelt{
@@ -413,9 +436,51 @@ a {
     margin: auto; 
     width: 50%;
     margin-bottom: 19px;
-
 }
 
 tr {
     border: none !important;
+}
+
+.qr-background{
+    background-image: url('../img/qr-dummy.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.qr-card {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 0 100%, 24% 100%, 23% 36%, 77% 36%, 77% 61%, 25% 61%, -32% 100%, 100% 100%, 100% 0);
+    margin: auto;
+    padding: 20px;
+    background: #363635a4;
+}
+
+.qr-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 29vh;
+    font-weight: bold; 
+    text-align: center; 
+    color: white;
+}
+
+.qr-svg {
+    top: 30%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.table-container-cstm {
+    height: 80%;
+    overflow: scroll;
+    width: 100%;
+}
+
+#tasks-list .col {
+    text-align: left;
 }
