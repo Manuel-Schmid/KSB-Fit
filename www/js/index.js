@@ -1,7 +1,7 @@
 let globalvarOS = "";
 let basicSelected = true;
 let emailHash = '';
-let activeTab = 'login'
+let activeTab = 'login';
 
 let tasks = [
     {
