@@ -314,6 +314,11 @@ a {
     color: #000000;
 }
 
+.task-popup-close {
+    margin-top: 4%;
+    margin-right: 4%;
+}
+
 .signup-popup .signup-content {
     max-height: 30%;
     overflow: auto;
