@@ -1,4 +1,7 @@
+<img src="https://github.com/Manuel-Schmid/KSB-Fit/blob/main/www/img/logo-white.svg" width="250">
+
 # KSB-Fit
+
 ## About
 ### Project Information
 School project to create an interactive fitness-app for android in 4 days.
