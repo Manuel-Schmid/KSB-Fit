@@ -137,9 +137,6 @@ let advancedPlan = {
     kneeBends: true
 }
 
-// console.log(JSON.stringify(basicPlan));
-// console.log(JSON.stringify(advancedPlan));
-
 // --------------------------------------------------------------------------
 //  Firebase Database Handling
 
