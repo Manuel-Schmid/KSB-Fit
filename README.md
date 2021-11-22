@@ -5,7 +5,7 @@
 ## About
 ### Project Information
 The goal of this school project was to create an interactive and responsive fitness-assistant app for the latest Android operating system within a time window of 4 days.
-This project was being created as a part of the Swiss IT schooling organization's Module 335 (Mobile Application Development) and includes applying ergonomic standards such as EN-9241-110 and meeting a real-world client's list of requirements.
+This project was created as a part of the Swiss IT schooling organization's Module 335 (Mobile Application Development) and includes applying ergonomic standards such as EN-9241-110 and meeting a real-world client's list of requirements.
 Product owner is the cantonal school at Brühl in St. Gallen, Switzerland.
 
 ### Contributors
