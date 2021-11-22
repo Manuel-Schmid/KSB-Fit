@@ -9,9 +9,9 @@ This project was being created as a part of the Swiss IT schooling organization'
 Product owner is the cantonal school at Brühl in St. Gallen, Switzerland.
 
 ### Contributors
-  * Manuel Schmid
-  * Bao Minh Le
-  * Yannic Schips
+  * Manuel Schmid (backend and server work, technical functionalities)
+  * Bao Minh Le (frontend, branding, UI/UX design, storyboarding and prototyping)
+  * Yannic Schips (management, documentation, presentation)
 
 ## Tutorial
 We have added a dedicated user tutorial to the docs folder. It explains how to use the app and is written in german. 
