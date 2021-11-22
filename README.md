@@ -10,7 +10,7 @@ Product owner is the cantonal school at Brühl in St. Gallen, Switzerland.
 
 ### Contributors
   * Manuel Schmid (backend and server work, technical functionalities)
-  * Bao Minh Le (frontend, branding, UI/UX design, storyboarding and prototyping)
+  * Bao Minh Le (frontend, branding, UI/UX design, prototyping)
   * Yannic Schips (management, documentation, presentation)
 
 ## Tutorial
