@@ -1,3 +1,5 @@
+// run: simulate android
+
 let globalvarOS = "";
 let basicSelected = true;
 let emailHash = '';
@@ -141,10 +143,10 @@ let advancedPlan = {
 //  Firebase Database Handling
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDJtK_EBn0vu_iGBI40TQVL17Rh2ZDF9Fo",
+    apiKey: properties.apiKey,
     authDomain: "ksb-fit-d9512.firebaseapp.com",
-    databaseURL: "https://ksb-fit-d9512-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "ksb-fit-d9512",
+    databaseURL: properties.databaseURL,
+    projectId: properties.projectId,
     storageBucket: "ksb-fit-d9512.appspot.com",
     messagingSenderId: "916377612326",
     appId: "1:916377612326:web:3b8ff037113373bafab6e7",
