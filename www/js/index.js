@@ -142,18 +142,7 @@ let advancedPlan = {
 // --------------------------------------------------------------------------
 //  Firebase Database Handling
 
-const firebaseConfig = {
-    apiKey: properties.apiKey,
-    authDomain: "ksb-fit-d9512.firebaseapp.com",
-    databaseURL: properties.databaseURL,
-    projectId: properties.projectId,
-    storageBucket: "ksb-fit-d9512.appspot.com",
-    messagingSenderId: "916377612326",
-    appId: "1:916377612326:web:3b8ff037113373bafab6e7",
-    measurementId: "G-GME14G0GC1"
-};
-
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(properties.firebaseConfig);
 
 var messagesRef = firebase.database().ref('messages');
 
@@ -214,6 +203,10 @@ function login() {
     }
 }
 
+function isKSBeMail(email) {
+    return email.includes("@ksb-sg.ch");
+}
+
 function insertNote(text) {
     if (emailHash !== "") {
         firebase.database().ref('/notes/'+Date.now()).set({
@@ -254,8 +247,9 @@ String.prototype.hashCode = function() {
     return hash;
   };
 
-// Insert 
 
+
+// Insert 
 
 // --------------------------------------------------------------------------
 
@@ -265,7 +259,7 @@ String.prototype.hashCode = function() {
         "use strict";
         document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
         if (window.cordova.platformId === 'browser') {
-            globalvarOS = 'WINWOWS';
+            globalvarOS = 'WINWOWS'; // <- ?? xD
         } else {
             globalvarOS = 'ANDROID';
         }
