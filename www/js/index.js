@@ -247,6 +247,13 @@ String.prototype.hashCode = function() {
     return hash;
   };
 
+function getHash(string) {
+    var shaObj = new jsSHA("SHA-512", "TEXT");
+    shaObj.update(string);
+    var hash = shaObj.getHash("HEX");
+    return hash;
+}
+
 
 
 // Insert 
