@@ -15,6 +15,9 @@
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		6EDEDAC06D11482F86C544B0 /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8480DF8AA42A5AC5E517B /* QRScanner.swift */; };
+		1B442D77A8C0480EAD7AAAA4 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AC8F73AF6C417BBE787611 /* APPEmailComposer.m */; };
+		583B2BB9498B4CD3AEE4DFE3 /* APPEmailComposerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D26A86CE09475BBC9A9744 /* APPEmailComposerImpl.m */; };
+		BB42DC4B50E14292AD199A07 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3217AD29F74D87910D9999 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,11 @@
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "AppVorlage/config.xml"; sourceTree = "<group>"; };
 		60B8480DF8AA42A5AC5E517B /* QRScanner.swift */ = {isa = PBXFileReference; name = "QRScanner.swift"; path = "cordova-plugin-qrscanner/QRScanner.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		85AC8F73AF6C417BBE787611 /* APPEmailComposer.m */ = {isa = PBXFileReference; name = "APPEmailComposer.m"; path = "cordova-plugin-email/APPEmailComposer.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		07D26A86CE09475BBC9A9744 /* APPEmailComposerImpl.m */ = {isa = PBXFileReference; name = "APPEmailComposerImpl.m"; path = "cordova-plugin-email/APPEmailComposerImpl.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6631D1F6FAA047219E3C5E8B /* APPEmailComposer.h */ = {isa = PBXFileReference; name = "APPEmailComposer.h"; path = "cordova-plugin-email/APPEmailComposer.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		F46A550F38F54DA185217658 /* APPEmailComposerImpl.h */ = {isa = PBXFileReference; name = "APPEmailComposerImpl.h"; path = "cordova-plugin-email/APPEmailComposerImpl.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		AE3217AD29F74D87910D9999 /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				BB42DC4B50E14292AD199A07 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +150,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE3217AD29F74D87910D9999 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,6 +178,10 @@
 			isa = PBXGroup;
 			children = (
 				60B8480DF8AA42A5AC5E517B /* QRScanner.swift */,
+				85AC8F73AF6C417BBE787611 /* APPEmailComposer.m */,
+				07D26A86CE09475BBC9A9744 /* APPEmailComposerImpl.m */,
+				6631D1F6FAA047219E3C5E8B /* APPEmailComposer.h */,
+				F46A550F38F54DA185217658 /* APPEmailComposerImpl.h */,
 			);
 			name = Plugins;
 			path = "AppVorlage/Plugins";
@@ -297,6 +311,8 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				6EDEDAC06D11482F86C544B0 /* QRScanner.swift in Sources */,
+				1B442D77A8C0480EAD7AAAA4 /* APPEmailComposer.m in Sources */,
+				583B2BB9498B4CD3AEE4DFE3 /* APPEmailComposerImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

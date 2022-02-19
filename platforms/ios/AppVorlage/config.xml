@@ -28,6 +28,9 @@
     <feature name="QRScanner">
         <param name="ios-package" value="QRScanner" />
     </feature>
+    <feature name="EmailComposer">
+        <param name="ios-package" value="APPEmailComposer" />
+    </feature>
     <name>AppVorlage</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

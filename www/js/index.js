@@ -258,7 +258,7 @@ function generateSalt() {
     return [...Array(10)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 }
 
-function getHashedPassword(password, salt) {
+function getHashedPassword(password, salt) { // return 128-character-string
     return getHash(properties.pepper + salt + password)
 }
 

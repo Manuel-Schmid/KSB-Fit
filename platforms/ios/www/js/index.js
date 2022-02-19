@@ -1,98 +1,116 @@
+// run: simulate android
+
 let globalvarOS = "";
-let selectedIcon = "home-icon";
 let basicSelected = true;
 let emailHash = '';
-let activeTab = 'login'
+let activeTab = 'login';
 
 let tasks = [
     {
-        title: "Eagle Glute",
+        title: "Glute",
         image: "../img/task-images/task (1)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen.",
+        bewegung: "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Uebung entsprechen wiederholen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Leg Press",
+        title: "Leg Press",
         image: "../img/task-images/task (2)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten.",
+        bewegung: "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Prone Leg Curl",
+        title: "Prone Leg Curl",
         image: "../img/task-images/task (3)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.",
+        bewegung: "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Hip",
+        title: "Hip Abduction / Adduction",
         image: "../img/task-images/task (4)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>"+
+        "Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel.",
+        bewegung: "Drücken Sie die Knie nach Innen, respektive nach aussen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Leg Extension",
+        title: "Leg Extension",
         image: "../img/task-images/task (5)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Lateral Raise",
+        title: "Lateral Raise",
         image: "../img/task-images/task (6)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Lat Pulldown",
+        title: "Lat Pulldown",
         image: "../img/task-images/task (7)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Chest Press",
+        title: "Chest Press",
         image: "../img/task-images/task (8)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Overhead Press",
+        title: "Overhead Press",
         image: "../img/task-images/task (9)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Plate Loaded Smith",
         image: "../img/task-images/task (10)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Arm / Bicep Curl",
+        title: "Arm / Bicep Curl",
         image: "../img/task-images/task (11)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Fly / Rear Delt",
+        title: "Fly / Rear Delt",
         image: "../img/task-images/task (12)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Ab Abdominal",
+        title: "Ab Abdominal",
         image: "../img/task-images/task (13)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Arm Tricep",
+        title: "Arm Tricep",
         image: "../img/task-images/task (14)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Sitzhöhe so einstellen, dass die Oberarme zum Oberkörper einen rechten Winkel bilden, während die Arme auf den Oberarmpolstern aufliegen. Handgriffe umfassen.",
+        bewegung: "Griffe nach vorne drücken.",        
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "Eagle Back Extension",
+        title: "Back Extension",
         image: "../img/task-images/task (15)1.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        vorbereitung: "Fußleiste so einstellen, dass die Knie leicht gebeugt sind und das Becken am Lendenpolster stabilisiert ist. Rücken leicht gegen das Rückenpolster stellen.",
+        bewegung: "Mit dem oberen Rücken das Rückenpolster nach hinten drücken.<br/>"+
+        "Rücken nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 ]
@@ -121,32 +139,13 @@ let advancedPlan = {
     kneeBends: true
 }
 
-// console.log(JSON.stringify(basicPlan));
-// console.log(JSON.stringify(advancedPlan));
-
 // --------------------------------------------------------------------------
 //  Firebase Database Handling
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDJtK_EBn0vu_iGBI40TQVL17Rh2ZDF9Fo",
-    authDomain: "ksb-fit-d9512.firebaseapp.com",
-    databaseURL: "https://ksb-fit-d9512-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "ksb-fit-d9512",
-    storageBucket: "ksb-fit-d9512.appspot.com",
-    messagingSenderId: "916377612326",
-    appId: "1:916377612326:web:3b8ff037113373bafab6e7",
-    measurementId: "G-GME14G0GC1"
-};
+firebase.initializeApp(properties.firebaseConfig);
 
-firebase.initializeApp(firebaseConfig);
-
-// Reference message collection
 var messagesRef = firebase.database().ref('messages');
 
-/*{
-"provider": "anonymous",
-"uid": "fe2b73cb-86ea-49d1-ba55-0be7d33e492f"
-}*/
 firebase.auth().signInAnonymously().catch(function(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -204,6 +203,10 @@ function login() {
     }
 }
 
+function isKSBeMail(email) {
+    return email.includes("@ksb-sg.ch");
+}
+
 function insertNote(text) {
     if (emailHash !== "") {
         firebase.database().ref('/notes/'+Date.now()).set({
@@ -244,8 +247,23 @@ String.prototype.hashCode = function() {
     return hash;
   };
 
-// Insert 
+function getHash(string) {
+    var shaObj = new jsSHA("SHA-512", "TEXT");
+    shaObj.update(string);
+    var hash = shaObj.getHash("HEX");
+    return hash;
+}
 
+function generateSalt() {
+    return [...Array(10)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+}
+
+function getHashedPassword(password, salt) { // return 128-character-string
+    return getHash(properties.pepper + salt + password)
+}
+
+
+// Insert 
 
 // --------------------------------------------------------------------------
 
@@ -255,7 +273,7 @@ String.prototype.hashCode = function() {
         "use strict";
         document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
         if (window.cordova.platformId === 'browser') {
-            globalvarOS = 'WINWOWS';
+            globalvarOS = 'WINWOWS'; // <- ?? xD
         } else {
             globalvarOS = 'ANDROID';
         }
@@ -313,24 +331,73 @@ function loadTasks() {
     newTasks = ''
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
-        newTasks += '<div class="box"> <p>'+task.title+'</p> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> <img src="'+task.image+'" alt="Leg Extension"> </div>';
-
-        document.getElementById('tasks').innerHTML = newTasks;
+        let functionString = `openTaskPopup(false, '`+task.title+`', '`+task.image+`', '`+task.vorbereitung+`', '`+task.bewegung+`', '`+task.videoUrl+`')`;
+        newTasks += '<div class="box" onclick="'+functionString+'"> <div class="row"><p class="col s11">'+task.title+'</p> <svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg></div> <img src="'+task.image+'"> </div>';
+        
+        document.getElementById('tasks-list').innerHTML = newTasks;
     }
+}
+
+function openTaskPopup(switchToTab, title, imgUrl, prep, movement, videoUrl) {
+    if (switchToTab) goToTasks()
+    document.getElementById('task-title').innerHTML = title;
+    document.getElementById('task-img').src = imgUrl;
+    document.getElementById('task-preparation').innerHTML = prep;
+    document.getElementById('task-movement').innerHTML = movement;
+    document.getElementById('task-video').href = videoUrl;
+
+    window.location.href = "#task-popup-overlay";
 }
 
 function loadNotes() {
     document.getElementById('notelist').innerHTML = ''
     firebase.database().ref('/notes/').on('value', function(snapshot) {
         let snapObj = snapshot.val();
-        for (const el of Object.entries(snapObj)) {
+        for (const el of Object.entries(snapObj).reverse()) {
             for (const note of Object.entries(el)) {
                 if (note[1].date !== undefined && note[1].user === emailHash) {
-                    document.getElementById('notelist').innerHTML += '<div class="box"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p> </div>';
+                    let functionString = `editNote('`+el[0]+`', '`+note[1].date+`', '`+note[1].text+`')`;
+                    document.getElementById('notelist').innerHTML += '<div id="'+el[0]+'" class="box" onclick="'+functionString+'"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p><p id="date-content" class="hidden">'+ note[1].date +'</p> <p id="text-content" class="hidden">'+ note[1].text +'</p></div>';
                 }
             }
         }
     });
+}
+
+let tmstmp = '';
+
+function createNewNote() {
+    tmstmp = '';
+    document.getElementById('cur-date').innerHTML = getCurrentDate(true)
+    document.getElementById('note-text-area').value = ''
+    window.location.href = "#new-note";
+}
+
+function editNote(timestamp, date, text) {
+    tmstmp = timestamp;
+    document.getElementById('cur-date').innerHTML = date
+    document.getElementById('note-text-area').value = text
+    window.location.href = "#new-note";
+}
+
+function saveNote() {
+    if (tmstmp === '') { // create new note
+        insertNote(document.getElementById('note-text-area').value)
+    } else { // update existing note
+        updateNote(document.getElementById('cur-date').innerHTML, document.getElementById('note-text-area').value)
+    }
+    window.location.href = "#";
+}
+
+function updateNote(date, text) {
+    // console.log(tmstmp +" : "+date+" : "+text);
+    firebase.database().ref('/notes/'+tmstmp).set({
+        user:emailHash,
+        date:date,
+        text:text
+    });
+    // document.getElementById(tmstmp).onclick = editNote(tmstmp, date, text);
+    loadNotes()
 }
 
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
@@ -398,5 +465,36 @@ function switchLogin(tab) {
         document.getElementById('name-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
         document.getElementById('login-btn').innerHTML = 'Speichern'
+    }
+}
+
+
+// QR-Scanner
+
+function qrscan() {
+    alert("Es wird jetzt der QR Scanner aktiviert");
+    // Start a scan. Scanning will continue until something is detected or
+    // `QRScanner.cancelScan()` is called.
+    QRScanner.scan(displayContents);
+    // Make the webview transparent so the video preview is visible behind it.
+    QRScanner.show(function(status) {
+        console.log(status);
+    });
+    // Be sure to make any opaque HTML elements transparent here to avoid
+    // covering the video.
+    QRScanner.cancelScan(function(status) {
+        console.log(status)
+    });
+    // QRScanner.hide(function(status) {
+    //     console.log(status);
+    // });
+}
+
+function displayContents(err, text) {
+    if (err) {
+        // an error occurred, or the scan was canceled (error code `6`)
+    } else {
+        // The scan completed, display the contents of the QR code:
+        alert(text);
     }
 }

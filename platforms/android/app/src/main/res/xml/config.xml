@@ -7,6 +7,9 @@
     <feature name="QRScanner">
         <param name="android-package" value="com.bitpay.cordova.qrscanner.QRScanner" />
     </feature>
+    <feature name="EmailComposer">
+        <param name="android-package" value="de.martinreinhardt.cordova.plugins.email.EmailComposer" />
+    </feature>
     <name>AppVorlage</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

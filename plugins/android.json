@@ -12,6 +12,9 @@
     },
     "cordova-plugin-qrscanner": {
       "PACKAGE_NAME": "com.appvorlage.meine"
+    },
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "com.appvorlage.meine"
     }
   },
   "dependent_plugins": {}
