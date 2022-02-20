@@ -139,6 +139,22 @@ let advancedPlan = {
     kneeBends: true
 }
 
+document.addEventListener('deviceready', function () {
+    // needs to be fired to activate email-plugin
+    // cordova.plugins.email.open({
+    //     to:      'manysch3@gmail.com',
+    //     // cc:      'erika@mustermann.de',
+    //     // bcc:     ['john@doe.com', 'jane@doe.com'],
+    //     subject: 'Greetings',
+    //     body:    'How are you? Hello World'
+    // });
+    // let a = cordova.plugins.email.isAvailable(
+    //     function (isAvailable) {
+    //         console.log(isAvailable)
+    //     }
+    // );
+}, false);
+
 // --------------------------------------------------------------------------
 //  Firebase Database Handling
 

@@ -12,9 +12,6 @@
     },
     "cordova-plugin-qrscanner": {
       "PACKAGE_NAME": "AppVorlage"
-    },
-    "cordova-plugin-email": {
-      "PACKAGE_NAME": "AppVorlage"
     }
   },
   "dependent_plugins": {}
