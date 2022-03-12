@@ -139,21 +139,9 @@ let advancedPlan = {
     kneeBends: true
 }
 
-document.addEventListener('deviceready', function () {
-    // needs to be fired to activate email-plugin
-    // cordova.plugins.email.open({
-    //     to:      'manysch3@gmail.com',
-    //     // cc:      'erika@mustermann.de',
-    //     // bcc:     ['john@doe.com', 'jane@doe.com'],
-    //     subject: 'Greetings',
-    //     body:    'How are you? Hello World'
-    // });
-    // let a = cordova.plugins.email.isAvailable(
-    //     function (isAvailable) {
-    //         console.log(isAvailable)
-    //     }
-    // );
-}, false);
+// document.addEventListener('deviceready', function () {
+
+// }, false);
 
 // --------------------------------------------------------------------------
 //  Firebase Database Handling
@@ -252,7 +240,7 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-String.prototype.hashCode = function() {
+String.prototype.hashCode = function() { // deprecated 
     var hash = 0, i, chr;
     if (this.length === 0) return hash;
     for (i = 0; i < this.length; i++) {
@@ -263,7 +251,11 @@ String.prototype.hashCode = function() {
     return hash;
   };
 
-function getHash(string) {
+function getHashedPassword(password, salt) { // return 128-character-string
+    return getHash(properties.pepper + salt + password)
+}
+
+function getHash(string) { // new
     var shaObj = new jsSHA("SHA-512", "TEXT");
     shaObj.update(string);
     var hash = shaObj.getHash("HEX");
@@ -274,15 +266,10 @@ function generateSalt() {
     return [...Array(10)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 }
 
-function getHashedPassword(password, salt) { // return 128-character-string
-    return getHash(properties.pepper + salt + password)
+function calcBMI(heightInCm, weight) {
+    let bmi = ((weight) / ((heightInCm * heightInCm)/10000))
+    return Math.round(bmi * 10) / 10
 }
-
-
-// Insert 
-
-// --------------------------------------------------------------------------
-
 
 (function($) {
     $(function() {
@@ -491,26 +478,26 @@ function qrscan() {
     alert("Es wird jetzt der QR Scanner aktiviert");
     // Start a scan. Scanning will continue until something is detected or
     // `QRScanner.cancelScan()` is called.
-    QRScanner.scan(displayContents);
+    // QRScanner.scan(displayContents);
     // Make the webview transparent so the video preview is visible behind it.
-    QRScanner.show(function(status) {
-        console.log(status);
-    });
+    // QRScanner.show(function(status) {
+    //     console.log(status);
+    // });
     // Be sure to make any opaque HTML elements transparent here to avoid
     // covering the video.
-    QRScanner.cancelScan(function(status) {
-        console.log(status)
-    });
+    // QRScanner.cancelScan(function(status) {
+    //     console.log(status)
+    // });
     // QRScanner.hide(function(status) {
     //     console.log(status);
     // });
 }
 
-function displayContents(err, text) {
-    if (err) {
-        // an error occurred, or the scan was canceled (error code `6`)
-    } else {
-        // The scan completed, display the contents of the QR code:
-        alert(text);
-    }
-}
+// function displayContents(err, text) {
+//     if (err) {
+//         // an error occurred, or the scan was canceled (error code `6`)
+//     } else {
+//         // The scan completed, display the contents of the QR code:
+//         alert(text);
+//     }
+// }
