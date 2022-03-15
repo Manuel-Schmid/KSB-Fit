@@ -1,5 +1,5 @@
 {
-  "name": "com.ksb-fit.meine",
+  "name": "com.ksb-fit.my",
   "displayName": "KSB-Fit",
   "version": "1.0.0",
   "description": "KSB-Fit sports application.",
@@ -27,10 +27,10 @@
       "cordova-plugin-qrscanner": {}
     },
     "platforms": [
-      "android",
       "browser",
       "windows",
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "dependencies": {
