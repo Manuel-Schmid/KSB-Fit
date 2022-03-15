@@ -8,28 +8,28 @@ let activeTab = 'login';
 let tasks = [
     {
         title: "Glute",
-        image: "../img/task-images/task (1)1.jpeg",
+        image: "img/task-images/task (1)1.jpeg",
         vorbereitung: "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen.",
         bewegung: "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Uebung entsprechen wiederholen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Leg Press",
-        image: "../img/task-images/task (2)1.jpeg",
+        image: "img/task-images/task (2)1.jpeg",
         vorbereitung: "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten.",
         bewegung: "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Prone Leg Curl",
-        image: "../img/task-images/task (3)1.jpeg",
+        image: "img/task-images/task (3)1.jpeg",
         vorbereitung: "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.",
         bewegung: "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Hip Abduction / Adduction",
-        image: "../img/task-images/task (4)1.jpeg",
+        image: "img/task-images/task (4)1.jpeg",
         vorbereitung: "Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>"+
         "Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel.",
         bewegung: "Drücken Sie die Knie nach Innen, respektive nach aussen.",
@@ -37,77 +37,77 @@ let tasks = [
     },
     {
         title: "Leg Extension",
-        image: "../img/task-images/task (5)1.jpeg",
+        image: "img/task-images/task (5)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Lateral Raise",
-        image: "../img/task-images/task (6)1.jpeg",
+        image: "img/task-images/task (6)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Lat Pulldown",
-        image: "../img/task-images/task (7)1.jpeg",
+        image: "img/task-images/task (7)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Chest Press",
-        image: "../img/task-images/task (8)1.jpeg",
+        image: "img/task-images/task (8)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Overhead Press",
-        image: "../img/task-images/task (9)1.jpeg",
+        image: "img/task-images/task (9)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Plate Loaded Smith",
-        image: "../img/task-images/task (10)1.jpeg",
+        image: "img/task-images/task (10)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Arm / Bicep Curl",
-        image: "../img/task-images/task (11)1.jpeg",
+        image: "img/task-images/task (11)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Fly / Rear Delt",
-        image: "../img/task-images/task (12)1.jpeg",
+        image: "img/task-images/task (12)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Ab Abdominal",
-        image: "../img/task-images/task (13)1.jpeg",
+        image: "img/task-images/task (13)1.jpeg",
         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Arm Tricep",
-        image: "../img/task-images/task (14)1.jpeg",
+        image: "img/task-images/task (14)1.jpeg",
         vorbereitung: "Sitzhöhe so einstellen, dass die Oberarme zum Oberkörper einen rechten Winkel bilden, während die Arme auf den Oberarmpolstern aufliegen. Handgriffe umfassen.",
         bewegung: "Griffe nach vorne drücken.",        
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         title: "Back Extension",
-        image: "../img/task-images/task (15)1.jpeg",
+        image: "img/task-images/task (15)1.jpeg",
         vorbereitung: "Fußleiste so einstellen, dass die Knie leicht gebeugt sind und das Becken am Lendenpolster stabilisiert ist. Rücken leicht gegen das Rückenpolster stellen.",
         bewegung: "Mit dem oberen Rücken das Rückenpolster nach hinten drücken.<br/>"+
         "Rücken nicht überstrecken!",
@@ -285,12 +285,12 @@ function calcBMI(heightInCm, weight) {
 })(jQuery);
 jQuery.extend({
     onDeviceReady: function() {
-        $("#home").load("../components/Startseite/startseite.html");
-        $("#header").load("../components/header.html");
-        $("#navbar").load("../components/navbar.html");
-        $("#tasks").load("../components/tasks.html");
-        $("#training").load("../components/training.html");
-        $("#notes").load("../components/notes.html");
+        $("#home").load("components/Startseite/startseite.html");
+        $("#header").load("components/header.html");
+        $("#navbar").load("components/navbar.html");
+        $("#tasks").load("components/tasks.html");
+        $("#training").load("components/training.html");
+        $("#notes").load("components/notes.html");
     }
 });
 
