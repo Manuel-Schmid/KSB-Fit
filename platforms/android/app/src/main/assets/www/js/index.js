@@ -143,17 +143,10 @@ let advancedPlan = {
 
 // }, false);
 
+
+
+
 // --------------------------------------------------------------------------
-//  Firebase Database Handling
-
-firebase.initializeApp(properties.firebaseConfig);
-
-var messagesRef = firebase.database().ref('messages');
-
-firebase.auth().signInAnonymously().catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-});
 
 // ready data
 let nameV, passwordV, emailV, weightV, heightV;
@@ -171,21 +164,14 @@ function setLoginData() {
 function login() {
     if(setLoginData()) { // login
         if (activeTab === 'login') {
-            firebase.database().ref('user/'+ emailV.hashCode()).on('value', function(snapshot) {
-                try {
-                    if (snapshot.val().password === passwordV.hashCode()) {
-                        // login successful
-                        document.getElementById('login-link').innerHTML = (snapshot.val().name).split(' ')[0];
-                        emailHash = emailV.hashCode()
-                        window.location.href = "#";
-                        loadNotes()
-                    } else {
-                        alert('Falsche Kombination')
-                    }
-                } catch (error) {
-                    alert('Für diese Email wurde noch kein Konto registriert')
-                }
-            });
+            // check if login is correct
+            // loadNotes()
+            // } else {
+            //     alert('Falsche Kombination')
+            // }
+            // } catch (error) {
+            //     alert('Für diese Email wurde noch kein Konto registriert')
+            // }
         } else { // signup
             if ((nameV === "") || (weightV === "") || (heightV === "")) {
                 alert('Befüllen Sie bitte sämtliche Felder')
