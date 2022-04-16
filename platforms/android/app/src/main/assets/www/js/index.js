@@ -161,7 +161,34 @@ function setLoginData() {
     return !(emailV === "" || passwordV === "") && validateEmail(emailV)
 }
 
+// register (sign-up)
+$(document).on('click', '#login-btn', function(){
+    let email = $("#email-input").val();
+    let password = $("#password-input").val();
+    let weight = $("#weight-input").val();
+    let height = $("#height-input").val();
+    let dob = $("#dob-input").val();
+    
+    if($.trim(firstname).length > 0 & $.trim(lastname).length >0) {
+        $.ajax({
+            type:"POST",  //Request type
+            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+            data:{ email:email, password:password, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
+            cache:false,
+            success:function(data) {
+                // name = data
+                alert(data);
+            }
+        })
+    }
+    else {
+        alert("Input fields are empty");
+    }
+});
+
+
 function login() {
+/*
     if(setLoginData()) { // login
         if (activeTab === 'login') {
             // check if login is correct
@@ -191,6 +218,8 @@ function login() {
     } else {
         alert('Bitte geben Sie gültige Daten ein')
     }
+    
+    */
 }
 
 function isKSBeMail(email) {
