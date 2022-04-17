@@ -149,40 +149,82 @@ let advancedPlan = {
 // --------------------------------------------------------------------------
 
 // ready data
-let nameV, passwordV, emailV, weightV, heightV;
+// let nameV, passwordV, emailV, weightV, heightV;
 
-function setLoginData() {
-    nameV = document.getElementById('name-input').value
-    emailV = document.getElementById('email-input').value
-    passwordV = document.getElementById('password-input').value
-    weightV = document.getElementById('weight-input').value
-    heightV = document.getElementById('height-input').value
+// function setLoginData() {
+//     nameV = document.getElementById('name-input').value
+//     emailV = document.getElementById('email-input').value
+//     passwordV = document.getElementById('password-input').value
+//     weightV = document.getElementById('weight-input').value
+//     heightV = document.getElementById('height-input').value
 
-    return !(emailV === "" || passwordV === "") && validateEmail(emailV)
-}
+//     return !(emailV === "" || passwordV === "") && validateEmail(emailV)
+// }
 
 // register (sign-up)
 $(document).on('click', '#login-btn', function(){
-    let email = $("#email-input").val();
-    let password = $("#password-input").val();
-    let weight = $("#weight-input").val();
-    let height = $("#height-input").val();
-    let dob = $("#dob-input").val();
-    
-    if($.trim(firstname).length > 0 & $.trim(lastname).length >0) {
-        $.ajax({
-            type:"POST",  //Request type
-            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
-            data:{ email:email, password:password, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
-            cache:false,
-            success:function(data) {
-                // name = data
-                alert(data);
-            }
-        })
-    }
-    else {
-        alert("Input fields are empty");
+    if (activeTab === 'login') {
+        let email = $("#email-input").val();
+        let password = $("#password-input").val();
+
+        if($.trim(email).length>0 & $.trim(password).length>0) {
+            $.ajax({
+                type:"POST",  //Request type
+                url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+                data:{ request:'getUserSalt', email:email },
+                cache:false,
+                success:function(salt) {
+                    if (salt !== 'null') { // user exists and has salt stored in db
+                        let hashedPW = getHashedPassword(password, salt) 
+                        $.ajax({
+                            type:"POST",  //Request type
+                            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+                            data:{ request:'login', email:email, password:hashedPW },
+                            cache:false,
+                            success:function(loginCorrect) {
+                                if (loginCorrect == '1') {
+                                    alert('Success: login correct')
+                                } else if (loginCorrect == '0') {
+                                    alert('Warning: login incorrect')
+                                } else {
+                                    alert('An error occurred');
+                                }
+                            }
+                        })
+                    } else {
+                        alert('There is no user registered with this email');
+                    }                    
+                }
+            })
+        }
+        else {
+            alert("Füllen Sie bitte alle Felder aus.");
+        }
+
+    } else { // signup
+        let email = $("#email-input").val();
+        let password = $("#password-input").val();
+        let weight = $("#weight-input").val();
+        let height = $("#height-input").val();
+        let dob = $("#dob-input").val();
+        
+        if($.trim(email).length>0 & $.trim(password).length>0 & $.trim(weight).length>0 & $.trim(height).length>0 & $.trim(dob).length>0) {
+            let salt = generateSalt();
+            let hashedPW = getHashedPassword(password, salt) 
+
+            $.ajax({
+                type:"POST",  //Request type
+                url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+                data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
+                cache:false,
+                success:function(data) {
+                    alert('successful registration: ' + data)
+                }
+            })
+        }
+        else {
+            alert("Füllen Sie bitte alle Felder aus.");
+        }
     }
 });
 
@@ -469,23 +511,30 @@ function goToNotes() {
     loadNotes()
 }
 
+function resetSignup() {
+    document.getElementById('signup-form').reset()
+
+}
+
 function switchLogin(tab) {
+    // switch active tab
     let loginClass = document.getElementById('login-tab').className
     document.getElementById('login-tab').className = document.getElementById('signup-tab').className
     document.getElementById('signup-tab').className = loginClass
+    // clear form
+    document.getElementById('signup-form').reset()
     if (tab === 'login') {
         activeTab = 'login'
-        document.getElementById('name-field').className = 'field hidden'
+        document.getElementById('dob-field').className = 'field hidden'
         document.getElementById('sizes-field').className = 'row hidden'
         document.getElementById('login-btn').innerHTML = 'Anmelden'
     } else if (tab === 'signup') {
         activeTab = 'signup'
-        document.getElementById('name-field').className = 'field'
+        document.getElementById('dob-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
-        document.getElementById('login-btn').innerHTML = 'Speichern'
+        document.getElementById('login-btn').innerHTML = 'Registrieren'
     }
 }
-
 
 // QR-Scanner
 

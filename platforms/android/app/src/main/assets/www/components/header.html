@@ -1,6 +1,6 @@
 <div class="box header">
     <img src="img/logo.svg" class="header-logo">
-    <a id="login-link" class="button is-white btn-anmelden" style="font-weight: bold;" href="#signup">Anmelden</a>
+    <a id="login-link" onclick="resetSignup()" class="button is-white btn-anmelden" style="font-weight: bold;" href="#signup">Anmelden</a>
 </div>
 
 <div id="signup" class="overlay">
@@ -11,21 +11,14 @@
     </div>
 
 
-    <form class="signup-content">
+    <form id="signup-form" class="signup-content">
       <div class="tabs">
         <ul>
           <li onclick="switchLogin('login')" id="login-tab" class="is-active"><a>Login</a></li>
           <li onclick="switchLogin('signup')" id="signup-tab" class=""><a>Registrieren</a></li>
         </ul>
       </div>
-
-			<div id="dob-field" class="field hidden">
-        <label class="label">Geburtsdatum:</label>
-        <div class="control">
-          <input id="dob-input" class="input" type="text" placeholder="Ihr Geburtsdatum ...">
-        </div>
-      </div>
-      
+    
       <div class="field">
         <label class="label">E-Mail-Adresse: </label>
         <div class="control">
@@ -36,7 +29,14 @@
       <div class="field">
         <label class="label">Passwort: </label>
         <div class="control">
-          <input id="password-input" class="input" type="text" placeholder="Ihr Passwort ...">
+          <input id="password-input" class="input" type="password" placeholder="Ihr Passwort ...">
+        </div>
+      </div>
+
+      <div id="dob-field" class="field hidden">
+        <label class="label">Geburtsdatum:</label>
+        <div class="control">
+          <input id="dob-input" class="input" type="date" placeholder="Ihr Geburtsdatum ...">
         </div>
       </div>
 
@@ -56,7 +56,6 @@
           </div>
         </div>
         <label class="label unit-label col s2">cm</label>
-
       </div>
       
       <div style="margin-top: 10px;">
