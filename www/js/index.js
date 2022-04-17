@@ -513,7 +513,9 @@ function goToNotes() {
 
 function resetSignup() {
     document.getElementById('signup-form').reset()
-
+    if (activeTab === 'signup') {
+        switchLogin('login')
+    }
 }
 
 function switchLogin(tab) {
