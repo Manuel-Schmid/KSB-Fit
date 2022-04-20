@@ -161,8 +161,24 @@ let advancedPlan = {
 //     return !(emailV === "" || passwordV === "") && validateEmail(emailV)
 // }
 
+// $(document).ready(function(){
+//     if (true) { // wenn internetverbindung !!!
+//         $.ajax({
+//             type:"POST",  //Request type
+//             url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+//             data:{ request:'getUserID', email:email, password:hashedPW, salt:salt }, // parameter für POST ($_POST['xxx'])
+//             cache:false,
+//             success:function(data) {
+//                 alert('successful registration')
+//                 // todo ... (close popup)
+//             }
+//         })
+//     }
+// });
+
 // register (sign-up)
 $(document).on('click', '#login-btn', function(){
+
     if (activeTab === 'login') {
         let email = $("#email-input").val();
         let password = $("#password-input").val();
@@ -181,24 +197,30 @@ $(document).on('click', '#login-btn', function(){
                             url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
                             data:{ request:'login', email:email, password:hashedPW },
                             cache:false,
-                            success:function(loginCorrect) {
-                                if (loginCorrect == '1') {
-                                    alert('Success: login correct')
-                                } else if (loginCorrect == '0') {
+                            success:function(userID) {
+                                if (userID == '0') {
                                     alert('Warning: login incorrect')
+                                    // ...
+                                } else if (userID != '') {
+                                    document.getElementById('userID').innerHTML = userID;
+                                    alert('Success, userID: ' + userID)
+                                    // ... 
                                 } else {
                                     alert('An error occurred');
+                                    // ...
                                 }
                             }
                         })
                     } else {
                         alert('There is no user registered with this email');
+                        // ...
                     }                    
                 }
             })
         }
         else {
             alert("Füllen Sie bitte alle Felder aus.");
+            // ...
         }
 
     } else { // signup
@@ -218,13 +240,43 @@ $(document).on('click', '#login-btn', function(){
                 data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
                 cache:false,
                 success:function(data) {
-                    alert('successful registration: ' + data)
+                    alert('successful registration')
+                    // todo ... (close popup)
                 }
             })
         }
         else {
             alert("Füllen Sie bitte alle Felder aus.");
+            // ...
         }
+    }
+});
+
+// save workout plan
+$(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-id'
+
+    let exercises = [21, 25, 29] // [1,5,7,9] (id's)
+    let weekdays = ['Mo', 'Fr'] // ['mo','tu','fr']
+    let notifications = 1 // $("#cbNotifications").checked ? 1 : 0; 
+    let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2;
+    let  data = { request:'insertWorkout', userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises }
+    console.log(data);
+
+    if(weekdays.length>0 & exercises.length>0) {
+        $.ajax({
+            type:"POST",  // Request type
+            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+            data:{ request:'insertWorkout', userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises },
+            cache:false,
+            success:function(data) {
+                // alert(data)
+                // ...
+            }
+        })
+    }
+    else {
+        alert("Füllen Sie bitte alle Felder aus.");
+        // ...
     }
 });
 
