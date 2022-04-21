@@ -165,7 +165,7 @@ let advancedPlan = {
 //     if (true) { // wenn internetverbindung !!!
 //         $.ajax({
 //             type:"POST",  //Request type
-//             url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+//             url: properties.requestUrl,
 //             data:{ request:'getUserID', email:email, password:hashedPW, salt:salt }, // parameter für POST ($_POST['xxx'])
 //             cache:false,
 //             success:function(data) {
@@ -176,9 +176,10 @@ let advancedPlan = {
 //     }
 // });
 
-// register (sign-up)
+// register & login
 $(document).on('click', '#login-btn', function(){
 
+    // login
     if (activeTab === 'login') {
         let email = $("#email-input").val();
         let password = $("#password-input").val();
@@ -186,7 +187,7 @@ $(document).on('click', '#login-btn', function(){
         if($.trim(email).length>0 & $.trim(password).length>0) {
             $.ajax({
                 type:"POST",  //Request type
-                url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+                url: properties.requestUrl,
                 data:{ request:'getUserSalt', email:email },
                 cache:false,
                 success:function(salt) {
@@ -194,10 +195,11 @@ $(document).on('click', '#login-btn', function(){
                         let hashedPW = getHashedPassword(password, salt) 
                         $.ajax({
                             type:"POST",  //Request type
-                            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+                            url: properties.requestUrl,
                             data:{ request:'login', email:email, password:hashedPW },
                             cache:false,
                             success:function(userID) {
+                                console.log(userID);
                                 if (userID == '0') {
                                     alert('Warning: login incorrect')
                                     // ...
@@ -231,17 +233,31 @@ $(document).on('click', '#login-btn', function(){
         let dob = $("#dob-input").val();
         
         if($.trim(email).length>0 & $.trim(password).length>0 & $.trim(weight).length>0 & $.trim(height).length>0 & $.trim(dob).length>0) {
-            let salt = generateSalt();
-            let hashedPW = getHashedPassword(password, salt) 
-
+            // check if user already exists
             $.ajax({
-                type:"POST",  //Request type
-                url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
-                data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
+                type:"POST",  // Request type
+                url: properties.requestUrl,
+                data:{ request:'getUserSalt', email:email },
                 cache:false,
-                success:function(data) {
-                    alert('successful registration')
-                    // todo ... (close popup)
+                success:function(salt) {
+                    if (salt !== 'null') { // user with this email already exists
+                        alert('There is already an account using this email')
+                        // todo ... reset password?
+                    } else { // no user with this email exists -> continue registration
+                        let salt = generateSalt();
+                        let hashedPW = getHashedPassword(password, salt) 
+            
+                        $.ajax({
+                            type:"POST",  //Request type
+                            url:properties.requestUrl,
+                            data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
+                            cache:false,
+                            success:function(data) {
+                                alert('successful registration')
+                                // todo ... (close popup)
+                            }
+                        })
+                    }                    
                 }
             })
         }
@@ -264,7 +280,7 @@ $(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-
     if(weekdays.length>0 & exercises.length>0) {
         $.ajax({
             type:"POST",  // Request type
-            url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
+            url: properties.requestUrl,
             data:{ request:'insertWorkout', title:title, userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises },
             cache:false,
             success:function(data) {
@@ -360,7 +376,7 @@ String.prototype.hashCode = function() { // deprecated
   };
 
 function getHashedPassword(password, salt) { // return 128-character-string
-    return getHash(properties.pepper + salt + password)
+    return getHash(conf.pepper + salt + password)
 }
 
 function getHash(string) { // new
