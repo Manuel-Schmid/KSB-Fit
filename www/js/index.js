@@ -5,115 +5,115 @@ let basicSelected = true;
 let emailHash = '';
 let activeTab = 'login';
 
-let tasks = [
-    {
-        title: "Glute",
-        image: "img/task-images/task (1)1.jpeg",
-        vorbereitung: "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen.",
-        bewegung: "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Uebung entsprechen wiederholen.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Leg Press",
-        image: "img/task-images/task (2)1.jpeg",
-        vorbereitung: "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten.",
-        bewegung: "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Prone Leg Curl",
-        image: "img/task-images/task (3)1.jpeg",
-        vorbereitung: "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.",
-        bewegung: "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Hip Abduction / Adduction",
-        image: "img/task-images/task (4)1.jpeg",
-        vorbereitung: "Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>"+
-        "Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel.",
-        bewegung: "Drücken Sie die Knie nach Innen, respektive nach aussen.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Leg Extension",
-        image: "img/task-images/task (5)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Lateral Raise",
-        image: "img/task-images/task (6)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Lat Pulldown",
-        image: "img/task-images/task (7)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Chest Press",
-        image: "img/task-images/task (8)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Overhead Press",
-        image: "img/task-images/task (9)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Plate Loaded Smith",
-        image: "img/task-images/task (10)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Arm / Bicep Curl",
-        image: "img/task-images/task (11)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Fly / Rear Delt",
-        image: "img/task-images/task (12)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Ab Abdominal",
-        image: "img/task-images/task (13)1.jpeg",
-        vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Arm Tricep",
-        image: "img/task-images/task (14)1.jpeg",
-        vorbereitung: "Sitzhöhe so einstellen, dass die Oberarme zum Oberkörper einen rechten Winkel bilden, während die Arme auf den Oberarmpolstern aufliegen. Handgriffe umfassen.",
-        bewegung: "Griffe nach vorne drücken.",        
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-        title: "Back Extension",
-        image: "img/task-images/task (15)1.jpeg",
-        vorbereitung: "Fußleiste so einstellen, dass die Knie leicht gebeugt sind und das Becken am Lendenpolster stabilisiert ist. Rücken leicht gegen das Rückenpolster stellen.",
-        bewegung: "Mit dem oberen Rücken das Rückenpolster nach hinten drücken.<br/>"+
-        "Rücken nicht überstrecken!",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-]
+// let exercises = [
+//     {
+//         title: "Glute",
+//         image: "img/exercise-images/task (1)1.jpeg",
+//         vorbereitung: "Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen.",
+//         bewegung: "Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Uebung entsprechen wiederholen.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Leg Press",
+//         image: "img/exercise-images/task (2)1.jpeg",
+//         vorbereitung: "Rückenlehne auf die gewünschte Neigung einstellen. Fußplatte so einstellen, dass Ihre Knie ungefähr einen rechten Winkel bilden. Füße schulterbreit auf die Fußplatte stellen und leicht nach aussen richten.",
+//         bewegung: "Sitz mit den Beinen nach hinten drücken. HINWEIS: Die Knie nicht überstrecken!",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Prone Leg Curl",
+//         image: "img/exercise-images/task (3)1.jpeg",
+//         vorbereitung: "Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.",
+//         bewegung: "Mit den Beinen das Beinpolster gegen das Gesäß ziehen.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Hip Abduction / Adduction",
+//         image: "img/exercise-images/task (4)1.jpeg",
+//         vorbereitung: "Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>"+
+//         "Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel.",
+//         bewegung: "Drücken Sie die Knie nach Innen, respektive nach aussen.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Leg Extension",
+//         image: "img/exercise-images/task (5)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Lateral Raise",
+//         image: "img/exercise-images/task (6)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Lat Pulldown",
+//         image: "img/exercise-images/task (7)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Chest Press",
+//         image: "img/exercise-images/task (8)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Overhead Press",
+//         image: "img/exercise-images/task (9)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Plate Loaded Smith",
+//         image: "img/exercise-images/task (10)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Arm / Bicep Curl",
+//         image: "img/exercise-images/task (11)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Fly / Rear Delt",
+//         image: "img/exercise-images/task (12)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Ab Abdominal",
+//         image: "img/exercise-images/task (13)1.jpeg",
+//         vorbereitung: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//         bewegung: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Arm Tricep",
+//         image: "img/exercise-images/task (14)1.jpeg",
+//         vorbereitung: "Sitzhöhe so einstellen, dass die Oberarme zum Oberkörper einen rechten Winkel bilden, während die Arme auf den Oberarmpolstern aufliegen. Handgriffe umfassen.",
+//         bewegung: "Griffe nach vorne drücken.",        
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+//     {
+//         title: "Back Extension",
+//         image: "img/exercise-images/task (15)1.jpeg",
+//         vorbereitung: "Fußleiste so einstellen, dass die Knie leicht gebeugt sind und das Becken am Lendenpolster stabilisiert ist. Rücken leicht gegen das Rückenpolster stellen.",
+//         bewegung: "Mit dem oberen Rücken das Rückenpolster nach hinten drücken.<br/>"+
+//         "Rücken nicht überstrecken!",
+//         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+//     },
+// ]
 
 let basicPlan = {
     legpress: true,
@@ -148,19 +148,6 @@ let advancedPlan = {
 
 // --------------------------------------------------------------------------
 
-// ready data
-// let nameV, passwordV, emailV, weightV, heightV;
-
-// function setLoginData() {
-//     nameV = document.getElementById('name-input').value
-//     emailV = document.getElementById('email-input').value
-//     passwordV = document.getElementById('password-input').value
-//     weightV = document.getElementById('weight-input').value
-//     heightV = document.getElementById('height-input').value
-
-//     return !(emailV === "" || passwordV === "") && validateEmail(emailV)
-// }
-
 // $(document).ready(function(){
 //     if (true) { // wenn internetverbindung !!!
 //         $.ajax({
@@ -169,8 +156,7 @@ let advancedPlan = {
 //             data:{ request:'getUserID', email:email, password:hashedPW, salt:salt }, // parameter für POST ($_POST['xxx'])
 //             cache:false,
 //             success:function(data) {
-//                 alert('successful registration')
-//                 // todo ... (close popup)
+//                 alert(data)
 //             }
 //         })
 //     }
@@ -233,35 +219,41 @@ $(document).on('click', '#login-btn', function(){
         let dob = $("#dob-input").val();
         
         if($.trim(email).length>0 & $.trim(password).length>0 & $.trim(weight).length>0 & $.trim(height).length>0 & $.trim(dob).length>0) {
-            // check if user already exists
-            $.ajax({
-                type:"POST",  // Request type
-                url: properties.requestUrl,
-                data:{ request:'getUserSalt', email:email },
-                cache:false,
-                success:function(salt) {
-                    if (salt !== 'null') { // user with this email already exists
-                        alert('There is already an account using this email')
-                        // todo ... reset password?
-                    } else { // no user with this email exists -> continue registration
-                        let salt = generateSalt();
-                        let hashedPW = getHashedPassword(password, salt) 
-            
-                        $.ajax({
-                            type:"POST",  //Request type
-                            url:properties.requestUrl,
-                            data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
-                            cache:false,
-                            success:function(data) {
-                                alert('successful registration')
-                                // todo ... (close popup)
-                            }
-                        })
-                    }                    
-                }
-            })
-        }
-        else {
+            if (!isKSBeMail(email)) { // check if KSB-eMail
+                alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
+                // ...
+            } else {
+                // check if user already exists
+                $.ajax({
+                    type:"POST",  // Request type
+                    url: properties.requestUrl,
+                    data:{ request:'getUserSalt', email:email },
+                    cache:false,
+                    success:function(salt) {
+                        if (salt !== 'null') { // user with this email already exists
+                            alert('There is already an account using this email')
+                            // todo ... reset password?
+
+                        } else { // no user with this email exists -> continue registration
+                            let salt = generateSalt();
+                            let hashedPW = getHashedPassword(password, salt) 
+                
+                            $.ajax({
+                                type:"POST",  //Request type
+                                url:properties.requestUrl,
+                                data:{ request:'registration', email:email, password:hashedPW, salt:salt, weight: weight, height: height, dob: dob }, // parameter für POST ($_POST['xxx'])
+                                cache:false,
+                                success:function(data) {
+                                    alert('successful registration')
+                                    // todo ... (close popup)
+                                    // send eMail
+                                }
+                            })
+                        }                    
+                    }
+                })
+            }
+        } else {
             alert("Füllen Sie bitte alle Felder aus.");
             // ...
         }
@@ -295,41 +287,6 @@ $(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-
     }
 });
 
-
-function login() {
-/*
-    if(setLoginData()) { // login
-        if (activeTab === 'login') {
-            // check if login is correct
-            // loadNotes()
-            // } else {
-            //     alert('Falsche Kombination')
-            // }
-            // } catch (error) {
-            //     alert('Für diese Email wurde noch kein Konto registriert')
-            // }
-        } else { // signup
-            if ((nameV === "") || (weightV === "") || (heightV === "")) {
-                alert('Befüllen Sie bitte sämtliche Felder')
-            } else {
-                firebase.database().ref('user/'+ emailV.hashCode()).set({
-                    name:nameV,
-                    password:passwordV.hashCode(),
-                    weight:weightV,
-                    height:heightV
-                });
-                document.getElementById('login-link').innerHTML = nameV.split(' ')[0];
-                emailHash = emailV.hashCode()
-                window.location.href = "#";
-                loadNotes()
-            }
-        }
-    } else {
-        alert('Bitte geben Sie gültige Daten ein')
-    }
-    
-    */
-}
 
 function isKSBeMail(email) {
     return email.includes("@ksb-sg.ch");
@@ -412,7 +369,7 @@ jQuery.extend({
         $("#home").load("components/Startseite/startseite.html");
         $("#header").load("components/header.html");
         $("#navbar").load("components/navbar.html");
-        $("#tasks").load("components/tasks.html");
+        $("#exercises").load("components/exercises.html");
         $("#training").load("components/training.html");
         $("#notes").load("components/notes.html");
     }
@@ -454,26 +411,28 @@ function changePlan() {
     }
 }
 
-function loadTasks() {
-    newTasks = ''
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
-        let functionString = `openTaskPopup(false, '`+task.title+`', '`+task.image+`', '`+task.vorbereitung+`', '`+task.bewegung+`', '`+task.videoUrl+`')`;
-        newTasks += '<div class="box" onclick="'+functionString+'"> <div class="row"><p class="col s11">'+task.title+'</p> <svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg></div> <img src="'+task.image+'"> </div>';
-        
-        document.getElementById('tasks-list').innerHTML = newTasks;
-    }
+function displayExercises() {
+    // load exercises as HTML popups from DB
+    $.ajax({
+        type:"POST",  //Request type
+        url: properties.requestUrl,
+        data:{ request:'getExercisesHTML' }, // parameter für POST ($_POST['xxx'])
+        cache:false,
+        success:function(data) {
+            document.getElementById('exercises-list').innerHTML = data
+        }
+    })
 }
 
-function openTaskPopup(switchToTab, title, imgUrl, prep, movement, videoUrl) {
-    if (switchToTab) goToTasks()
-    document.getElementById('task-title').innerHTML = title;
-    document.getElementById('task-img').src = imgUrl;
-    document.getElementById('task-preparation').innerHTML = prep;
-    document.getElementById('task-movement').innerHTML = movement;
-    document.getElementById('task-video').href = videoUrl;
+function openExercisePopup(switchToTab, title, imgUrl, prep, movement, videoUrl) {
+    if (switchToTab) goToExercises()
+    document.getElementById('exercise-title').innerHTML = title;
+    document.getElementById('exercise-img').src = imgUrl;
+    document.getElementById('exercise-preparation').innerHTML = prep;
+    document.getElementById('exercise-movement').innerHTML = movement;
+    document.getElementById('exercise-video').href = videoUrl;
 
-    window.location.href = "#task-popup-overlay";
+    window.location.href = "#exercise-popup-overlay";
 }
 
 function loadNotes() {
@@ -530,26 +489,26 @@ function updateNote(date, text) {
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
 //     newPlans = ''
 //     for (let i = 0; i < 9; i++) {
-//         // newPlans += '<li><input type="checkbox"> '+ 'task' +'</li>';
+//         // newPlans += '<li><input type="checkbox"> '+ 'exercise' +'</li>';
 
 //         document.getElementById('list-elements').innerHTML = newPlans;
 //     }
 // }
 
-function goToTasks() {
+function goToExercises() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
     document.getElementById('training').className = "hidden"
     document.getElementById('notes').className = "hidden"
 
-    document.getElementById('tasks').className = ""
-    switchToTab('tasks')
-    loadTasks();
+    document.getElementById('exercises').className = ""
+    switchToTab('exercises')
+    displayExercises();
 }
 
 function goToHome() {
     // clear old tabs
-    document.getElementById('tasks').className = "hidden"
+    document.getElementById('exercises').className = "hidden"
     document.getElementById('training').className = "hidden"
     document.getElementById('notes').className = "hidden"
 
@@ -560,7 +519,7 @@ function goToHome() {
 function goToTraining() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
-    document.getElementById('tasks').className = "hidden"
+    document.getElementById('exercises').className = "hidden"
     document.getElementById('notes').className = "hidden"
 
     document.getElementById('training').className = ""
@@ -570,7 +529,7 @@ function goToTraining() {
 function goToNotes() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
-    document.getElementById('tasks').className = "hidden"
+    document.getElementById('exercises').className = "hidden"
     document.getElementById('training').className = "hidden"
 
     document.getElementById('notes').className = ""

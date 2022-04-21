@@ -142,32 +142,32 @@ a {
     margin-bottom: 15vh;
 }
 
-#tasks {
+#exercises {
     margin-top: 15vh;
     margin-bottom: 15vh;
 }
 
-#tasks .box {
+#exercises .box {
     border-radius: 12px;
     margin: auto;
     margin-top: 17px;    
     width: 90vw;
 }
 
-#tasks img {
+#exercises img {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-#tasks p {
+#exercises p {
     float: left;
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 2vh;
 }
 
-#task-popup-overlay svg {
+#exercise-popup-overlay svg {
     /* margin-left: 41vw; */
     margin: 0;
     position: absolute;
@@ -312,7 +312,7 @@ a {
     color: #000000;
 }
 
-.task-popup-close {
+.exercise-popup-close {
     margin-top: 4%;
     margin-right: 4%;
 }
@@ -415,7 +415,7 @@ a {
     border-bottom-style: none;
 }
 
-.task-popup {
+.exercise-popup {
     position: relative;
     top: 50vh;
     margin-top: 0px !important;
@@ -484,6 +484,6 @@ tr {
     width: 100%;
 }
 
-#tasks-list .col {
+#exercises-list .col {
     text-align: left;
 }
