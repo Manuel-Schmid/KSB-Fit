@@ -253,23 +253,22 @@ $(document).on('click', '#login-btn', function(){
 });
 
 // save workout plan
-$(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-id'
+$(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-id
 
     let exercises = [21, 25, 29] // [1,5,7,9] (id's)
     let weekdays = ['Mo', 'Fr'] // ['mo','tu','fr']
     let notifications = 1 // $("#cbNotifications").checked ? 1 : 0; 
+    let title = 'My Workout 2.0'
     let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2;
-    let  data = { request:'insertWorkout', userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises }
-    console.log(data);
 
     if(weekdays.length>0 & exercises.length>0) {
         $.ajax({
             type:"POST",  // Request type
             url: "http://localhost:63342/KSB-Fit-CMS/includes/requests.php",
-            data:{ request:'insertWorkout', userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises },
+            data:{ request:'insertWorkout', title:title, userID:userID, notifications:notifications, weekdays:weekdays, exercises:exercises },
             cache:false,
             success:function(data) {
-                // alert(data)
+                // console.log(data)
                 // ...
             }
         })
