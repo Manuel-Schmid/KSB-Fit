@@ -219,6 +219,7 @@ $(document).on('click', '#login-btn', function(){
         let dob = $("#dob-input").val();
         
         if($.trim(email).length>0 & $.trim(password).length>0 & $.trim(weight).length>0 & $.trim(height).length>0 & $.trim(dob).length>0) {
+            
             if (!isKSBeMail(email)) { // check if KSB-eMail
                 alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
                 // ...
@@ -418,8 +419,23 @@ function displayExercises() {
         url: properties.requestUrl,
         data:{ request:'getExercisesHTML' }, // parameter für POST ($_POST['xxx'])
         cache:false,
-        success:function(data) {
-            document.getElementById('exercises-list').innerHTML = data
+        success:function(json_data) {
+            let exercises = Object.values(JSON.parse(json_data))
+            let exercisesHTMLString = ''
+            exercises.forEach(exercise => {
+
+                functionString = "openExercisePopup(false, '"+exercise['title']+"', '"+exercise['image']+"', '"+exercise['preparation']+"', '"+exercise['movement']+"', '"+exercise['videoURL']+"')";
+                exercisesHTMLString += '<div class="box" onclick="'+functionString+'">'+
+                                        '<div class="row">'+
+                                            '<p class="col s11">'+exercise['title']+'</p>'+
+                                            '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>'+
+                                        '</div>'+
+                                        '<img src="'+exercise['image']+'" alt="Übung Bild">'+
+                                    '</div>';
+
+            });
+
+            document.getElementById('exercises-list').innerHTML = exercisesHTMLString
         }
     })
 }
