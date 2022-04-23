@@ -154,8 +154,18 @@ a {
     width: 90vw;
 }
 
-#exercises img {
-    width: 80%;
+.exercise-img-container {
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+}
+
+.exercise-img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -174,6 +184,10 @@ a {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.description-table {
+    word-break: break-word;
 }
 
 .pfeil{
@@ -287,11 +301,17 @@ a {
     visibility: hidden;
     opacity: 0;
     z-index: 999;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
 }
   
 .overlay:target {
     visibility: visible;
     opacity: 1;
+}
+
+.noscroll {
+    overflow:hidden
 }
   
 .signup-popup {

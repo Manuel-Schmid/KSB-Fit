@@ -441,15 +441,22 @@ function displayExercises() {
 }
 
 function openExercisePopup(switchToTab, title, imgUrl, prep, movement, videoUrl) {
-    if (switchToTab) goToExercises()
+    if (switchToTab) goToExercises() // ?
     document.getElementById('exercise-title').innerHTML = title;
     document.getElementById('exercise-img').src = imgUrl;
     document.getElementById('exercise-preparation').innerHTML = prep;
     document.getElementById('exercise-movement').innerHTML = movement;
     document.getElementById('exercise-video').href = videoUrl;
 
+    document.getElementById('exercises').classList.add('noscroll');
+    
     window.location.href = "#exercise-popup-overlay";
 }
+
+function closeExercisePopup() {
+    window.location.href = '#'
+}
+
 
 function loadNotes() {
     document.getElementById('notelist').innerHTML = ''
