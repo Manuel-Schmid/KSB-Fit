@@ -154,6 +154,14 @@ a {
     width: 90vw;
 }
 
+.exercise-musclegroups-container {
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+}
+
 .exercise-img-container {
     display: flex;    
     justify-content: center;

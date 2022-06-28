@@ -1,7 +1,6 @@
 // run: simulate android
 
 let globalvarOS = "";
-let basicSelected = true;
 let emailHash = '';
 let activeTab = 'login';
 
@@ -114,30 +113,6 @@ let activeTab = 'login';
 //         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 //     },
 // ]
-
-let basicPlan = {
-    legpress: true,
-    latissimus: true,
-    chestpress: true,
-    hipstretching: true,
-    complex: true,
-    squats: false,
-    pullUps: false,
-    benchPress: false,
-    kneeBends: false
-}
-
-let advancedPlan = {
-    legpress: false,
-    latissimus: false,
-    chestpress: false,
-    hipstretching: true,
-    complex: false,
-    squats: true,
-    pullUps: true,
-    benchPress: true,
-    kneeBends: true
-}
 
 // document.addEventListener('deviceready', function () {
 
@@ -396,20 +371,20 @@ function switchToTab(tabName) {
     document.getElementById(txtID).className += 'selected-tab'
 }
 
-function changePlan() {
-    basicSelected = !basicSelected
-    if (basicSelected) {
-        document.getElementById('basic-btn').className = 'button is-rounded selected-btn'
-        document.getElementById('advanced-btn').className = 'button is-rounded'
-    } else {
-        document.getElementById('basic-btn').className = 'button is-rounded'
-        document.getElementById('advanced-btn').className = 'button is-rounded selected-btn'
-    }
-    let planElements = document.getElementsByClassName('advanced-check')
-    for (let i = 0; i < planElements.length; i++) {
-        planElements[i].checked = !(planElements[i].checked)
-    }
-}
+// function changePlan() {
+//     basicSelected = !basicSelected
+//     if (basicSelected) {
+//         document.getElementById('basic-btn').className = 'button is-rounded selected-btn'
+//         document.getElementById('advanced-btn').className = 'button is-rounded'
+//     } else {
+//         document.getElementById('basic-btn').className = 'button is-rounded'
+//         document.getElementById('advanced-btn').className = 'button is-rounded selected-btn'
+//     }
+//     let planElements = document.getElementsByClassName('advanced-check')
+//     for (let i = 0; i < planElements.length; i++) {
+//         planElements[i].checked = !(planElements[i].checked)
+//     }
+// }
 
 function displayExercises() {
     // load exercises as HTML popups from DB
@@ -423,7 +398,7 @@ function displayExercises() {
             let exercisesHTMLString = ''
             exercises.forEach(exercise => {
 
-                functionString = "openExercisePopup(false, '"+exercise['title']+"', '"+exercise['image']+"', '"+exercise['preparation']+"', '"+exercise['movement']+"', '"+exercise['videoURL']+"')";
+                functionString = "openExercisePopup(false, '"+exercise['title']+"', '"+exercise['image']+"', '"+exercise['preparation']+"', '"+exercise['movement']+"', '"+exercise['muscleGroups']+"', '"+exercise['videoURL']+"')";
                 exercisesHTMLString += '<div class="box" onclick="'+functionString+'">'+
                                         '<div class="row">'+
                                             '<p class="col s11">'+exercise['title']+'</p>'+
@@ -439,10 +414,11 @@ function displayExercises() {
     })
 }
 
-function openExercisePopup(switchToTab, title, imgUrl, prep, movement, videoUrl) {
-    if (switchToTab) goToExercises() // ?
+function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
+    if (switchToTab) goToExercises() // ? todo
     document.getElementById('exercise-title').innerHTML = title;
     document.getElementById('exercise-img').src = imgUrl;
+    updateMuscleInput(muscleGroups);
     document.getElementById('exercise-preparation').innerHTML = prep;
     document.getElementById('exercise-movement').innerHTML = movement;
     document.getElementById('exercise-video').href = videoUrl;
