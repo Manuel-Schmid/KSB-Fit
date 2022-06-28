@@ -293,19 +293,19 @@ function isKSBeMail(email) {
     return email.includes("@ksb-sg.ch");
 }
 
-function insertNote(text) {
-    if (emailHash !== "") {
-        firebase.database().ref('/notes/'+Date.now()).set({
-            user:emailHash,
-            date:getCurrentDate(true),
-            text:text
-        });
-        loadNotes()
-    }
-    else {
-        alert('Sie müssen angemeldet sein um Notizen zu verfassen.')
-    }
-}
+// function insertNote(text) {
+//     if (emailHash !== "") {
+//         firebase.database().ref('/notes/'+Date.now()).set({
+//             user:emailHash,
+//             date:getCurrentDate(true),
+//             text:text
+//         });
+//         loadNotes()
+//     }
+//     else {
+//         alert('Sie müssen angemeldet sein um Notizen zu verfassen.')
+//     }
+// }
 
 function getCurrentDate(isSwissFormat) {
     var today = new Date();
@@ -372,7 +372,7 @@ jQuery.extend({
         $("#navbar").load("components/navbar.html");
         $("#exercises").load("components/exercises.html");
         $("#training").load("components/training.html");
-        $("#notes").load("components/notes.html");
+        $("#settings").load("components/settings.html");
     }
 });
 
@@ -388,7 +388,6 @@ function switchToTab(tabName) {
             el.className = ""
         }
     }
-    document.getElementById('qr-icon').setAttribute('fill', 'white')
 
     // set highlightings
     iconID = tabName + "-icon"
@@ -458,56 +457,54 @@ function closeExercisePopup() {
 }
 
 
-function loadNotes() {
-    document.getElementById('notelist').innerHTML = ''
-    firebase.database().ref('/notes/').on('value', function(snapshot) {
-        let snapObj = snapshot.val();
-        for (const el of Object.entries(snapObj).reverse()) {
-            for (const note of Object.entries(el)) {
-                if (note[1].date !== undefined && note[1].user === emailHash) {
-                    let functionString = `editNote('`+el[0]+`', '`+note[1].date+`', '`+note[1].text+`')`;
-                    document.getElementById('notelist').innerHTML += '<div id="'+el[0]+'" class="box" onclick="'+functionString+'"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p><p id="date-content" class="hidden">'+ note[1].date +'</p> <p id="text-content" class="hidden">'+ note[1].text +'</p></div>';
-                }
-            }
-        }
-    });
-}
+// function loadNotes() {
+//     document.getElementById('notelist').innerHTML = ''
+//     firebase.database().ref('/notes/').on('value', function(snapshot) {
+//         let snapObj = snapshot.val();
+//         for (const el of Object.entries(snapObj).reverse()) {
+//             for (const note of Object.entries(el)) {
+//                 if (note[1].date !== undefined && note[1].user === emailHash) {
+//                     let functionString = `editNote('`+el[0]+`', '`+note[1].date+`', '`+note[1].text+`')`;
+//                     document.getElementById('notelist').innerHTML += '<div id="'+el[0]+'" class="box" onclick="'+functionString+'"> <p> Training vom <b>'+ note[1].date +'</b> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg> </p><p id="date-content" class="hidden">'+ note[1].date +'</p> <p id="text-content" class="hidden">'+ note[1].text +'</p></div>';
+//                 }
+//             }
+//         }
+//     });
+// }
 
-let tmstmp = '';
+// function createNewNote() {
+//     tmstmp = '';
+//     document.getElementById('cur-date').innerHTML = getCurrentDate(true)
+//     document.getElementById('note-text-area').value = ''
+//     window.location.href = "#new-note";
+// }
 
-function createNewNote() {
-    tmstmp = '';
-    document.getElementById('cur-date').innerHTML = getCurrentDate(true)
-    document.getElementById('note-text-area').value = ''
-    window.location.href = "#new-note";
-}
+// function editNote(timestamp, date, text) {
+//     tmstmp = timestamp;
+//     document.getElementById('cur-date').innerHTML = date
+//     document.getElementById('note-text-area').value = text
+//     window.location.href = "#new-note";
+// }
 
-function editNote(timestamp, date, text) {
-    tmstmp = timestamp;
-    document.getElementById('cur-date').innerHTML = date
-    document.getElementById('note-text-area').value = text
-    window.location.href = "#new-note";
-}
+// function saveNote() {
+//     if (tmstmp === '') { // create new note
+//         insertNote(document.getElementById('note-text-area').value)
+//     } else { // update existing note
+//         updateNote(document.getElementById('cur-date').innerHTML, document.getElementById('note-text-area').value)
+//     }
+//     window.location.href = "#";
+// }
 
-function saveNote() {
-    if (tmstmp === '') { // create new note
-        insertNote(document.getElementById('note-text-area').value)
-    } else { // update existing note
-        updateNote(document.getElementById('cur-date').innerHTML, document.getElementById('note-text-area').value)
-    }
-    window.location.href = "#";
-}
-
-function updateNote(date, text) {
-    // console.log(tmstmp +" : "+date+" : "+text);
-    firebase.database().ref('/notes/'+tmstmp).set({
-        user:emailHash,
-        date:date,
-        text:text
-    });
-    // document.getElementById(tmstmp).onclick = editNote(tmstmp, date, text);
-    loadNotes()
-}
+// function updateNote(date, text) {
+//     // console.log(tmstmp +" : "+date+" : "+text);
+//     firebase.database().ref('/notes/'+tmstmp).set({
+//         user:emailHash,
+//         date:date,
+//         text:text
+//     });
+//     // document.getElementById(tmstmp).onclick = editNote(tmstmp, date, text);
+//     loadNotes()
+// }
 
 // function loadTrainingPlans() { // <li><input type="checkbox"> checkbox 1</li>
 //     newPlans = ''
@@ -522,7 +519,7 @@ function goToExercises() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
     document.getElementById('training').className = "hidden"
-    document.getElementById('notes').className = "hidden"
+    document.getElementById('settings').className = "hidden"
 
     document.getElementById('exercises').className = ""
     switchToTab('exercises')
@@ -533,7 +530,7 @@ function goToHome() {
     // clear old tabs
     document.getElementById('exercises').className = "hidden"
     document.getElementById('training').className = "hidden"
-    document.getElementById('notes').className = "hidden"
+    document.getElementById('settings').className = "hidden"
 
     document.getElementById('home').className = ""
     switchToTab('home')
@@ -543,21 +540,21 @@ function goToTraining() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
     document.getElementById('exercises').className = "hidden"
-    document.getElementById('notes').className = "hidden"
+    document.getElementById('settings').className = "hidden"
 
     document.getElementById('training').className = ""
     switchToTab('training')
 }
 
-function goToNotes() {
+function goToSettings() {
     // clear old tabs
     document.getElementById('home').className = "hidden"
     document.getElementById('exercises').className = "hidden"
     document.getElementById('training').className = "hidden"
 
-    document.getElementById('notes').className = ""
-    switchToTab('notes')
-    loadNotes()
+    document.getElementById('settings').className = ""
+    switchToTab('settings')
+    // loadNotes()
 }
 
 function resetSignup() {
@@ -589,8 +586,8 @@ function switchLogin(tab) {
 
 // QR-Scanner
 
-function qrscan() {
-    alert("Es wird jetzt der QR Scanner aktiviert");
+// function qrscan() {
+    // alert("Es wird jetzt der QR Scanner aktiviert");
     // Start a scan. Scanning will continue until something is detected or
     // `QRScanner.cancelScan()` is called.
     // QRScanner.scan(displayContents);
@@ -606,7 +603,7 @@ function qrscan() {
     // QRScanner.hide(function(status) {
     //     console.log(status);
     // });
-}
+// }
 
 // function displayContents(err, text) {
 //     if (err) {
