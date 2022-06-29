@@ -177,7 +177,7 @@ $(document).on('click', '#login-btn', function(){
                     } else {
                         alert('There is no user registered with this email');
                         // ...
-                    }                    
+                    }
                 }
             })
         }
@@ -236,16 +236,41 @@ $(document).on('click', '#login-btn', function(){
     }
 });
 
-// save workout plan
-$(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-id
+$(document).on('click', '#insert-session-btn-id', function(){ // insert-session-btn-id  *is a placeholder*
+    var sessionExercises = [];
+    // make dynamic
+    for (var i = 0; i < 10; i++) { 
+        sessionExercises.push({
+            exerciseID: i,
+            amount: (i + 15)
+        });
+    }
+    
+    if (sessionExercises.length > 0) {
+        let workoutID = 1 // make dynamic
 
+        $.ajax({
+            type:"POST",  // Request type
+            url: properties.requestUrl,
+            data:{ request:'insertSession', workoutID:workoutID, sessionExercises:sessionExercises },
+            cache:false,
+            success:function(data) {
+                // console.log(data)
+                // ...
+            }
+        })
+    }
+});
+
+// save workout plan -> already new 
+$(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-id  *is a placeholder*
     let exercises = [21, 25, 29] // [1,5,7,9] (id's)
-    let weekdays = ['Mo', 'Fr'] // ['mo','tu','fr']
+    let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
     let notifications = 1 // $("#cbNotifications").checked ? 1 : 0; 
-    let title = 'My Workout 2.0'
-    let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2;
+    let title = 'My Workout X.0'
+    let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
 
-    if(weekdays.length>0 & exercises.length>0) {
+    if(weekdays.length > 0 & exercises.length > 0) {
         $.ajax({
             type:"POST",  // Request type
             url: properties.requestUrl,
