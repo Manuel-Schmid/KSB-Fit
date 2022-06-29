@@ -154,6 +154,11 @@ a {
     width: 90vw;
 }
 
+.sort-buttons-container {
+
+}
+
+
 .exercise-musclegroups-container {
     display: flex;    
     justify-content: center;
@@ -183,6 +188,12 @@ a {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 2vh;
+}
+
+#exercises span {
+    float: left;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 #exercise-popup-overlay svg {
