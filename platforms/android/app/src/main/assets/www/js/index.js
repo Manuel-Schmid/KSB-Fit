@@ -239,10 +239,11 @@ $(document).on('click', '#login-btn', function(){
 $(document).on('click', '#insert-session-btn-id', function(){ // insert-session-btn-id  *is a placeholder*
     var sessionExercises = [];
     // make dynamic
-    for (var i = 0; i < 10; i++) { 
+    for (var i = 1; i <= 10; i++) { 
         sessionExercises.push({
             exerciseID: i,
-            amount: (i + 15)
+            weight: (i + 7 + (i*0.5)),
+            reps: ((i*2) + 15)
         });
     }
     
