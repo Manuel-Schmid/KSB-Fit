@@ -368,8 +368,7 @@ function calcBMI(heightInCm, weight) {
 })(jQuery);
 jQuery.extend({
     onDeviceReady: function() {
-        $("#home").load("components/Startseite/startseite.html");
-        $("#header").load("components/header.html");
+        $("#home").load("components/home.html");
         $("#navbar").load("components/navbar.html");
         $("#exercises").load("components/exercises.html");
         $("#training").load("components/training.html");
