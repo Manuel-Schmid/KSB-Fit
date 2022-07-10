@@ -236,6 +236,23 @@ $(document).on('click', '#login-btn', function(){
     }
 });
 
+$(document).on('click', '#reset-password-btn-id', function(){ // reset-password-btn-id  is a placeholder
+    let email = 'manuel.schmid@ksb-sg.ch' // make dynamic
+
+    console.log('test');
+    $.ajax({
+        type:"POST",  // Request type
+        url: properties.requestUrl,
+        data:{ request:'resetPassword', email:email },
+        cache:false,
+        success:function(successful) {
+            if (successful == 1) {
+                alert("Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.")
+            }
+        }
+    })
+});
+
 $(document).on('click', '#insert-session-btn-id', function(){ // insert-session-btn-id  *is a placeholder*
     var sessionExercises = [];
     // make dynamic
