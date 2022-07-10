@@ -186,7 +186,7 @@ $(document).on('click', '#login-btn', function(){
             // ...
         }
 
-    } else { // signup
+    } else { // signup/registration
         let email = $("#email-input").val();
         let password = $("#password-input").val();
         let weight = $("#weight-input").val();
