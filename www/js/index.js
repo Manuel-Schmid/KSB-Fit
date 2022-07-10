@@ -136,7 +136,7 @@ let activeTab = 'login';
 //         })
 //     }
 // });
-
+$(document).ready(function() {
 // register & login
 $(document).on('click', '#login-btn', function(){
 
@@ -306,6 +306,32 @@ $(document).on('click', '#save-workout-btn-id', function(){ // save-workout-btn-
     }
 });
 
+(function($) {
+    $(function() {
+        "use strict";
+        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
+        if (window.cordova.platformId === 'browser') {
+            globalvarOS = 'WINWOWS'; // <- ?? xD
+        } else {
+            globalvarOS = 'ANDROID';
+        }
+    });
+
+    })(jQuery);
+    jQuery.extend({
+        onDeviceReady: function() {
+            $("#home").load("components/Startseite/startseite.html");
+            $("#header").load("components/header.html");
+            $("#navbar").load("components/navbar.html");
+            $("#exercises").load("components/exercises.html");
+            $("#training").load("components/training.html");
+            $("#settings").load("components/settings.html");
+        }
+    }
+);
+
+});
+
 
 function isKSBeMail(email) {
     return email.includes("@ksb-sg.ch");
@@ -370,29 +396,6 @@ function calcBMI(heightInCm, weight) {
     let bmi = ((weight) / ((heightInCm * heightInCm)/10000))
     return Math.round(bmi * 10) / 10
 }
-
-(function($) {
-    $(function() {
-        "use strict";
-        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
-        if (window.cordova.platformId === 'browser') {
-            globalvarOS = 'WINWOWS'; // <- ?? xD
-        } else {
-            globalvarOS = 'ANDROID';
-        }
-    });
-
-})(jQuery);
-jQuery.extend({
-    onDeviceReady: function() {
-        $("#home").load("components/Startseite/startseite.html");
-        $("#header").load("components/header.html");
-        $("#navbar").load("components/navbar.html");
-        $("#exercises").load("components/exercises.html");
-        $("#training").load("components/training.html");
-        $("#settings").load("components/settings.html");
-    }
-});
 
 function switchToTab(tabName) {
     // reset other colors
