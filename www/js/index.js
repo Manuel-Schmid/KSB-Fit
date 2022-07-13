@@ -241,16 +241,16 @@ $(document).on('click', '#login-btn', function () {
     }
 });
 
-$(document).on('click', '#reset-password-btn-id', function(){ // reset-password-btn-id  is a placeholder
+$(document).on('click', '#reset-password-btn-id', function () { // reset-password-btn-id  is a placeholder
     let email = 'manuel.schmid@ksb-sg.ch' // make dynamic
 
     console.log('test');
     $.ajax({
-        type:"POST",  // Request type
+        type: "POST",  // Request type
         url: properties.requestUrl,
-        data:{ request:'resetPassword', email:email },
-        cache:false,
-        success:function(successful) {
+        data: {request: 'resetPassword', email: email},
+        cache: false,
+        success: function (successful) {
             if (successful == 1) {
                 alert("Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.")
             }
@@ -258,7 +258,7 @@ $(document).on('click', '#reset-password-btn-id', function(){ // reset-password-
     })
 });
 
-$(document).on('click', '#insert-session-btn-id', function(){ // insert-session-btn-id  *is a placeholder*
+$(document).on('click', '#insert-session-btn-id', function () { // insert-session-btn-id  *is a placeholder*
     var sessionExercises = [];
     // make dynamic
     for (var i = 1; i <= 10; i++) {
@@ -408,7 +408,8 @@ function switchToTab(tabName) {
     // reset other colors
     let icons = document.getElementsByClassName('fa-solid')
     for (let i = 0; i < icons.length; i++) {
-        icons[i].addClass('fa-regular').removeClass('fa-solid')
+        icons[i].classList.add('fa-regular');
+        icons[i].classList.remove('fa-solid');
     }
     let selectedTabs = document.getElementsByClassName('nav__text--selected')
     if (selectedTabs.length > 0) {
@@ -420,8 +421,9 @@ function switchToTab(tabName) {
     // set highlightings
     iconID = tabName + "-icon"
     txtID = tabName + "-txt"
-    document.getElementById(iconID).addClass('fa-solid').removeClass('fa-regular')
-    document.getElementById(txtID).className += 'nav__text--selected'
+    document.getElementById(iconID).classList.add('fa-solid');
+    document.getElementById(iconID).classList.remove('fa-regular');
+    document.getElementById(txtID).classList.add('nav__text--selected');
 }
 
 // function changePlan() {
