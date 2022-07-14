@@ -134,7 +134,7 @@ let activeTab = 'login';
 //         })
 //     }
 // });
-
+$(document).ready(function() {
 // register & login
 $(document).on('click', '#login-btn', function () {
 
@@ -315,6 +315,32 @@ $(document).on('click', '#save-workout-btn-id', function () { // save-workout-bt
         alert("Füllen Sie bitte alle Felder aus.");
         // ...
     }
+});
+
+(function($) {
+    $(function() {
+        "use strict";
+        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
+        if (window.cordova.platformId === 'browser') {
+            globalvarOS = 'WINWOWS'; // <- ?? xD
+        } else {
+            globalvarOS = 'ANDROID';
+        }
+    });
+
+    })(jQuery);
+    jQuery.extend({
+        onDeviceReady: function() {
+            $("#home").load("components/Startseite/startseite.html");
+            $("#header").load("components/header.html");
+            $("#navbar").load("components/navbar.html");
+            $("#exercises").load("components/exercises.html");
+            $("#training").load("components/training.html");
+            $("#settings").load("components/settings.html");
+        }
+    }
+);
+
 });
 
 
@@ -628,6 +654,184 @@ function switchLogin(tab) {
 // QR-Scanner
 
 // function qrscan() {
+// alert("Es wird jetzt der QR Scanner aktiviert");
+// Start a scan. Scanning will continue until something is detected or
+// `QRScanner.cancelScan()` is called.
+// QRScanner.scan(displayContents);
+// Make the webview transparent so the video preview is visible behind it.
+// QRScanner.show(function(status) {
+//     console.log(status);
+// });
+// Be sure to make any opaque HTML elements transparent here to avoid
+// covering the video.
+// QRScanner.cancelScan(function(status) {
+//     console.log(status)
+// });
+// QRScanner.hide(function(status) {
+//     console.log(status);
+// });
+$(document).ready(function() {
+$(document).on('click', '#login-btn', function () {
+        if ($.trim(email).length > 0 & $.trim(password).length > 0) {
+                type: "POST",  //Request type
+                data: {request: 'getUserSalt', email: email},
+                cache: false,
+                success: function (salt) {
+                        let hashedPW = getHashedPassword(password, salt)
+                            type: "POST",  //Request type
+                            data: {request: 'login', email: email, password: hashedPW},
+                            cache: false,
+                            success: function (userID) {
+        } else {
+
+        if ($.trim(email).length > 0 & $.trim(password).length > 0 & $.trim(weight).length > 0 & $.trim(height).length > 0 & $.trim(dob).length > 0) {
+
+                    type: "POST",  // Request type
+                    data: {request: 'getUserSalt', email: email},
+                    cache: false,
+                    success: function (salt) {
+                            let hashedPW = getHashedPassword(password, salt)
+
+                                type: "POST",  //Request type
+                                url: properties.requestUrl,
+                                data: {
+                                    request: 'registration',
+                                    email: email,
+                                    password: hashedPW,
+                                    salt: salt,
+                                    weight: weight,
+                                    height: height,
+                                    dob: dob
+                                }, // parameter für POST ($_POST['xxx'])
+                                cache: false,
+                                success: function (data) {
+                        }
+$(document).on('click', '#reset-password-btn-id', function () { // reset-password-btn-id  is a placeholder
+        type: "POST",  // Request type
+        data: {request: 'resetPassword', email: email},
+        cache: false,
+        success: function (successful) {
+$(document).on('click', '#insert-session-btn-id', function () { // insert-session-btn-id  *is a placeholder*
+    for (var i = 1; i <= 10; i++) {
+            weight: (i + 7 + (i * 0.5)),
+            reps: ((i * 2) + 15)
+
+            type: "POST",  // Request type
+            data: {request: 'insertSession', workoutID: workoutID, sessionExercises: sessionExercises},
+            cache: false,
+            success: function (data) {
+$(document).on('click', '#save-workout-btn-id', function () { // save-workout-btn-id  *is a placeholder*
+    if (weekdays.length > 0 & exercises.length > 0) {
+            type: "POST",  // Request type
+            data: {
+                request: 'insertWorkout',
+                title: title,
+                userID: userID,
+                notifications: notifications,
+                weekdays: weekdays,
+                exercises: exercises
+            },
+            cache: false,
+            success: function (data) {
+    } else {
+(function($) {
+    $(function() {
+        "use strict";
+        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
+        if (window.cordova.platformId === 'browser') {
+            globalvarOS = 'WINWOWS'; // <- ?? xD
+        } else {
+            globalvarOS = 'ANDROID';
+        }
+    });
+
+    })(jQuery);
+    jQuery.extend({
+        onDeviceReady: function() {
+            $("#home").load("components/Startseite/startseite.html");
+            $("#header").load("components/header.html");
+            $("#navbar").load("components/navbar.html");
+            $("#exercises").load("components/exercises.html");
+            $("#training").load("components/training.html");
+            $("#settings").load("components/settings.html");
+        }
+    }
+);
+
+});
+
+String.prototype.hashCode = function () { // deprecated
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+};
+    let bmi = ((weight) / ((heightInCm * heightInCm) / 10000))
+(function ($) {
+    $(function () {
+        "use strict";
+        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
+        if (window.cordova.platformId === 'browser') {
+            globalvarOS = 'WINWOWS'; // <- ?? xD
+        } else {
+            globalvarOS = 'ANDROID';
+        }
+    });
+
+})(jQuery);
+jQuery.extend({
+    onDeviceReady: function () {
+        $("#home").load("components/home.html");
+        $("#navbar").load("components/navbar.html");
+        $("#exercises").load("components/exercises.html");
+        $("#training").load("components/training.html");
+        $("#settings").load("components/settings.html");
+    }
+});
+
+    let icons = document.getElementsByClassName('nav__icon')
+        icons[i].classList.add('fa-xl');
+        icons[i].classList.remove('fa-2xl');
+    let selectedTabs = document.getElementsByClassName('nav__text--selected')
+        for (const el of document.getElementsByClassName('nav__text--selected')) {
+    document.getElementById(iconID).classList.add('fa-2xl');
+    document.getElementById(iconID).classList.remove('fa-xl');
+    document.getElementById(txtID).classList.add('nav__text--selected');
+        type: "POST",  //Request type
+        data: {request: 'getExercisesHTML'}, // parameter für POST ($_POST['xxx'])
+        cache: false,
+        success: function (json_data) {
+                functionString = "openExercisePopup(false, '" + exercise['title'] + "', '" + exercise['image'] + "', '" + exercise['preparation'] + "', '" + exercise['movement'] + "', '" + exercise['muscleGroups'] + "', '" + exercise['videoURL'] + "')";
+                    exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
+                        '<div class="row">' +
+                        '<p class="col s11">' + exercise['title'] + '</p>' +
+                        '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
+                        '</div>' +
+                        '<img src="' + exercise['image'] + '" alt="Übung Bild">' +
+                        '</div>';
+                    exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
+                        '<div class="row">' +
+                        '<span class="col s11">' + exercise['title'] + '</span>' +
+                        '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
+                        '</div>' +
+                        '</div>';
+    /*document.getElementById('exercise-img').src = imgUrl;*/
+
+    document.getElementById('home').className = "obj--hidden"
+    document.getElementById('training').className = "obj--hidden"
+    document.getElementById('settings').className = "obj--hidden"
+    document.getElementById('exercises').className = "obj--hidden"
+    document.getElementById('training').className = "obj--hidden"
+    document.getElementById('settings').className = "obj--hidden"
+    document.getElementById('home').className = "obj--hidden"
+    document.getElementById('exercises').className = "obj--hidden"
+    document.getElementById('settings').className = "obj--hidden"
+    document.getElementById('home').className = "obj--hidden"
+    document.getElementById('exercises').className = "obj--hidden"
+    document.getElementById('training').className = "obj--hidden"
+        document.getElementById('dob-field').className = 'field obj--hidden'
+        document.getElementById('sizes-field').className = 'row obj--hidden'
+        document.getElementById('signup-tab').toggleClass('obj--hidden')
+        document.getElementById('login-tab').toggleClass('obj--hidden')
 // alert("Es wird jetzt der QR Scanner aktiviert");
 // Start a scan. Scanning will continue until something is detected or
 // `QRScanner.cancelScan()` is called.
