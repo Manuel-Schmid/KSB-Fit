@@ -366,17 +366,6 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-String.prototype.hashCode = function() { // deprecated 
-    var hash = 0, i, chr;
-    if (this.length === 0) return hash;
-    for (i = 0; i < this.length; i++) {
-      chr   = this.charCodeAt(i);
-      hash  = ((hash << 5) - hash) + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-  };
-
 function getHashedPassword(password, salt) { // return 128-character-string
     return getHash(conf.pepper + salt + password)
 }
@@ -391,7 +380,7 @@ function getHash(string) { // new
 function generateSalt() {
     return [...Array(10)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 }
-
+ 
 function calcBMI(heightInCm, weight) {
     let bmi = ((weight) / ((heightInCm * heightInCm)/10000))
     return Math.round(bmi * 10) / 10
