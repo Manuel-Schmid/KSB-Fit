@@ -1,30 +1,50 @@
-<div class="content-container">
-    <div class="btn-container">
-        <button id="basic-btn" onclick="changePlan()" class="button is-rounded selected-btn">Basic</button>
-        <button id="advanced-btn" onclick="changePlan()" class="button is-rounded">Advanced</button>
+<div class='exercises__container'>
+    <h1 class='training__heading'>Trainingspläne</h1>
+    
+    <a href='#default-training'>
+        <div class='card training__default'>
+            <div class='content training__content'>
+                <img src='../img/training.jpg' alt='bild' class='training__image'>
+                
+                <span class='text-header'>KSB BASIC</span>
+                
+                <i class='fa-solid fa-chevron-right fa-sm'></i>
+            </div>
+        </div>
+    </a>
+    
+    <div id='default-training' class='overlay'>
+        <div class='signup__container'>
+            <a class='signup__close' href='#'>
+                <i class='fa-solid fa-xmark fa-2xl'></i>
+            </a>
+        
+        </div>
     </div>
-    <div id="checkboxes" class="box">
-        <ul id="list-elements">
-            <li onclick="openExercisePopup(true, 'Leg Extension', 'img/exercise-images/task (5)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" checked> &nbsp;&nbsp;Leg Extension
-            </li>
-          <li onclick="openExercisePopup(true, 'Prone Leg Curl', 'img/exercise-images/task (3)1.jpeg', 'Beinpolster bequem hinten oberhalb dem Fußgelenk einstellen. Knie auf die Drehachse ausrichten. Nach vorn gegen das Oberschenkelpolster lehnen, Unterarme auf die Polster auflegen und Griffe umfassen.', 'Mit den Beinen das Beinpolster gegen das Gesäß ziehen.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" checked > &nbsp;&nbsp;Prone Leg Curl</li>
-          <li onclick="openExercisePopup(true, 'Glute', 'img/exercise-images/task (1)1.jpeg', 'Bauchpolster so einstellen, dass die Unterarme bequem auf den Unterarmpolstern aufliegen. Fußleiste auf die gewünschte Startposition einstellen. Ein Knie und Ellenbogen auf die Polster auflegen und Griffe umfassen. Fuß des anderen Beins an die Fußleiste stellen.', 'Fußleiste nach hinten und oben drücken, Körperhaltung beibehalten. Beinseite wechseln und Uebung entsprechen wiederholen.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" > &nbsp;&nbsp;Glute</li>
-          <li onclick="openExercisePopup(true, 'Lateral Raise', 'img/exercise-images/task (6)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" > &nbsp;&nbsp;Lateral Raise</li>
-          <li onclick="openExercisePopup(true, 'Hip Abduction / Adduction', 'img/exercise-images/task (4)1.jpeg', 'Hip Abduction - Startposition: Beine eng zusammen, Beinpolster sind an der Aussenseite der Oberschenkel. HINWEIS: Rückenlehne zurückneigen, um eine höhere Belastung des Glutaeus medius zu erzielen. <br/>Hip Adduction - Startposition: Beine bilden ein weites V und Beinpolster sind an der Innenseite der Oberschenkel.', 'Drücken Sie die Knie nach Innen, respektive nach aussen.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" checked > &nbsp;&nbsp;Hip Abduction/Adduction</li>
-          <li onclick="openExercisePopup(true, 'Lat Pulldown', 'img/exercise-images/task (7)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" checked > &nbsp;&nbsp;Pulldown</li>
-          <li onclick="openExercisePopup(true, 'Overhead Press', 'img/exercise-images/task (9)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" checked > &nbsp;&nbsp;Overhead Press</li>
-          <li onclick="openExercisePopup(true, 'Arm / Bicep Curl', 'img/exercise-images/task (11)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" > &nbsp;&nbsp;Arm Curl</li>
-          <li onclick="openExercisePopup(true, 'Fly / Rear Delt', 'img/exercise-images/task (12)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" checked > &nbsp;&nbsp;Fly/Rear Delt</li>
-          <li onclick="openExercisePopup(true, 'Ab Abdominal', 'img/exercise-images/task (13)1.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-              <input type="checkbox" class="advanced-check" > &nbsp;&nbsp;Abdominal</li>
-        </ul>
+    
+    <a class='button is-rounded training__new' href='#new-training'>
+        <span class='icon is-small'>
+            <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
+        </span>
+    </a>
+    
+    <div id='new-training' class='overlay'>
+        <div class='box popup new'>
+            <div class='popup__header'>
+                <a class='close' href='#'>
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
+                         style='top: auto;'>
+                        <path fill-rule='evenodd'
+                              d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <form action=''>
+            
+            </form>
+        </div>
     </div>
+    
+    <img src='../img/logo_full.svg' alt='logo' class='training__logo'>
+</div>

@@ -1,4 +1,4 @@
-<a href='#qr-scanner' class='button--qr'>
+<a href='#qr-scanner' class='home__button--qr'>
     <svg xmlns='http://www.w3.org/2000/svg' style='height: 7vw' fill='none' viewBox='0 0 24 24' stroke='currentColor'
          stroke-width='2'>
         <path stroke-linecap='round' stroke-linejoin='round'
@@ -6,132 +6,123 @@
     </svg>
 </a>
 
-<a class='button is-small is-black button--login' onclick='resetSignup()' href='#signup'>Anmelden</a>
+<a class='button is-small is-black home__button--login' onclick='resetSignup()' href='#signup'>Anmelden</a>
 
 <div id='signup' class='overlay'>
-    <div class='box signup-popup'>
-        <div class='signup-header'>
-            <img src='img/logo.svg' class='signup-logo'>
-            <a class='close' href='#'>
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30' style='top: auto;'>
-                    <path fill-rule='evenodd'
-                          d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
-                </svg>
-            </a>
-        </div>
+    <div class='signup__container'>
+        <img src='../img/logo_full.svg' class='signup__logo' alt='logo'>
         
-        <form id='signup-form' class='signup-content'>
-            <div class='tabs'>
-                <ul>
-                    <li onclick="switchLogin('login')" id='login-tab' class='is-active'><a>Login</a></li>
-                    <li onclick="switchLogin('signup')" id='signup-tab' class=''><a>Registrieren</a></li>
-                </ul>
-            </div>
-            
+        <a class='signup__close' href='#'>
+            <i class='fa-solid fa-xmark fa-2xl'></i>
+        </a>
+        
+        <form id='signup-form' class='signup__form'>
             <div class='field'>
-                <label class='label'>E-Mail-Adresse: </label>
                 <div class='control'>
-                    <input id='email-input' class='input' type='email' placeholder='Ihre E-Mail ...'>
+                    <input id='email-input' class='input signup__field' type='email' placeholder='KSB E-Mail'>
                 </div>
             </div>
             
             <div class='field'>
-                <label class='label'>Passwort: </label>
                 <div class='control'>
-                    <input id='password-input' class='input' type='password' placeholder='Ihr Passwort ...'>
+                    <input id='password-input' class='input signup__field' type='password' placeholder='Passwort'>
                 </div>
             </div>
             
             <div id='dob-field' class='field obj--hidden'>
-                <label class='label'>Geburtsdatum:</label>
                 <div class='control'>
-                    <input id='dob-input' class='input' type='date' placeholder='Ihr Geburtsdatum ...'>
+                    <input id='dob-input' class='input signup__field' type='date' placeholder='Geburtsdatum'>
                 </div>
             </div>
             
-            <div id='sizes-field' class='row obj--hidden'>
-                <div class='field number-input col s4'>
-                    <label class='label'>Gewicht:</label>
-                    <div class='control'>
-                        <input id='weight-input' class='input' type='number'>
+            <div class='field is-horizontal'>
+                <div id='sizes-field' class='field-body obj--hidden'>
+                    <div class='field number-input'>
+                        <div class='control'>
+                            <input id='weight-input' class='input signup__field signup__field--body' type='number'
+                                   placeholder='Gewicht [kg]'>
+                        </div>
+                    </div>
+                    
+                    <div class='field number-input'>
+                        <div class='control'>
+                            <input id='height-input' class='input signup__field signup__field--body' type='number'
+                                   placeholder='Grösse [cm]'>
+                        </div>
                     </div>
                 </div>
-                <label class='label unit-label col s2'>kg</label>
-                
-                <div class='field number-input col s4'>
-                    <label class='label'>Grösse:</label>
-                    <div class='control'>
-                        <input id='height-input' class='input' type='number'>
-                    </div>
-                </div>
-                <label class='label unit-label col s2'>cm</label>
             </div>
             
-            <div style='margin-top: 10px;'>
-                <a class='button is-rounded btn-cancel' href='#' style='font-weight: bold;'>Abbruch</a>
-                <button id='login-btn' type='button' class='button is-rounded btn-save' style='font-weight: bold;'>
-                    Anmelden
-                </button>
-            </div>
+            <button id='login-btn' type='button' class='button is-rounded signup__button'>
+                Anmelden
+            </button>
         </form>
-    
+        
+        <div class='signup__tabs'>
+            <a onclick="switchLogin('login')" id='login-tab' class='is-active'>Anmelden</a>
+            <a onclick="switchLogin('signup')" id='signup-tab' class='obj--hidden'>Registrieren</a>
+        </div>
     
     </div>
 </div>
 
-<div class='home__welcomemsg'>
-    <p style='font-weight: bold'>Hi Manuel,</p>
-    <p>Ready fürs Workout?</p>
-</div>
-
-<div class='home__background'></div>
-
-<div class='home__content'>
-    <img src='../img/stickynote.png' alt='hinweis'>
+<div class='home__container'>
+    <div class='home__welcomemsg'>
+        <p style='font-weight: bold'>Hi Manuel,</p>
+        <p>Ready fürs Workout?</p>
+    </div>
     
-    <div class='card hinweise'>
-        <a href='#vor-training'>
-            <div class='card-image'>
-                <figure class='image is-4by3' style='padding:12vh;'>
-                    <img src='img/training.jpg' class='bild' style='height: auto; width: 100%;'>
-                </figure>
-            </div>
-            <div class='content'>
-                <span class='text-header'>Vor dem Training</span>
-                <div class='pfeil'>
-                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
-                        <path fill-rule='evenodd'
-                              d='M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z'></path>
-                    </svg>
+    <div class='home__background'></div>
+    
+    <div class='home__content'>
+        <img src='../img/stickynote.png' alt='hinweis'>
+        
+        <div class='card hinweise'>
+            <a href='#vor-training'>
+                <div class='card-image'>
+                    <figure class='image is-4by3' style='padding:12vh;'>
+                        <img src='../img/hinweise.jpg' class='bild' style='height: auto; width: 100%;' alt='training'>
+                    </figure>
                 </div>
-            </div>
-        </a>
-    </div>
-    
-    <div class='card hinweise'>
-        <a href='#scan-history'>
-            <div class='card-image'>
-                <figure class='image is-4by3' style='padding:14vh;'>
-                    <img src='img/geraet.jpg' class='bild' style='height: auto; width: 100%;'>
-                </figure>
-            </div>
-            
-            <div class='content'>
-                <span class='text-header'>Hilfe & Kontakt</span>
-                <div class='pfeil'>
-                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
-                        <path fill-rule='evenodd'
-                              d='M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z'></path>
-                    </svg>
+                <div class='content'>
+                    <span class='text-header'>Vor dem Training</span>
+                    <div class='pfeil'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
+                            <path fill-rule='evenodd'
+                                  d='M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z'></path>
+                        </svg>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
+        
+        <div class='card hinweise'>
+            <a href='#scan-history'>
+                <div class='card-image'>
+                    <figure class='image is-4by3' style='padding:14vh;'>
+                        <img src='../img/geraet.jpg' class='bild' style='height: auto; width: 100%;'>
+                    </figure>
+                </div>
+                
+                <div class='content'>
+                    <span class='text-header'>Hilfe & Kontakt</span>
+                    <div class='pfeil'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
+                            <path fill-rule='evenodd'
+                                  d='M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z'></path>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <img src='../img/logo_full.svg' alt='logo' class='logo'>
     </div>
 </div>
 
-<div id='vor-training' class='overlay'>
-    <div class='box signup-popup' style='height: 67vh;'>
-        <div class='signup-header'>
+<div id='vor-training' class='overlay' onclick='closeExercisePopup()'>
+    <div class='box popup' style='height: 67vh;'>
+        <div class='popup__header'>
             <h1 class='text-header'>Vor dem Training</h1>
             <a class='close' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30' style='top: auto;'>
@@ -171,13 +162,13 @@
             </tr>
         </table>
         <div style='height: 3vh; Width: auto;'></div>
-        <img src='img/logo.svg' class='popup-logo'>
+        <img src='../img/logo_full.svg' class='popup__logo'>
     </div>
 </div>
 
-<div id='scan-history' class='overlay'>
-    <div class='box signup-popup' style='height: 55vh;'>
-        <div class='signup-header'>
+<div id='scan-history' class='overlay' onclick='closeExercisePopup()'>
+    <div class='box popup' style='height: 55vh;'>
+        <div class='popup__header'>
             <h1 class='text-header'>Hilfe & Kontakt</h1>
             <a class='close' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30' style='top: auto;'>
@@ -186,7 +177,7 @@
                 </svg>
             </a>
         </div>
-        <img src='img/Kobelt.png' class='bildkobelt'>
+        <img src='../img/MK1.png' class='bildkobelt'>
         
         <table class='hinweise-txt'>
             <tr class='table-text'>
@@ -202,7 +193,7 @@
         
         </table>
         <div style='height: 3vh; Width: auto;'></div>
-        <img src='img/logo.svg' class='popup-logo'>
+        <img src='../img/logo_full.svg' class='popup__logo'>
     </div>
 </div>
 
@@ -224,7 +215,7 @@
         
         <div style='position:absolute; bottom:0; left: 50%; transform: translate(-50%, -50%); width: 80%;'>
             <span class='qr-text'>Bitte halten Sie Ihr Smartphone still</span>
-            <img src='img/logo-white.svg' class='popup-logo' style='width: 60vw; height: auto; bottom: 50px;'>
+            <img src='../img/logo_full.svg' class='popup__logo' style='width: 60vw; height: auto; bottom: 50px;'>
         </div>
     </div>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='300' height='300' class='qr-svg'>

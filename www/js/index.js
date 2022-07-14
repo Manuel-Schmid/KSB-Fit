@@ -406,10 +406,10 @@ jQuery.extend({
 
 function switchToTab(tabName) {
     // reset other colors
-    let icons = document.getElementsByClassName('fa-solid')
+    let icons = document.getElementsByClassName('nav__icon')
     for (let i = 0; i < icons.length; i++) {
-        icons[i].classList.add('fa-regular');
-        icons[i].classList.remove('fa-solid');
+        icons[i].classList.add('fa-xl');
+        icons[i].classList.remove('fa-2xl');
     }
     let selectedTabs = document.getElementsByClassName('nav__text--selected')
     if (selectedTabs.length > 0) {
@@ -421,8 +421,8 @@ function switchToTab(tabName) {
     // set highlightings
     iconID = tabName + "-icon"
     txtID = tabName + "-txt"
-    document.getElementById(iconID).classList.add('fa-solid');
-    document.getElementById(iconID).classList.remove('fa-regular');
+    document.getElementById(iconID).classList.add('fa-2xl');
+    document.getElementById(iconID).classList.remove('fa-xl');
     document.getElementById(txtID).classList.add('nav__text--selected');
 }
 
@@ -480,7 +480,7 @@ function displayExercises(galleryView) {
 function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
     if (switchToTab) goToExercises() // ? todo
     document.getElementById('exercise-title').innerHTML = title;
-    document.getElementById('exercise-img').src = imgUrl;
+    /*document.getElementById('exercise-img').src = imgUrl;*/
     updateMuscleInput(muscleGroups);
     document.getElementById('exercise-preparation').innerHTML = prep;
     document.getElementById('exercise-movement').innerHTML = movement;
@@ -615,11 +615,13 @@ function switchLogin(tab) {
         document.getElementById('dob-field').className = 'field obj--hidden'
         document.getElementById('sizes-field').className = 'row obj--hidden'
         document.getElementById('login-btn').innerHTML = 'Anmelden'
+        document.getElementById('signup-tab').toggleClass('obj--hidden')
     } else if (tab === 'signup') {
         activeTab = 'signup'
         document.getElementById('dob-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
         document.getElementById('login-btn').innerHTML = 'Registrieren'
+        document.getElementById('login-tab').toggleClass('obj--hidden')
     }
 }
 
