@@ -1,4 +1,4 @@
-<img src="https://github.com/Manuel-Schmid/KSB-Fit/blob/main/www/img/logo-white.svg" width="250">
+<img src="https://github.com/Manuel-Schmid/KSB-Fit/blob/main/www/img/logo__full.svg" width="250">
 
 # KSB-Fit
 
