@@ -6,15 +6,18 @@
     </svg>
 </a>
 
-<a class='button is-small is-black home__button--login' onclick='resetSignup()' href='#signup'>Anmelden</a>
+<a id='login-button' class='button is-small is-black home__button--login' onclick='resetSignup()' href='#signup'>
+    Anmelden</a>
 
 <div id='signup' class='overlay'>
     <div class='signup__container'>
         <img src='../img/logo_full.svg' class='signup__logo' alt='logo'>
         
-        <a class='signup__close' href='#'>
+        <a class='signup__close' onclick='closeExercisePopup()'>
             <i class='fa-solid fa-xmark fa-2xl'></i>
         </a>
+        
+        <p id='signup-error' class='signup__error'></p>
         
         <form id='signup-form' class='signup__form'>
             <div class='field'>

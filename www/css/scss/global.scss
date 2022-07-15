@@ -139,12 +139,25 @@ $almostwhite : #fcfcfc;
     color    : $dark;
   }
   
+  &__error {
+    color      : $pink;
+    font-size  : 15px;
+    position   : absolute;
+    transform  : translate(-50%);
+    left       : 50%;
+    top        : 40%;
+    width      : 100%;
+    text-align : center;
+  }
+  
   &__form {
-    top       : 45%;
-    position  : absolute;
+    color     : #e01272;
+    font-size : 15px;
     left      : 50%;
+    position  : absolute;
     transform : translate(-50%);
-    min-width : 75vw;
+    top       : 45%;
+    width     : 75%;
   }
   
   &__field {
@@ -233,7 +246,7 @@ $almostwhite : #fcfcfc;
   &__sort-buttons {
     position : absolute;
     right    : 5vw;
-    top      : 20vw;
+    top      : 21vw;
     
     &--left {
       margin-right : 2vw;
@@ -357,6 +370,80 @@ $almostwhite : #fcfcfc;
 
 .new {
   
+  &__container {
+    border-radius : 10px;
+    height        : 60vh;
+    position      : relative;
+    top           : 50%;
+    width         : 80% !important;
+  }
+  
+  &__title {
+    width : 70vw;
+  }
+}
+
+.default-training {
+  
+  &__container {
+    width            : 100vw;
+    height           : 100vh;
+    background-color : $almostwhite;
+    padding          : 22vw 5vw 5vw;
+    position         : fixed;
+  }
+  
+  &__back {
+    position : absolute;
+    left     : 6vw;
+    color    : $dark;
+  }
+  
+  &__title {
+    font-weight   : bold;
+    font-size     : 28px;
+    position      : relative;
+    left          : 10vw;
+    margin-bottom : 2vh;
+  }
+  
+  &__image {
+    border-radius : 10px;
+    filter        : brightness(50%);
+  }
+  
+  &__text {
+    position : absolute;
+    top      : 20%;
+    left     : 20%;
+    
+    & > span {
+      font-size   : 20px;
+      font-weight : bold;
+      color       : $white;
+    }
+  }
+}
+
+.session {
+  
+  &__container {
+    position : relative;
+    
+  }
+  
+  &__title {
+    font-size  : 25px;
+    position   : relative;
+    transform  : translate(-50%);
+    left       : 50%;
+    text-align : center;
+  }
+  
+  &__new {
+    position : fixed;
+    
+  }
 }
 
 .logo {
@@ -442,13 +529,6 @@ $almostwhite : #fcfcfc;
   position : relative;
   opacity  : 1;
   /* pointer-events: all; */
-}
-
-#training .box {
-  border-radius : 12px;
-  margin        : 17px auto auto;
-  width         : 78vw;
-  height        : 313px;
 }
 
 #checkboxes li {

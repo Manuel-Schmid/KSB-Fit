@@ -109,12 +109,24 @@
   right: 6vw;
   color: #373736;
 }
-.signup__form {
-  top: 45%;
+.signup__error {
+  color: #e01272;
+  font-size: 15px;
   position: absolute;
-  left: 50%;
   transform: translate(-50%);
-  min-width: 75vw;
+  left: 50%;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+}
+.signup__form {
+  color: #e01272;
+  font-size: 15px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 45%;
+  width: 75%;
 }
 .signup__field {
   background-color: #bfdc9ea9;
@@ -193,7 +205,7 @@
 .exercises__sort-buttons {
   position: absolute;
   right: 5vw;
-  top: 20vw;
+  top: 21vw;
 }
 .exercises__sort-buttons--left {
   margin-right: 2vw;
@@ -302,6 +314,65 @@
   position: relative;
 }
 
+.new__container {
+  border-radius: 10px;
+  height: 60vh;
+  position: relative;
+  top: 50%;
+  width: 80% !important;
+}
+.new__title {
+  width: 70vw;
+}
+
+.default-training__container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding: 22vw 5vw 5vw;
+  position: fixed;
+}
+.default-training__back {
+  position: absolute;
+  left: 6vw;
+  color: #373736;
+}
+.default-training__title {
+  font-weight: bold;
+  font-size: 28px;
+  position: relative;
+  left: 10vw;
+  margin-bottom: 2vh;
+}
+.default-training__image {
+  border-radius: 10px;
+  filter: brightness(50%);
+}
+.default-training__text {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+.default-training__text > span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.session__container {
+  position: relative;
+}
+.session__title {
+  font-size: 25px;
+  position: relative;
+  transform: translate(-50%);
+  left: 50%;
+  text-align: center;
+}
+.session__new {
+  position: fixed;
+}
+
 .logo {
   width: 45vw;
   left: 50%;
@@ -384,13 +455,6 @@
   position: relative;
   opacity: 1;
   /* pointer-events: all; */
-}
-
-#training .box {
-  border-radius: 12px;
-  margin: 17px auto auto;
-  width: 78vw;
-  height: 313px;
 }
 
 #checkboxes li {
