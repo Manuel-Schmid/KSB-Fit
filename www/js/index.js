@@ -164,12 +164,9 @@ $(document).ready(function () {
                                 success: function (userID) {
                                     console.log(userID);
                                     if (userID == '0') {
-                                        alert('Warning: login incorrect')
-                                        // ...
+                                        document.getElementById('signup-error').innerHTML = "falsches Passwort";
                                     } else if (userID != '') {
-                                        document.getElementById('userID').innerHTML = userID;
-                                        alert('Success, userID: ' + userID)
-                                        // ...
+                                        login()
                                     } else {
                                         alert('An error occurred');
                                         // ...
@@ -177,14 +174,12 @@ $(document).ready(function () {
                                 }
                             })
                         } else {
-                            alert('There is no user registered with this email');
-                            // ...
+                            document.getElementById('signup-error').innerHTML = "Diese Email ist noch nicht registriert";
                         }
                     }
                 })
             } else {
-                alert("Füllen Sie bitte alle Felder aus.");
-                // ...
+                document.getElementById('signup-error').innerHTML = "Füllen Sie bitte alle Felder aus";
             }
 
         } else { // signup/registration
@@ -197,8 +192,8 @@ $(document).ready(function () {
             if ($.trim(email).length > 0 & $.trim(password).length > 0 & $.trim(weight).length > 0 & $.trim(height).length > 0 & $.trim(dob).length > 0) {
 
                 if (!isKSBeMail(email)) { // check if KSB-eMail
-                    alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
-                    // ...
+                    document.getElementById('signup-error').innerHTML = "die Email muss eine KSB Adresse haben";
+                    // alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
                 } else {
                     // check if user already exists
                     $.ajax({
@@ -208,8 +203,8 @@ $(document).ready(function () {
                         cache: false,
                         success: function (salt) {
                             if (salt !== 'null') { // user with this email already exists
-                                alert('There is already an account using this email')
-                                // todo ... reset password?
+                                document.getElementById('signup-error').innerHTML = "Diese Email hat schon einen" +
+                                    " Account";
 
                             } else { // no user with this email exists -> continue registration
                                 let salt = generateSalt();
@@ -239,8 +234,7 @@ $(document).ready(function () {
                     })
                 }
             } else {
-                alert("Füllen Sie bitte alle Felder aus.");
-                // ...
+                document.getElementById('signup-error').innerHTML = "Füllen Sie bitte alle Felder aus.";
             }
         }
     });
@@ -346,6 +340,12 @@ $(document).ready(function () {
     );
 
 }); // (document).ready
+
+function login() {
+    document.getElementById('userID').innerHTML = userID;
+    $('#signup__close').trigger('click'); // closes login popup
+    document.getElementById('login-button').innerHTML = "Logout"; // todo ?
+}
 
 function isKSBeMail(email) {
     return email.includes("@ksb-sg.ch");

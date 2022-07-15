@@ -13,7 +13,7 @@
     <div class='signup__container'>
         <img src='../img/logo_full.svg' class='signup__logo' alt='logo'>
         
-        <a class='signup__close' onclick='closeExercisePopup()'>
+        <a id="signup__close" class='signup__close home-popup-close'>
             <i class='fa-solid fa-xmark fa-2xl'></i>
         </a>
         
@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<div id='vor-training' class='overlay' onclick='closeExercisePopup()'>
+<div id='vor-training' class='overlay home-popup-close'>
     <div class='box popup' style='height: 67vh;'>
         <div class='popup__header'>
             <h1 class='text-header'>Vor dem Training</h1>
@@ -169,7 +169,7 @@
     </div>
 </div>
 
-<div id='scan-history' class='overlay' onclick='closeExercisePopup()'>
+<div id='scan-history' class='overlay home-popup-close'>
     <div class='box popup' style='height: 55vh;'>
         <div class='popup__header'>
             <h1 class='text-header'>Hilfe & Kontakt</h1>
@@ -227,3 +227,15 @@
               style='fill: #e01272;'></path>
     </svg>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".home-popup-close").click(function () {
+            // document.getElementById('exercises__container').classList.remove('noscroll');
+            document.getElementById('signup-error').innerHTML = "";
+            window.location.href = '#'
+            // window.location.href = "#exercise-popup-overlay";
+        });
+
+    });
+</script>
