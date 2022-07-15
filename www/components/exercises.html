@@ -1,4 +1,4 @@
-<div class='exercises__container'>
+<div id="exercises__container" class='exercises__container'>
     <h1 class='exercises__heading'>Übungen</h1>
     
     <div class='exercises__sort-buttons'>
@@ -15,16 +15,16 @@
 
 
 <!-- basic exercise structure: content gets overwritten if popup is called -->
-<div id='exercise-popup-overlay' class='overlay' onclick='closeExercisePopup()'>
+<div id='exercise-popup-overlay' class='overlay'>
     <div class='swiper'>
         <!-- Additional required wrapper -->
         <div class='swiper-wrapper'>
             
-            <!--<div class='swiper-slide'>
+            <div class='swiper-slide'>
                 <div class='box popup exercise-popup'>
                     <div class='popup__header'>
                         <h1 id='exercise-title' class='text-header'>Exercise title</h1>
-                        <a class='close exercise-popup-close' onclick='closeExercisePopup()'>
+                        <a class='close exercise-popup-close'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                  style='top: auto;'>
                                 <path fill-rule='evenodd'
@@ -34,19 +34,19 @@
                     </div>
                     <div class='exercise-img-container'>
                         <img id='exercise-img' class='exercise-img' src='img/exercise-images/task (5)1.jpeg'>
-                        &lt;!&ndash; todo &ndash;&gt;
+                        <!-- &lt;!&ndash; todo &ndash;&gt; -->
                     </div>
                     
                     <div style='height: 27vh; width: auto; display: inline-block;'></div>
-                    <div class='swiper-pagination'></div>
+                    <div class='swiper-pagination exercises__pagination'></div>
                 </div>
-            </div>-->
+            </div>
             
             <div class='swiper-slide'>
                 <div class='box popup exercise-popup'>
                     <div class='popup__header'>
-                        <h1 id='exercise-title' class='text-header'>Exercise title</h1>
-                        <a class='close exercise-popup-close' onclick='closeExercisePopup()'>
+                        <h1 class='text-header'>Muskelgruppen</h1>
+                        <a class='close exercise-popup-close'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                  style='top: auto;'>
                                 <path fill-rule='evenodd'
@@ -165,7 +165,7 @@
                 <div class='box popup exercise-popup'>
                     <div class='popup__header'>
                         <h1 class='text-header'>Beschreibung</h1>
-                        <a class='close exercise-popup-close' onclick='closeExercisePopup()'>
+                        <a class='close exercise-popup-close'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                  style='top: auto;'>
                                 <path fill-rule='evenodd'
@@ -205,7 +205,7 @@
                 <div class='box popup exercise-popup'>
                     <div class='popup__header'>
                         <h1 class='text-header'>Tutorial</h1>
-                        <a class='close exercise-popup-close' onclick='closeExercisePopup()'>
+                        <a class='close exercise-popup-close'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                  style='top: auto;'>
                                 <path fill-rule='evenodd'
@@ -237,17 +237,27 @@
 </div>
 
 <script>
-    const swiper = new Swiper('.swiper', {
-        // Optional parameters
-        direction: 'horizontal',
-        // loop: true,
-        effect: 'flip',
-        flipEffect: {
-            slideShadows: false,
-        },
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-        },
+    $(document).ready(function() {
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            // loop: true,
+            effect: 'flip',
+            flipEffect: {
+                slideShadows: false,
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        $(".exercise-popup-close").click(function() {
+            // document.getElementById('exercises__container').classList.remove('noscroll');
+            swiper.setProgress(0,0)
+            window.location.href = '#'
+        });
+
     });
+
 </script>
