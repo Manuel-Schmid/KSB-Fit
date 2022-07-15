@@ -123,10 +123,7 @@ let activeTab = 'login';
 // }, false);
 
 
-
 // --------------------------------------------------------------------------
-
-$(document).ready(function() {
 
 // $(document).ready(function(){
 //     if (true) { // wenn internetverbindung !!!
@@ -143,197 +140,197 @@ $(document).ready(function() {
 // });
 $(document).ready(function () {
 // register & login
-$(document).on('click', '#login-btn', function () {
+    $(document).on('click', '#login-btn', function () {
 
-    // login
-    if (activeTab === 'login') {
-        let email = $("#email-input").val();
-        let password = $("#password-input").val();
+        // login
+        if (activeTab === 'login') {
+            let email = $("#email-input").val();
+            let password = $("#password-input").val();
 
-        if ($.trim(email).length > 0 & $.trim(password).length > 0) {
-            $.ajax({
-                type: "POST",  //Request type
-                url: properties.requestUrl,
-                data: {request: 'getUserSalt', email: email},
-                cache: false,
-                success: function (salt) {
-                    if (salt !== 'null') { // user exists and has salt stored in db
-                        let hashedPW = getHashedPassword(password, salt)
-                        $.ajax({
-                            type: "POST",  //Request type
-                            url: properties.requestUrl,
-                            data: {request: 'login', email: email, password: hashedPW},
-                            cache: false,
-                            success: function (userID) {
-                                console.log(userID);
-                                if (userID == '0') {
-                                    alert('Warning: login incorrect')
-                                    // ...
-                                } else if (userID != '') {
-                                    document.getElementById('userID').innerHTML = userID;
-                                    alert('Success, userID: ' + userID)
-                                    // ... 
-                                } else {
-                                    alert('An error occurred');
-                                    // ...
+            if ($.trim(email).length > 0 & $.trim(password).length > 0) {
+                $.ajax({
+                    type: "POST",  //Request type
+                    url: properties.requestUrl,
+                    data: {request: 'getUserSalt', email: email},
+                    cache: false,
+                    success: function (salt) {
+                        if (salt !== 'null') { // user exists and has salt stored in db
+                            let hashedPW = getHashedPassword(password, salt)
+                            $.ajax({
+                                type: "POST",  //Request type
+                                url: properties.requestUrl,
+                                data: {request: 'login', email: email, password: hashedPW},
+                                cache: false,
+                                success: function (userID) {
+                                    console.log(userID);
+                                    if (userID == '0') {
+                                        alert('Warning: login incorrect')
+                                        // ...
+                                    } else if (userID != '') {
+                                        document.getElementById('userID').innerHTML = userID;
+                                        alert('Success, userID: ' + userID)
+                                        // ...
+                                    } else {
+                                        alert('An error occurred');
+                                        // ...
+                                    }
                                 }
-                            }
-                        })
-                    } else {
-                        alert('There is no user registered with this email');
-                        // ...
+                            })
+                        } else {
+                            alert('There is no user registered with this email');
+                            // ...
+                        }
                     }
+                })
+            } else {
+                alert("Füllen Sie bitte alle Felder aus.");
+                // ...
+            }
+
+        } else { // signup/registration
+            let email = $("#email-input").val();
+            let password = $("#password-input").val();
+            let weight = $("#weight-input").val();
+            let height = $("#height-input").val();
+            let dob = $("#dob-input").val();
+
+            if ($.trim(email).length > 0 & $.trim(password).length > 0 & $.trim(weight).length > 0 & $.trim(height).length > 0 & $.trim(dob).length > 0) {
+
+                if (!isKSBeMail(email)) { // check if KSB-eMail
+                    alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
+                    // ...
+                } else {
+                    // check if user already exists
+                    $.ajax({
+                        type: "POST",  // Request type
+                        url: properties.requestUrl,
+                        data: {request: 'getUserSalt', email: email},
+                        cache: false,
+                        success: function (salt) {
+                            if (salt !== 'null') { // user with this email already exists
+                                alert('There is already an account using this email')
+                                // todo ... reset password?
+
+                            } else { // no user with this email exists -> continue registration
+                                let salt = generateSalt();
+                                let hashedPW = getHashedPassword(password, salt)
+
+                                $.ajax({
+                                    type: "POST",  //Request type
+                                    url: properties.requestUrl,
+                                    data: {
+                                        request: 'registration',
+                                        email: email,
+                                        password: hashedPW,
+                                        salt: salt,
+                                        weight: weight,
+                                        height: height,
+                                        dob: dob
+                                    }, // parameter für POST ($_POST['xxx'])
+                                    cache: false,
+                                    success: function (data) {
+                                        alert('successful registration')
+                                        // todo ... (close popup)
+                                        // send eMail
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            } else {
+                alert("Füllen Sie bitte alle Felder aus.");
+                // ...
+            }
+        }
+    });
+
+    $(document).on('click', '#reset-password-btn-id', function () { // reset-password-btn-id  is a placeholder
+        let email = 'manuel.schmid@ksb-sg.ch' // make dynamic
+
+        console.log('test');
+        $.ajax({
+            type: "POST",  // Request type
+            url: properties.requestUrl,
+            data: {request: 'resetPassword', email: email},
+            cache: false,
+            success: function (successful) {
+                if (successful == 1) {
+                    alert("Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.")
+                }
+            }
+        })
+    });
+
+    $(document).on('click', '#insert-session-btn-id', function () { // insert-session-btn-id  *is a placeholder*
+        var sessionExercises = [];
+        // make dynamic
+        for (var i = 1; i <= 10; i++) {
+            sessionExercises.push({
+                exerciseID: i,
+                weight: (i + 7 + (i * 0.5)),
+                reps: ((i * 2) + 15)
+            });
+        }
+
+        if (sessionExercises.length > 0) {
+            let workoutID = 1 // make dynamic
+
+            $.ajax({
+                type: "POST",  // Request type
+                url: properties.requestUrl,
+                data: {request: 'insertSession', workoutID: workoutID, sessionExercises: sessionExercises},
+                cache: false,
+                success: function (data) {
+                    // console.log(data)
+                    // ...
+                }
+            })
+        }
+    });
+
+// save workout plan -> already new 
+    $(document).on('click', '#save-workout-btn-id', function () { // save-workout-btn-id  *is a placeholder*
+        let exercises = [21, 25, 29] // [1,5,7,9] (id's)
+        let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
+        let notifications = 1 // $("#cbNotifications").checked ? 1 : 0;
+        let title = 'My Workout X.0'
+        let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
+
+        if (weekdays.length > 0 & exercises.length > 0) {
+            $.ajax({
+                type: "POST",  // Request type
+                url: properties.requestUrl,
+                data: {
+                    request: 'insertWorkout',
+                    title: title,
+                    userID: userID,
+                    notifications: notifications,
+                    weekdays: weekdays,
+                    exercises: exercises
+                },
+                cache: false,
+                success: function (data) {
+                    // console.log(data)
+                    // ...
                 }
             })
         } else {
             alert("Füllen Sie bitte alle Felder aus.");
             // ...
         }
-
-    } else { // signup/registration
-        let email = $("#email-input").val();
-        let password = $("#password-input").val();
-        let weight = $("#weight-input").val();
-        let height = $("#height-input").val();
-        let dob = $("#dob-input").val();
-
-        if ($.trim(email).length > 0 & $.trim(password).length > 0 & $.trim(weight).length > 0 & $.trim(height).length > 0 & $.trim(dob).length > 0) {
-
-            if (!isKSBeMail(email)) { // check if KSB-eMail
-                alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
-                // ...
-            } else {
-                // check if user already exists
-                $.ajax({
-                    type: "POST",  // Request type
-                    url: properties.requestUrl,
-                    data: {request: 'getUserSalt', email: email},
-                    cache: false,
-                    success: function (salt) {
-                        if (salt !== 'null') { // user with this email already exists
-                            alert('There is already an account using this email')
-                            // todo ... reset password?
-
-                        } else { // no user with this email exists -> continue registration
-                            let salt = generateSalt();
-                            let hashedPW = getHashedPassword(password, salt)
-
-                            $.ajax({
-                                type: "POST",  //Request type
-                                url: properties.requestUrl,
-                                data: {
-                                    request: 'registration',
-                                    email: email,
-                                    password: hashedPW,
-                                    salt: salt,
-                                    weight: weight,
-                                    height: height,
-                                    dob: dob
-                                }, // parameter für POST ($_POST['xxx'])
-                                cache: false,
-                                success: function (data) {
-                                    alert('successful registration')
-                                    // todo ... (close popup)
-                                    // send eMail
-                                }
-                            })
-                        }
-                    }
-                })
-            }
-        } else {
-            alert("Füllen Sie bitte alle Felder aus.");
-            // ...
-        }
-    }
-});
-
-$(document).on('click', '#reset-password-btn-id', function () { // reset-password-btn-id  is a placeholder
-    let email = 'manuel.schmid@ksb-sg.ch' // make dynamic
-
-    console.log('test');
-    $.ajax({
-        type: "POST",  // Request type
-        url: properties.requestUrl,
-        data: {request: 'resetPassword', email: email},
-        cache: false,
-        success: function (successful) {
-            if (successful == 1) {
-                alert("Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.")
-            }
-        }
-    })
-});
-
-$(document).on('click', '#insert-session-btn-id', function () { // insert-session-btn-id  *is a placeholder*
-    var sessionExercises = [];
-    // make dynamic
-    for (var i = 1; i <= 10; i++) {
-        sessionExercises.push({
-            exerciseID: i,
-            weight: (i + 7 + (i * 0.5)),
-            reps: ((i * 2) + 15)
-        });
-    }
-
-    if (sessionExercises.length > 0) {
-        let workoutID = 1 // make dynamic
-
-        $.ajax({
-            type: "POST",  // Request type
-            url: properties.requestUrl,
-            data: {request: 'insertSession', workoutID: workoutID, sessionExercises: sessionExercises},
-            cache: false,
-            success: function (data) {
-                // console.log(data)
-                // ...
-            }
-        })
-    }
-});
-
-// save workout plan -> already new 
-$(document).on('click', '#save-workout-btn-id', function () { // save-workout-btn-id  *is a placeholder*
-    let exercises = [21, 25, 29] // [1,5,7,9] (id's)
-    let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
-    let notifications = 1 // $("#cbNotifications").checked ? 1 : 0; 
-    let title = 'My Workout X.0'
-    let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
-
-    if (weekdays.length > 0 & exercises.length > 0) {
-        $.ajax({
-            type: "POST",  // Request type
-            url: properties.requestUrl,
-            data: {
-                request: 'insertWorkout',
-                title: title,
-                userID: userID,
-                notifications: notifications,
-                weekdays: weekdays,
-                exercises: exercises
-            },
-            cache: false,
-            success: function (data) {
-                // console.log(data)
-                // ...
-            }
-        })
-    } else {
-        alert("Füllen Sie bitte alle Felder aus.");
-        // ...
-    }
-});
-
-(function($) {
-    $(function() {
-        "use strict";
-        document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
-        if (window.cordova.platformId === 'browser') {
-            globalvarOS = 'WINWOWS'; // <- ?? xD
-        } else {
-            globalvarOS = 'ANDROID';
-        }
     });
+
+    (function ($) {
+        $(function () {
+            "use strict";
+            document.addEventListener('deviceready', $.onDeviceReady.bind(this), false);
+            if (window.cordova.platformId === 'browser') {
+                globalvarOS = 'WINWOWS'; // <- ?? xD
+            } else {
+                globalvarOS = 'ANDROID';
+            }
+        });
 
     })(jQuery);
     jQuery.extend({
@@ -383,7 +380,7 @@ function getHash(string) { // new
 function generateSalt() {
     return [...Array(10)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 }
- 
+
 function calcBMI(heightInCm, weight) {
     let bmi = ((weight) / ((heightInCm * heightInCm) / 10000))
     return Math.round(bmi * 10) / 10
@@ -447,7 +444,7 @@ function displayExercises(galleryView) {
                         '</div>' +
                         '<div class="exercise-list-img-container">' +
                         '<img class="exercises-list-img" src="' + exercise['image'] + '" alt="Uebung Bild">' +
-                        '</div>'+
+                        '</div>' +
                         '</div>';
                 } else {
                     exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +

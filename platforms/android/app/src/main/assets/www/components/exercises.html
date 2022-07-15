@@ -1,4 +1,4 @@
-<div id="exercises__container" class='exercises__container'>
+<div id='exercises__container' class='exercises__container'>
     <h1 class='exercises__heading'>Übungen</h1>
     
     <div class='exercises__sort-buttons'>
@@ -237,7 +237,7 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         const swiper = new Swiper('.swiper', {
             // Optional parameters
             direction: 'horizontal',
@@ -252,10 +252,11 @@
             },
         });
 
-        $(".exercise-popup-close").click(function() {
+        $(".exercise-popup-close").click(function () {
             // document.getElementById('exercises__container').classList.remove('noscroll');
-            swiper.setProgress(0,0)
+            swiper.setProgress(0, 0)
             window.location.href = '#'
+            window.location.href = "#exercise-popup-overlay";
         });
 
     });
