@@ -35,8 +35,10 @@ let scrollPosition = 0;
 
 $(document).ready(function () {
     
-// register & login
+// both for register & login
     $(document).on('click', '#login-btn', function () {
+        document.getElementById('signup-error').innerHTML = "";
+        document.getElementById('pw-reset__info').innerHTML = "";
 
         // login
         if (activeTab === 'login') {
@@ -60,9 +62,12 @@ $(document).ready(function () {
                                 success: function (userID) {
                                     console.log(userID);
                                     if (userID == '0') {
-                                        document.getElementById('signup-error').innerHTML = "falsches Passwort";
+                                        document.getElementById('signup-error').innerHTML = "Falsches Passwort";
+                                        // if (isKSBeMail(email)) { // uncomment this
+                                            document.getElementById('pw-reset__info').innerHTML = `Passwort für '<span id="pw-reset__email">` + email + `</span>' zurücksetzen?`;
+                                        // }
                                     } else if (userID != '') {
-                                        login()
+                                        login(userID)
                                     } else {
                                         alert('An error occurred');
                                         // ...
@@ -78,7 +83,7 @@ $(document).ready(function () {
                 document.getElementById('signup-error').innerHTML = "Füllen Sie bitte alle Felder aus";
             }
 
-        } else { // signup/registration
+        } else { // registration (signup)
             let email = $("#email-input").val();
             let password = $("#password-input").val();
             let weight = $("#weight-input").val();
@@ -87,9 +92,8 @@ $(document).ready(function () {
 
             if ($.trim(email).length > 0 & $.trim(password).length > 0 & $.trim(weight).length > 0 & $.trim(height).length > 0 & $.trim(dob).length > 0) {
 
-                if (!isKSBeMail(email)) { // check if KSB-eMail
-                    document.getElementById('signup-error').innerHTML = "die Email muss eine KSB Adresse haben";
-                    // alert('Eine KSB-E-Mail Adresse (Endung: @ksb-sg.ch) wird für die Registration benötigt');
+                if (!true) { // !isKSBeMail(email) -> check if KSB-eMail <- TODO
+                    document.getElementById('signup-error').innerHTML = "Eine KSB E-Mail-Adresse (Endung '@ksb-sg.ch') wird für die Registration benötigt";
                 } else {
                     // check if user already exists
                     $.ajax({
@@ -135,10 +139,12 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '#reset-password-btn-id', function () { // reset-password-btn-id  is a placeholder
-        let email = 'manuel.schmid@ksb-sg.ch' // make dynamic
+    $(document).on('click', '#pw-reset__info', function () {
+        let email = document.getElementById('pw-reset__email').innerHTML
 
-        console.log('test');
+        document.getElementById('signup-error').innerHTML = "";
+        document.getElementById('pw-reset__info').innerHTML = "";
+
         $.ajax({
             type: "POST",  // Request type
             url: properties.requestUrl,
@@ -146,7 +152,7 @@ $(document).ready(function () {
             cache: false,
             success: function (successful) {
                 if (successful == 1) {
-                    alert("Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.")
+                    document.getElementById('pw-reset__info').innerHTML = "Eine E-Mail mit Anweisungen zur Passwortzurücksetzung wurde an '" + email + "' gesendet.";
                 }
             }
         })
@@ -237,7 +243,7 @@ $(document).ready(function () {
 
 }); // (document).ready
 
-function login() {
+function login(userID) {
     document.getElementById('userID').innerHTML = userID;
     $('#signup__close').trigger('click'); // closes login popup
     document.getElementById('login-button').innerHTML = "Logout"; // todo ?
@@ -488,6 +494,7 @@ function switchLogin(tab) {
     document.getElementById('login-tab').className = document.getElementById('signup-tab').className
     document.getElementById('signup-tab').className = loginClass
     document.getElementById('signup-error').innerHTML = "";
+    document.getElementById('pw-reset__info').innerHTML = "";
     // clear form
     document.getElementById('signup-form').reset()
     if (tab === 'login') {
@@ -495,14 +502,15 @@ function switchLogin(tab) {
         document.getElementById('dob-field').className = 'field obj--hidden'
         document.getElementById('sizes-field').className = 'row obj--hidden'
         document.getElementById('login-btn').innerHTML = 'Anmelden'
-        document.getElementById('signup-tab').toggleClass('obj--hidden')
+        document.getElementById('signup-tab').classList.toggle('is-active')
     } else if (tab === 'signup') {
         activeTab = 'signup'
         document.getElementById('dob-field').className = 'field'
         document.getElementById('sizes-field').className = 'row'
         document.getElementById('login-btn').innerHTML = 'Registrieren'
-        document.getElementById('login-tab').toggleClass('obj--hidden')
+        document.getElementById('login-tab').classList.toggle('is-active')
     }
+    console.log(activeTab);
 }
 
 // left: 37, up: 38, right: 39, down: 40,

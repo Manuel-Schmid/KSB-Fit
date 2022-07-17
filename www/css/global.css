@@ -116,8 +116,19 @@
   transform: translate(-50%);
   left: 50%;
   top: 40%;
-  width: 100%;
+  width: 80%;
   text-align: center;
+}
+.pw-reset__info {
+  color: #7F7F7D;
+  font-size: 15px;
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  top: 70%;
+  width: 80%;
+  text-align: center;
+  text-decoration: underline;
 }
 .signup__form {
   color: #e01272;
@@ -481,10 +492,6 @@
 .overlay:target {
   visibility: visible;
   opacity: 1;
-}
-
-.noscroll {
-  overflow: hidden;
 }
 
 .exercise-popup-close {
