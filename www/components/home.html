@@ -81,7 +81,7 @@
         <img src='../img/stickynote.png' alt='hinweis'>
         
         <div class='card hinweise'>
-            <a href='#vor-training'>
+            <a href='#vor-training' class="triggerHomePopup">
                 <div class='card-image'>
                     <figure class='image is-4by3' style='padding:12vh;'>
                         <img src='../img/hinweise.jpg' class='bild' style='height: auto; width: 100%;' alt='training'>
@@ -100,7 +100,7 @@
         </div>
         
         <div class='card hinweise'>
-            <a href='#scan-history'>
+            <a href='#scan-history' class="triggerHomePopup">
                 <div class='card-image'>
                     <figure class='image is-4by3' style='padding:14vh;'>
                         <img src='../img/geraet.jpg' class='bild' style='height: auto; width: 100%;'>
@@ -127,12 +127,12 @@
     <div class='box popup' style='height: 67vh;'>
         <div class='popup__header'>
             <h1 class='text-header'>Vor dem Training</h1>
-            <a class='close' href='#'>
+            <div class='close'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30' style='top: auto;'>
                     <path fill-rule='evenodd'
                           d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
                 </svg>
-            </a>
+            </div>
         </div>
         <table class='hinweise-txt'>
             <tr class='table-text'>
@@ -173,12 +173,12 @@
     <div class='box popup' style='height: 55vh;'>
         <div class='popup__header'>
             <h1 class='text-header'>Hilfe & Kontakt</h1>
-            <a class='close' href='#'>
+            <div class='close'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30' style='top: auto;'>
                     <path fill-rule='evenodd'
                           d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
                 </svg>
-            </a>
+            </div>
         </div>
         <img src='../img/MK1.png' class='bildkobelt'>
         
@@ -206,14 +206,14 @@
 <div id='qr-scanner' class='overlay qr-background'>
     <div class='qr-card'>
         <div>
-            <a class='close' href='#'>
+            <div class='close'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='50' height='50'
                      style='top: auto; position: absolute; right:0px; margin-right: 5vw;'>
                     <path fill-rule='evenodd'
                           d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'
                           style='fill: #e01272;'></path>
                 </svg>
-            </a>
+            </div>
         </div>
         
         <div style='position:absolute; bottom:0; left: 50%; transform: translate(-50%, -50%); width: 80%;'>
@@ -230,12 +230,17 @@
 
 <script>
     $(document).ready(function () {
+        $(".triggerHomePopup").click(function () {
+            disableScroll();
+            scrollPosition = window.pageYOffset;
+        });
+
         $(".home-popup-close").click(function () {
             // document.getElementById('exercises__container').classList.remove('noscroll');
             document.getElementById('signup-error').innerHTML = "";
             window.location.href = '#'
-            // window.location.href = "#exercise-popup-overlay";
+            window.scrollTo(0, scrollPosition);
+            enableScroll();
         });
-
     });
 </script>

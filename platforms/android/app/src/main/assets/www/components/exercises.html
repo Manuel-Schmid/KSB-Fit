@@ -256,10 +256,10 @@
         if (swiper.length > 1) swiper = swiper[0];
 
         $(".exercise-popup-close").click(function () {
-            // document.getElementById('exercises__container').classList.remove('noscroll');
             swiper.setProgress(0, 0)
             window.location.href = '#'
-            // window.location.href = "#exercise-popup-overlay";
+            window.scrollTo(0, scrollPosition);
+            enableScroll();
         });
 
     });

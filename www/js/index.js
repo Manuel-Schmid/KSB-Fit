@@ -7,6 +7,7 @@
 let globalvarOS = "";
 let emailHash = '';
 let activeTab = 'login';
+let scrollPosition = 0;
 
 
 // document.addEventListener('deviceready', function () {
@@ -29,6 +30,9 @@ let activeTab = 'login';
 //         })
 //     }
 // });
+
+// *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
+
 $(document).ready(function () {
     
 // register & login
@@ -279,6 +283,8 @@ function calcBMI(heightInCm, weight) {
 }
 
 function switchToTab(tabName) {
+    // reset scroll position
+    window.scrollTo(0, 0);
     // reset other colors
     let icons = document.getElementsByClassName('nav__icon')
     for (let i = 0; i < icons.length; i++) {
@@ -362,7 +368,8 @@ function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGro
     document.getElementById('exercise-movement').innerHTML = movement;
     document.getElementById('exercise-video').href = videoUrl;
 
-    // document.getElementById('exercises__container').classList.add('noscroll');
+    disableScroll();
+    scrollPosition = window.pageYOffset;
 
     window.location.href = "#exercise-popup-overlay";
 }
@@ -496,6 +503,46 @@ function switchLogin(tab) {
         document.getElementById('login-btn').innerHTML = 'Registrieren'
         document.getElementById('login-tab').toggleClass('obj--hidden')
     }
+}
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {32: 1, 37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener("scrolling", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; } 
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+function disableScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+function enableScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
 // QR-Scanner
