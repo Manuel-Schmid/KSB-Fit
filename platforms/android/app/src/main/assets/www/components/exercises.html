@@ -15,7 +15,7 @@
 
 
 <!-- basic exercise structure: content gets overwritten if popup is called -->
-<div id='exercise-popup-overlay' class='overlay'>
+<div id='exercise-popup-overlay' class='overlay overlay-close'>
     <div class='swiper'>
         <!-- Additional required wrapper -->
         <div class='swiper-wrapper'>
@@ -238,7 +238,7 @@
 
 <script>
     $(document).ready(function () {
-        
+
         let swiper = new Swiper('.swiper', {
             // Optional parameters
             direction: 'horizontal',
@@ -262,6 +262,12 @@
             enableScroll();
         });
 
+        $(".overlay-close").click(function () {
+            swiper.setProgress(0, 0)
+            window.location.href = '#'
+            window.scrollTo(0, scrollPosition);
+            enableScroll();
+        });
     });
 
 </script>

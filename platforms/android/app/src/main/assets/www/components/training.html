@@ -6,9 +6,9 @@
             <div class='content training__content'>
                 <img src='../img/training.jpg' alt='bild' class='training__image'>
                 
-                <span class='text-header'>KSB BASIC</span>
+                <span class='training__name'>KSB BASIC</span>
                 
-                <i class='fa-solid fa-chevron-right fa-sm'></i>
+                <i class='fa-solid fa-chevron-right fa-sm training__chevron'></i>
             </div>
         </div>
     </a>
@@ -35,16 +35,21 @@
                 <span>Mittwoch, 20.07.</span>
             </div>
             
+            <a class='button is-rounded training__new' href='#new-training'>
+                <span class='icon is-small'>
+                    <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
+                </span>
+            </a>
+            
             <div class='session__container'>
                 <h2 class='session__title'>11.07.2022</h2>
                 <ul>
-                    <li>Chest press; 10</li>
-                    <li>Leg; 10</li>
+                    <li>Chest press: 10</li>
+                    <li>Leg: 10</li>
                 </ul>
             </div>
             
-            <div class='session__new'>
-            </div>
+            <button class='button is-text default-training__delete'>Training löschen</button>
         </div>
     </div>
     
@@ -54,43 +59,124 @@
         </span>
     </a>
     
-    <div id='new-training' class='overlay'>
-        <div class='swiper'>
+    <div id='new-training' class='overlay overflow--hidden'>
+        <div class='swiper-training'>
             <div class='swiper-wrapper'>
-                <form action=''>
-                    <div class='swiper-slide'>
-                        <div class='box popup new__container'>
-                            <div class='popup__header'>
-                                <a class='close' href='#'>
-                                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
-                                         style='top: auto;'>
-                                        <path fill-rule='evenodd'
-                                              d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
-                                    </svg>
-                                </a>
-                            </div>
+                <div class='swiper-slide'>
+                    <div class='box popup new__container'>
+                        <div class='popup__header'>
+                            <a class='close' href='#'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
+                                     style='top: auto;'>
+                                    <path fill-rule='evenodd'
+                                          d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
+                                </svg>
+                            </a>
                             
-                            <input id='newexercise-title' class='input new__title' type='text'
+                            <h1 class='text-header'>Übungen auswählen:</h1>
+                            
+                            <div class='grid'>
+                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
+                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
+                                <img class='grid__item' src='../img/stickynote.png'/>
+                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
+                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
+                                <img class='grid__item' src='../img/geraet.jpg'/>
+                                
+                                <script>
+                                    /*check documentation --> https://jcuenod.github.io/imgCheckbox/*/
+                                    $('.grid__item').imgCheckbox();
+                                </script>
+                            </div>
+                        </div>
+                        
+                        <button class='button is-text swiper__next'>Bestätigen</button>
+                    </div>
+                </div>
+                
+                <div class='swiper-slide'>
+                    <div class='box popup new__container'>
+                        <div class='popup__header'>
+                            <a class='close' href='#'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
+                                     style='top: auto;'>
+                                    <path fill-rule='evenodd'
+                                          d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path>
+                                </svg>
+                            </a>
+                            
+                            <input id='' class='input new__title' type='text'
                                    placeholder='Neuer Trainingsplan'>
                         </div>
+                        
+                        <p style='font-weight: bold;'>Übungen:</p>
+                        <div class='exerciselist'>
+                            <ul>
+                                <li>+ Übung A</li>
+                                <li>+ Übung B</li>
+                                <li>+ Übung C</li>
+                                <li>+ Übung A</li>
+                                <li>+ Übung B</li>
+                                <li>+ Übung C</li>
+                                <li>+ Übung A</li>
+                                <li>+ Übung B</li>
+                                <li>+ Übung C</li>
+                                <li>+ Übung A</li>
+                                <li>+ Übung B</li>
+                                <li>+ Übung C</li>
+                            </ul>
+                        </div>
+                        
+                        <div class='weekDays-selector'>
+                            <input type='checkbox' id='weekday-mon' class='weekday'/>
+                            <label for='weekday-mon'>M</label>
+                            <input type='checkbox' id='weekday-tue' class='weekday'/>
+                            <label for='weekday-tue'>T</label>
+                            <input type='checkbox' id='weekday-wed' class='weekday'/>
+                            <label for='weekday-wed'>W</label>
+                            <input type='checkbox' id='weekday-thu' class='weekday'/>
+                            <label for='weekday-thu'>T</label>
+                            <input type='checkbox' id='weekday-fri' class='weekday'/>
+                            <label for='weekday-fri'>F</label>
+                            <input type='checkbox' id='weekday-sat' class='weekday'/>
+                            <label for='weekday-sat'>S</label>
+                            <input type='checkbox' id='weekday-sun' class='weekday'/>
+                            <label for='weekday-sun'>S</label>
+                        </div>
+                        
+                        <label class='checkbox checkbox__reminder'>
+                            <input type='checkbox'>
+                            Erinnerung erhalten
+                        </label>
+                        
+                        <button class='button is-text swiper__prev'>Zurück</button>
+                        <button class='button is-rounded new__save'>Speichern</button>
                     </div>
-                    
-                    <div class='swiper-slide'>
-                        Slide 2
-                    </div>
-                    
-                    <div class='swiper-slide'>
-                        Slide 3
-                    </div>
-                </form>
+                </div>
+            
             </div>
-            
-            <div class='swiper-pagination'></div>
-            
-            <div class='swiper-button-prev'></div>
-            <div class='swiper-button-next'></div>
+        
         </div>
     </div>
     
     <img src='../img/logo_full.svg' alt='logo' class='training__logo'>
 </div>
+
+<script>
+    $(document).ready(function () {
+
+        let swiper = new Swiper('.swiper-training', {
+            direction: 'horizontal',
+            allowTouchMove: false,
+
+            navigation: {
+                prevEl: ".swiper__prev",
+                nextEl: ".swiper__next",
+            },
+        });
+
+        if (swiper.length > 1) swiper = swiper[0];
+
+    });
+
+</script>

@@ -1,4 +1,4 @@
-.muscle-groups > h2, label {
+.muscle-groups > h2, .muscle-groups > label {
     visibility : hidden;
 }
 

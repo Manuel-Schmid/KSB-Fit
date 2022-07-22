@@ -116,19 +116,8 @@
   transform: translate(-50%);
   left: 50%;
   top: 40%;
-  width: 80%;
+  width: 100%;
   text-align: center;
-}
-.pw-reset__info {
-  color: #7F7F7D;
-  font-size: 15px;
-  position: absolute;
-  transform: translate(-50%);
-  left: 50%;
-  top: 70%;
-  width: 80%;
-  text-align: center;
-  text-decoration: underline;
 }
 .signup__form {
   color: #e01272;
@@ -249,7 +238,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 86%;
+  height: 30vh;
 }
 
 .exercise-img {
@@ -322,18 +311,125 @@
 .training__image {
   border-radius: 2000px;
   height: 13vw;
-  position: relative;
+  position: absolute;
+  left: 4vw;
+}
+.training__name {
+  font-weight: bold;
+  font-size: large;
+  line-height: 1.6;
+  position: absolute;
+  left: 20vw;
+}
+.training__chevron {
+  position: absolute;
+  right: 10vw;
 }
 
 .new__container {
   border-radius: 10px;
-  height: 60vh;
   position: relative;
-  top: 50%;
+  top: 50vh;
+  margin-top: 0 !important;
   width: 80% !important;
+  height: 60vh;
+  max-height: 60vh;
 }
 .new__title {
-  width: 70vw;
+  width: 65vw;
+}
+.new__pagination {
+  position: absolute;
+  left: 50% !important;
+  transform: translate(-50%);
+  bottom: 20% !important;
+}
+.new__save {
+  background-color: #90b367;
+  color: #ffffff;
+  font-weight: bold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  bottom: -2%;
+  right: 0;
+  height: 4vh;
+}
+
+.grid {
+  overflow: auto;
+  max-height: 49vh;
+  top: 6vh;
+  position: relative;
+}
+.grid__item {
+  max-width: 30vw;
+  min-width: 30vw;
+  margin: 3vw !important;
+}
+
+.exerciselist {
+  overflow: auto;
+  max-height: 40%;
+}
+.exerciselist > ul > li {
+  display: list-item;
+  list-style-type: "+";
+}
+
+.swiper__next {
+  font-weight: bold;
+  color: #90b367 !important;
+  position: absolute;
+  height: 5vh;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 2%;
+}
+
+.swiper__prev {
+  font-weight: bold;
+  color: #373736 !important;
+  position: absolute;
+  height: 5vh;
+  left: 30%;
+  transform: translate(-50%);
+  bottom: 2%;
+}
+
+.overflow--hidden {
+  overflow-x: hidden;
+}
+
+.weekDays-selector {
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+}
+
+.weekDays-selector input {
+  display: none !important;
+}
+
+.weekDays-selector input[type=checkbox] + label {
+  display: inline-block;
+  border-radius: 100px;
+  background: #fcfcfc;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.weekDays-selector input[type=checkbox]:checked + label {
+  background: #90b367;
+  color: #ffffff;
+}
+
+.checkbox__reminder > input {
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  font-size: 14px;
 }
 
 .default-training__container {
@@ -404,76 +500,6 @@
   border-radius: 30px !important;
 }
 
-.content {
-  padding: 0px 15px 15px;
-}
-
-.empty-header {
-  margin-top: 15vh;
-  margin-bottom: 15vh;
-}
-
-.content-container {
-  margin-top: 15vh;
-  margin-bottom: 15vh;
-}
-
-.description-table {
-  word-break: break-word;
-}
-
-.pfeil {
-  float: right;
-}
-
-.pfeil svg {
-  bottom: 12px;
-  right: 16px;
-  position: absolute;
-}
-
-#training .btn-container {
-  margin: 16vh auto auto;
-  width: max-content;
-}
-
-#training button {
-  width: 30vw;
-  height: 5vh;
-  margin-left: 12px;
-  margin-right: 12px;
-  border-color: #90b367;
-  color: #90b367;
-}
-
-#training .selected-btn {
-  background-color: #90b367;
-  border-color: #90b367;
-  color: #fcfcfc;
-}
-
-#checkboxes label {
-  float: left;
-}
-
-#checkboxes ul {
-  margin: 0;
-  list-style: none;
-  float: left;
-}
-
-#checkboxes input {
-  position: relative;
-  opacity: 1;
-  /* pointer-events: all; */
-}
-
-#checkboxes li {
-  font-weight: bold;
-  font-size: 15px;
-  margin-bottom: 6px;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -494,8 +520,11 @@
   opacity: 1;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 .exercise-popup-close {
-  z-index: 100;
   margin-top: 4%;
   margin-right: 4%;
 }
@@ -535,21 +564,11 @@
   display: inline-block;
 }
 
-.label {
-  margin: 0px !important;
-}
-
 .text-header {
   font-weight: bold;
   font-size: large;
   line-height: 1.6;
-}
-
-.unit-label {
-  display: inline-block;
-  top: 4vh;
-  right: 1vh;
-  position: relative;
+  position: absolute;
 }
 
 .exercise-popup {
@@ -625,17 +644,3 @@ tr {
 }
 
 /*# sourceMappingURL=global.css.map */
-
-.exercise-list-img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-
-.exercises-list-img {
-  max-width: 90%;
-  max-height: 25vh;
-}
-

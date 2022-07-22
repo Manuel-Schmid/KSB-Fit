@@ -103,8 +103,8 @@ $(document).ready(function () {
                         cache: false,
                         success: function (salt) {
                             if (salt !== 'null') { // user with this email already exists
-                                document.getElementById('signup-error').innerHTML = "Diese Email hat schon einen" +
-                                    " Account";
+                                document.getElementById('signup-error').innerHTML = "Diese Email ist bereits" +
+                                 " registriert";
 
                             } else { // no user with this email exists -> continue registration
                                 let salt = generateSalt();
@@ -124,8 +124,7 @@ $(document).ready(function () {
                                     }, // parameter für POST ($_POST['xxx'])
                                     cache: false,
                                     success: function (data) {
-                                        alert('successful registration')
-                                        // todo ... (close popup)
+                                        switchLogin('login')
                                         // send eMail
                                     }
                                 })
