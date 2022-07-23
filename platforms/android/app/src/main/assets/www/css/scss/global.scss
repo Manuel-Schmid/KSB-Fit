@@ -364,7 +364,21 @@ $almostwhite : #fcfcfc;
   &__image {
     border-radius : 2000px;
     height        : 13vw;
-    position      : relative;
+    position      : absolute;
+    left          : 4vw;
+  }
+  
+  &__name {
+    font-weight : bold;
+    font-size   : large;
+    line-height : 1.6;
+    position    : absolute;
+    left        : 20vw;
+  }
+  
+  &__chevron {
+    position : absolute;
+    right    : 10vw;
   }
 }
 
@@ -372,15 +386,116 @@ $almostwhite : #fcfcfc;
   
   &__container {
     border-radius : 10px;
-    height        : 60vh;
     position      : relative;
-    top           : 50%;
+    top           : 50vh;
+    margin-top    : 0 !important;
     width         : 80% !important;
+    height        : 60vh;
+    max-height    : 60vh;
   }
   
   &__title {
-    width : 70vw;
+    width : 65vw;
   }
+  
+  &__pagination {
+    position  : absolute;
+    left      : 50% !important;
+    transform : translate(-50%);
+    bottom    : 20% !important;
+  }
+  
+  &__save {
+    background-color : $green;
+    color            : $white;
+    font-weight      : bold;
+    position         : absolute;
+    transform        : translate(-50%, -50%);
+    bottom           : -2%;
+    right            : 0;
+    height           : 4vh;
+  }
+}
+
+.grid {
+  overflow   : auto;
+  max-height : 49vh;
+  top        : 6vh;
+  position   : relative;
+  
+  &__item {
+    max-width : 30vw;
+    min-width : 30vw;
+    margin    : 3vw !important;
+  }
+}
+
+
+.exerciselist {
+  overflow   : auto;
+  max-height : 40%;
+  
+  & > ul > li {
+    display         : list-item;
+    list-style-type : '+';
+  }
+}
+
+.swiper__next {
+  font-weight : bold;
+  color       : $green !important;
+  position    : absolute;
+  height      : 5vh;
+  left        : 50%;
+  transform   : translate(-50%);
+  bottom      : 2%;
+}
+
+.swiper__prev {
+  font-weight : bold;
+  color       : $dark !important;
+  position    : absolute;
+  height      : 5vh;
+  left        : 30%;
+  transform   : translate(-50%);
+  bottom      : 2%;
+}
+
+.overflow--hidden {
+  overflow-x : hidden;
+}
+
+.weekDays-selector {
+  margin-top    : 3vh;
+  margin-bottom : 1vh;
+}
+
+.weekDays-selector input {
+  display : none !important;
+}
+
+.weekDays-selector input[type=checkbox] + label {
+  display       : inline-block;
+  border-radius : 100px;
+  background    : $almostwhite;
+  height        : 40px;
+  width         : 40px;
+  line-height   : 40px;
+  text-align    : center;
+  cursor        : pointer;
+}
+
+.weekDays-selector input[type=checkbox]:checked + label {
+  background : $green;
+  color      : $white;
+}
+
+.checkbox__reminder > input {
+  visibility : visible !important;
+  opacity    : 1 !important;
+  position   : relative !important;
+  font-size : 14px;
+  
 }
 
 .default-training {
@@ -410,6 +525,7 @@ $almostwhite : #fcfcfc;
   &__image {
     border-radius : 10px;
     filter        : brightness(50%);
+    
   }
   
   &__text {
@@ -464,77 +580,6 @@ $almostwhite : #fcfcfc;
 .bild {
   padding       : 15px;
   border-radius : 30px !important;
-}
-
-.content {
-  padding : 0px 15px 15px;
-  
-}
-
-.empty-header {
-  margin-top    : 15vh;
-  margin-bottom : 15vh;
-}
-
-.content-container {
-  margin-top    : 15vh;
-  margin-bottom : 15vh;
-}
-
-.description-table {
-  word-break : break-word;
-}
-
-.pfeil {
-  float : right;
-}
-
-.pfeil svg {
-  bottom   : 12px;
-  right    : 16px;
-  position : absolute;
-}
-
-#training .btn-container {
-  margin : 16vh auto auto;
-  width  : max-content;
-}
-
-#training button {
-  width        : 30vw;
-  height       : 5vh;
-  margin-left  : 12px;
-  margin-right : 12px;
-  border-color : $green;
-  color        : $green;
-}
-
-#training .selected-btn {
-  background-color : $green;
-  border-color     : $green;
-  color            : $almostwhite;
-}
-
-#checkboxes label {
-  float : left;
-}
-
-#checkboxes ul {
-  margin     : 0;
-  list-style : none;
-  float      : left;
-}
-
-#checkboxes input {
-  position : relative;
-  opacity  : 1;
-  /* pointer-events: all; */
-}
-
-#checkboxes li {
-  font-weight   : bold;
-  font-size     : 15px;
-  margin-bottom : 6px;
 }
 
 .overlay {
@@ -602,21 +647,11 @@ $almostwhite : #fcfcfc;
   display : inline-block;
 }
 
-.label {
-  margin : 0px !important;
-}
-
 .text-header {
   font-weight : bold;
   font-size   : large;
   line-height : 1.6;
-}
-
-.unit-label {
-  display  : inline-block;
-  top      : 4vh;
-  right    : 1vh;
-  position : relative;
+  position    : absolute;
 }
 
 .exercise-popup {
