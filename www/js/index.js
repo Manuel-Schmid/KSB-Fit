@@ -134,7 +134,7 @@ $(document).ready(function () {
                     })
                 }
             } else {
-                document.getElementById('signup-error').innerHTML = "Füllen Sie bitte alle Felder aus.";
+                document.getElementById('signup-error').innerHTML = "Füllen Sie bitte alle Felder aus";
             }
         }
     });
@@ -212,7 +212,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            alert("Füllen Sie bitte alle Felder aus.");
+            alert("Füllen Sie bitte alle Felder aus");
             // ...
         }
     });
