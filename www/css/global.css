@@ -332,8 +332,8 @@
   top: 50vh;
   margin-top: 0 !important;
   width: 80% !important;
-  height: 60vh;
-  max-height: 60vh;
+  height: 70vh;
+  max-height: 70vh;
 }
 .new__title {
   width: 65vw;
@@ -374,6 +374,16 @@
 .exerciselist > ul > li {
   display: list-item;
   list-style-type: "+";
+}
+
+.validation__error {
+  color: #e01272;
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  top: 81.5%;
+  font-size: 15px;
+  line-height: 15px;
 }
 
 .swiper__next {

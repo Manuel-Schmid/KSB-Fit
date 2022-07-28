@@ -93,7 +93,7 @@
                                 </svg>
                             </a>
                             
-                            <input id='' class='input new__title' type='text'
+                            <input id='training__title' class='input new__title' type='text'
                                    placeholder='Neuer Trainingsplan'>
                         </div>
                         
@@ -108,15 +108,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="selectedExercisesList">
-                                    <tr>
-                                        <td>Leg Press</td>
-                                        <td>
-                                            <input type="text" class="exercise__input">
-                                        </td>
-                                        <td>
-                                            <input type="text" class="exercise__input">
-                                        </td>
-                                    </tr>
+                                    <!-- gets filled dynamically -->
                                 </tbody>
                             </table>
                         </div>
@@ -143,8 +135,8 @@
                             Erinnerung erhalten
                         </label>
 
-                        <!-- error message (e.g. kein name angegeben) -->
-                        
+                        <p id="validation-error" class="validation__error"></p>
+
                         <button class='button is-text swiper__prev'>Zurück</button>
                         <button class='button is-rounded new__save'>Speichern</button>
                     </div>
@@ -166,6 +158,10 @@
             // disableScroll();
             // scrollPosition = window.pageYOffset;
             displayExerciseCheckboxes();
+        });
+
+        $(".swiper__prev").click(function () {
+            document.getElementById('validation-error').innerHTML = ''; // clear errormsg
         });
 
         $(".swiper__next").click(function () {
@@ -192,20 +188,37 @@
         });
 
         $(".new__save").click(function () {
-            let exercisePlan = []
-            for (const exercise of document.getElementsByClassName('exercise__row')) {
-                exercisePlan.push({
-                        exerciseID: exercise.dataset.id,
-                        sets: exercise.getElementsByClassName('sets')[0].value,
-                        reps: exercise.getElementsByClassName('reps')[0].value
-                })
+            let errormsg = document.getElementById('validation-error');
+            errormsg.innerHTML = '';
+            // validation
+            if (selectedExsList.length < 1) {
+                errormsg.innerHTML = 'Keine Übungen ausgewählt'
+            } else if ($.trim(document.getElementById('training__title').value).length < 1){
+                errormsg.innerHTML = 'Kein Name für den Trainingsplan angegeben'
+            } else {
+                let countEmpty = 0;
+                for (const el of document.getElementsByClassName('exercise__input')) {
+                    if ($.trim(el.value).length < 1) { countEmpty++; break; }
+                };
+                if (countEmpty > 0) {
+                    errormsg.innerHTML = 'Nicht alle Sets & Reps angegeben'
+                } else {
+                    // validation successful 
+                    let exercisePlan = []
+                    for (const exercise of document.getElementsByClassName('exercise__row')) {
+                        exercisePlan.push({
+                                exerciseID: exercise.dataset.id,
+                                sets: exercise.getElementsByClassName('sets')[0].value,
+                                reps: exercise.getElementsByClassName('reps')[0].value
+                        })
+                    }
+                    console.log(exercisePlan);
+
+                    // ... todo
+                }
             }
-            console.log(exercisePlan);
-
-            // ... todo
-
         });
-
+        
         let swiper = new Swiper('.swiper-training', {
             direction: 'horizontal',
             allowTouchMove: false,

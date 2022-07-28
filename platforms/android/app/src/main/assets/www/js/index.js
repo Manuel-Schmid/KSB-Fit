@@ -417,7 +417,7 @@ function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGro
 
 // function createNewNote() {
 //     tmstmp = '';
-//     document.getElementById('cur-date').innerHTML = getCurrentDate(true)
+//     document.getElementById('cur-date').innerHTML = getCurrentrimate(true)
 //     document.getElementById('note-text-area').value = ''
 //     window.location.href = "#new-note";
 // }
