@@ -53,7 +53,7 @@
         </div>
     </div>
     
-    <a class='button is-rounded training__new' href='#new-training'>
+    <a class='button is-rounded training__new openTrainingCreation' href='#new-training'>
         <span class='icon is-small'>
             <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
         </span>
@@ -75,19 +75,7 @@
                             
                             <h1 class='text-header'>Übungen auswählen:</h1>
                             
-                            <div class='grid'>
-                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
-                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
-                                <img class='grid__item' src='../img/stickynote.png'/>
-                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
-                                <img class='grid__item' src='../img/exercise-images/task%20(2)1.jpeg'/>
-                                <img class='grid__item' src='../img/geraet.jpg'/>
-                                
-                                <script>
-                                    /*check documentation --> https://jcuenod.github.io/imgCheckbox/*/
-                                    $('.grid__item').imgCheckbox();
-                                </script>
-                            </div>
+                            <div id="exercise-grid" class='grid'></div>
                         </div>
                         
                         <button class='button is-text swiper__next'>Bestätigen</button>
@@ -110,6 +98,7 @@
                         </div>
                         
                         <p style='font-weight: bold;'>Übungen:</p>
+                        <code class="formoutput"></code>
                         <div class='exerciselist'>
                             <ul>
                                 <li>+ Übung A</li>
@@ -150,7 +139,7 @@
                         </label>
                         
                         <button class='button is-text swiper__prev'>Zurück</button>
-                        <button class='button is-rounded new__save'>Speichern</button>
+                        <input type="submit" class='button is-rounded new__save'>Speichern</input>
                     </div>
                 </div>
             
@@ -164,6 +153,23 @@
 
 <script>
     $(document).ready(function () {
+        let selectedExsList = [];
+
+        $(".openTrainingCreation").click(function () {
+            // disableScroll();
+            // scrollPosition = window.pageYOffset;
+            displayExerciseCheckboxes();
+        });
+
+        $(".swiper__next").click(function () {
+            for (const checkbox of document.getElementsByClassName('imgChked')) {
+                let exName = checkbox.firstChild.name.split('||');
+                selectedExsList.push({
+                        title: exName[0],
+                        id: exName[1]
+                })
+            }
+        });
 
         let swiper = new Swiper('.swiper-training', {
             direction: 'horizontal',

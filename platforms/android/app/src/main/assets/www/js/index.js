@@ -364,6 +364,27 @@ function displayExercises(galleryView) {
     })
 }
 
+function displayExerciseCheckboxes() {
+    $.ajax({
+        type: "POST",  //Request type
+        url: properties.requestUrl,
+        data: {request: 'getExercisesMinHTML'}, // parameter für POST ($_POST['xxx'])
+        cache: false,
+        success: function (json_data) {
+            let exercises = Object.values(JSON.parse(json_data))
+            let exercisesCBHTMLString = ''
+            exercises.forEach(exercise => {
+                exercisesCBHTMLString += '<img class="grid__item" name="' + exercise['title'] + '||' + exercise['exerciseID'] + '" src="' + exercise['image'] + '" />'
+            });
+
+            // exercisesCBHTMLString += '<script> $(".grid__item").imgCheckbox(); </script>'
+
+            document.getElementById('exercise-grid').innerHTML = exercisesCBHTMLString;
+            $(".grid__item").imgCheckbox();
+        }
+    })
+}
+
 function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
     if (switchToTab) goToExercises() // ? todo
     document.getElementById('exercise-title').innerHTML = title;
