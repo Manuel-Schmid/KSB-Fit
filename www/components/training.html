@@ -114,24 +114,25 @@
                         </div>
                         
                         <div class='weekDays-selector'>
-                            <input type='checkbox' id='weekday-mon' class='weekday'/>
-                            <label for='weekday-mon'>M</label>
-                            <input type='checkbox' id='weekday-tue' class='weekday'/>
-                            <label for='weekday-tue'>T</label>
-                            <input type='checkbox' id='weekday-wed' class='weekday'/>
-                            <label for='weekday-wed'>W</label>
-                            <input type='checkbox' id='weekday-thu' class='weekday'/>
-                            <label for='weekday-thu'>T</label>
-                            <input type='checkbox' id='weekday-fri' class='weekday'/>
-                            <label for='weekday-fri'>F</label>
-                            <input type='checkbox' id='weekday-sat' class='weekday'/>
-                            <label for='weekday-sat'>S</label>
-                            <input type='checkbox' id='weekday-sun' class='weekday'/>
-                            <label for='weekday-sun'>S</label>
+                            <!-- let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr'] -->
+                            <input type='checkbox' id='weekday-mon' name="Mo" class='weekday'/>
+                            <label for='weekday-mon'>Mo</label>
+                            <input type='checkbox' id='weekday-tue' name="Tu" class='weekday'/>
+                            <label for='weekday-tue'>Di</label>
+                            <input type='checkbox' id='weekday-wed' name="We" class='weekday'/>
+                            <label for='weekday-wed'>Mi</label>
+                            <input type='checkbox' id='weekday-thu' name="Th" class='weekday'/>
+                            <label for='weekday-thu'>Do</label>
+                            <input type='checkbox' id='weekday-fri' name="Fr" class='weekday'/>
+                            <label for='weekday-fri'>Fr</label>
+                            <input type='checkbox' id='weekday-sat' name="Sa" class='weekday'/>
+                            <label for='weekday-sat'>Sa</label>
+                            <input type='checkbox' id='weekday-sun' name="Su" class='weekday'/>
+                            <label for='weekday-sun'>So</label>
                         </div>
                         
                         <label class='checkbox checkbox__reminder'>
-                            <input type='checkbox'>
+                            <input id="cb-notifications" type='checkbox'>
                             Erinnerung erhalten
                         </label>
 
@@ -180,7 +181,7 @@
                 exercisesListHTMLString += '<tr><td>Keine Übung ausgewählt</td></tr>'
             } else {
                 selectedExsList.forEach(exercise => {
-                    exercisesListHTMLString += '<tr class="exercise__row" data-id="'+ exercise.id +'"> <td class="exercise__title">' + exercise.title + '</td> <td> <input type="text" class="exercise__input sets"> </td> <td> <input type="text" class="exercise__input reps"> </td> </tr>'
+                    exercisesListHTMLString += '<tr class="exercise__row" data-id="'+ exercise.id +'"> <td class="exercise__title">' + exercise.title + '</td> <td> <input type="number" class="exercise__input sets"> </td> <td> <input type="number" class="exercise__input reps"> </td> </tr>'
                 });
             }
 
@@ -212,13 +213,26 @@
                                 reps: exercise.getElementsByClassName('reps')[0].value
                         })
                     }
-                    console.log(exercisePlan);
+
+                    let weekdays = [];
+                    for (const weekdayCB of document.getElementsByClassName('weekday')) {
+                        if (weekdayCB.checked) weekdays.push(weekdayCB.name);
+                    }
+
+                    let workoutData = {
+                        workoutTitle: $.trim(document.getElementById('training__title').value),
+                        exercisePlan: exercisePlan,
+                        weekdays: weekdays,
+                        notifications: (document.getElementById('cb-notifications').checked ? 1 : 0)
+                    }
+
+                    console.log(workoutData);
 
                     // ... todo
                 }
             }
         });
-        
+
         let swiper = new Swiper('.swiper-training', {
             direction: 'horizontal',
             allowTouchMove: false,
