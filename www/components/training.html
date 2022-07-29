@@ -1,18 +1,16 @@
 <div class='exercises__container'>
     <h1 class='training__heading'>Trainingspläne</h1>
-    
-    <a href='#default-training'>
-        <div class='card training__default'>
+
+    <div id="trainings-container">
+        <div class='card training__default' onclick="openWorkoutPopup()">
             <div class='content training__content'>
                 <img src='../img/training.jpg' alt='bild' class='training__image'>
-                
                 <span class='training__name'>KSB BASIC</span>
-                
                 <i class='fa-solid fa-chevron-right fa-sm training__chevron'></i>
             </div>
         </div>
-    </a>
-    
+    </div>
+        
     <div id='default-training' class='overlay'>
         <div class='default-training__container'>
             <a class='default-training__back' href='#'>
@@ -52,7 +50,7 @@
             <button class='button is-text default-training__delete'>Training löschen</button>
         </div>
     </div>
-    
+
     <a class='button is-rounded training__new openTrainingCreation' href='#new-training'>
         <span class='icon is-small'>
             <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
@@ -234,10 +232,38 @@
 
                     console.log(workoutData);
 
+                    insertWorkout(workoutData)
                     // ... todo
                 }
             }
         });
+
+        // save workout plan -> already new 
+        function insertWorkout(workoutData) { // save-workout-btn-id  *is a placeholder* || $(document).on('click', '#save-workout-btn-id', 
+            // let exercises = [21, 25, 29] // [1,5,7,9] (id's)
+            // let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
+            // let notifications = 1 // $("#cbNotifications").checked ? 1 : 0;
+            // let title = 'My Workout X.0'
+            let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
+            
+            $.ajax({
+                type: "POST",  // Request type
+                url: properties.requestUrl,
+                data: {
+                    request: 'insertWorkout',
+                    title: workoutData.workoutTitle,
+                    userID: userID,
+                    notifications: workoutData.notifications,
+                    weekdays: workoutData.weekdays,
+                    exercises: workoutData.exercisePlan
+                },
+                cache: false,
+                success: function (data) {
+                    // console.log(data)
+                    // ...
+                }
+            })
+        };
 
         let swiper = new Swiper('.swiper-training', {
             direction: 'horizontal',

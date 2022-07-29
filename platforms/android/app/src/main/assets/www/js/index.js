@@ -184,38 +184,6 @@ $(document).ready(function () {
         }
     });
 
-// save workout plan -> already new 
-    $(document).on('click', '#save-workout-btn-id', function () { // save-workout-btn-id  *is a placeholder*
-        let exercises = [21, 25, 29] // [1,5,7,9] (id's)
-        let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
-        let notifications = 1 // $("#cbNotifications").checked ? 1 : 0;
-        let title = 'My Workout X.0'
-        let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
-
-        if (weekdays.length > 0 & exercises.length > 0) {
-            $.ajax({
-                type: "POST",  // Request type
-                url: properties.requestUrl,
-                data: {
-                    request: 'insertWorkout',
-                    title: title,
-                    userID: userID,
-                    notifications: notifications,
-                    weekdays: weekdays,
-                    exercises: exercises
-                },
-                cache: false,
-                success: function (data) {
-                    // console.log(data)
-                    // ...
-                }
-            })
-        } else {
-            alert("Füllen Sie bitte alle Felder aus");
-            // ...
-        }
-    });
-
     (function ($) {
         $(function () {
             "use strict";
@@ -364,6 +332,43 @@ function displayExercises(galleryView) {
     })
 }
 
+function displayTrainings() {
+    // $.ajax({
+    //     type: "POST",  //Request type
+    //     url: properties.requestUrl,
+    //     data: {request: 'getWorkoutsHTML'}, // parameter für POST ($_POST['xxx'])
+    //     cache: false,
+    //     success: function (json_data) {
+    //         let workouts = Object.values(JSON.parse(json_data))
+    //         let trainingsHTMLString = ''
+    //         workouts.forEach(exercise => {
+
+    //             functionString = "openExercisePopup(false, '" + exercise['title'] + "', '" + exercise['image'] + "', '" + exercise['preparation'] + "', '" + exercise['movement'] + "', '" + exercise['muscleGroups'] + "', '" + exercise['videoURL'] + "')";
+    //             if (galleryView) {
+    //                 exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
+    //                     '<div class="row">' +
+    //                     '<p class="col s11">' + exercise['title'] + '</p>' +
+    //                     '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
+    //                     '</div>' +
+    //                     '<div class="exercise-list-img-container">' +
+    //                     '<img class="exercises-list-img" src="' + exercise['image'] + '" alt="Uebung Bild">' +
+    //                     '</div>' +
+    //                     '</div>';
+    //             } else {
+    //                 exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
+    //                     '<div class="row">' +
+    //                     '<span class="col s11">' + exercise['title'] + '</span>' +
+    //                     '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
+    //                     '</div>' +
+    //                     '</div>';
+    //             }
+    //         });
+
+    //         document.getElementById('training-container').innerHTML = trainingsHTMLString
+    //     }
+    // })
+}
+
 function displayExerciseCheckboxes() {
     $.ajax({
         type: "POST",  //Request type
@@ -383,6 +388,12 @@ function displayExerciseCheckboxes() {
             $(".grid__item").imgCheckbox();
         }
     })
+}
+
+function openWorkoutPopup() {
+    
+
+    window.location.href = "#default-training";
 }
 
 function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
@@ -487,6 +498,7 @@ function goToTraining() {
 
     document.getElementById('training').className = ""
     switchToTab('training')
+    displayTrainings();
 }
 
 function goToSettings() {
