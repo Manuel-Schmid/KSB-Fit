@@ -338,6 +338,7 @@
 }
 .training__image {
   border-radius: 2000px;
+  line-height: 13vw;
   height: 13vw;
   width: 13vw;
   position: absolute;
@@ -345,8 +346,8 @@
   text-align: center;
 }
 .training__image__text {
-  font-size: 5vh;
-  line-height: 7vh;
+  font-size: 31px;
+  /* margin-top: -2px; */
 }
 .training__name {
   font-weight: bold;
