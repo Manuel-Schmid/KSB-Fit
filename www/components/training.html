@@ -115,24 +115,24 @@
                         
                         <div class='weekDays-selector'>
                             <!-- let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr'] -->
-                            <input type='checkbox' id='weekday-mon' name="Mo" class='weekday'/>
+                            <input type='checkbox' id='weekday-mon' name="Mo" class='weekday cb'/>
                             <label for='weekday-mon'>Mo</label>
-                            <input type='checkbox' id='weekday-tue' name="Tu" class='weekday'/>
+                            <input type='checkbox' id='weekday-tue' name="Tu" class='weekday cb'/>
                             <label for='weekday-tue'>Di</label>
-                            <input type='checkbox' id='weekday-wed' name="We" class='weekday'/>
+                            <input type='checkbox' id='weekday-wed' name="We" class='weekday cb'/>
                             <label for='weekday-wed'>Mi</label>
-                            <input type='checkbox' id='weekday-thu' name="Th" class='weekday'/>
+                            <input type='checkbox' id='weekday-thu' name="Th" class='weekday cb'/>
                             <label for='weekday-thu'>Do</label>
-                            <input type='checkbox' id='weekday-fri' name="Fr" class='weekday'/>
+                            <input type='checkbox' id='weekday-fri' name="Fr" class='weekday cb'/>
                             <label for='weekday-fri'>Fr</label>
-                            <input type='checkbox' id='weekday-sat' name="Sa" class='weekday'/>
+                            <input type='checkbox' id='weekday-sat' name="Sa" class='weekday cb'/>
                             <label for='weekday-sat'>Sa</label>
-                            <input type='checkbox' id='weekday-sun' name="Su" class='weekday'/>
+                            <input type='checkbox' id='weekday-sun' name="Su" class='weekday cb'/>
                             <label for='weekday-sun'>So</label>
                         </div>
                         
                         <label class='checkbox checkbox__reminder'>
-                            <input id="cb-notifications" type='checkbox'>
+                            <input id="cb-notifications" type='checkbox' class="cb">
                             Erinnerung erhalten
                         </label>
 
@@ -156,8 +156,14 @@
         let selectedExsList = [];
 
         $(".openTrainingCreation").click(function () {
-            // disableScroll();
-            // scrollPosition = window.pageYOffset;
+            // reset swiper & content
+            swiper.setProgress(0, 0)
+            $('#training__title').val('');
+
+            for (const checkbox of document.getElementsByClassName('cb')) {
+                checkbox.checked = false;
+            }
+            
             displayExerciseCheckboxes();
         });
 
