@@ -193,9 +193,8 @@
   margin: 0px 0px 20px;
 }
 
-.exercises__container {
+.container {
   width: 100vw;
-  height: 100vh;
   padding: 20vw 5vw 5vw;
 }
 .exercises__heading {
@@ -286,7 +285,36 @@
   left: 50%;
   transform: translate(-50%);
   position: relative;
-  margin: 3vh auto 20vh;
+  margin: 3vh auto 17vh;
+}
+.trainings__icons__row {
+  position: absolute;
+  width: 100%;
+  bottom: 2vh;
+  left: 20vw;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.trainings__icons__item { 
+  width: 14%;
+  display: flex;
+  flex-direction: row;
+}
+.trainings__icons__item__session {
+  width: max-content !important;
+}
+.trainings__icon__text {
+  font-size: 12px;
+  line-height: 17px;
+  padding-left: 3px;
+}
+.trainings__icon__session {
+    background-color: #bfdc9e;
+    padding: 0 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    line-height: 15px;
 }
 .training__new {
   width: 100%;
@@ -311,8 +339,14 @@
 .training__image {
   border-radius: 2000px;
   height: 13vw;
+  width: 13vw;
   position: absolute;
   left: 4vw;
+  text-align: center;
+}
+.training__image__text {
+  font-size: 5vh;
+  line-height: 7vh;
 }
 .training__name {
   font-weight: bold;
@@ -320,6 +354,7 @@
   line-height: 1.6;
   position: absolute;
   left: 20vw;
+  top: 2vh;
 }
 .training__chevron {
   position: absolute;
@@ -488,10 +523,14 @@
 
 .session__container {
   position: relative;
+  border-radius: 20px;
+  padding: 10px 15px;
 }
-.session__title {
-  font-size: 25px;
+.session__date {
+  font-size: 18px;
+  font-weight: bold;
   position: relative;
+  margin-bottom: 5px;
   transform: translate(-50%);
   left: 50%;
   text-align: center;
@@ -505,7 +544,7 @@
   left: 50%;
   transform: translate(-50%);
   position: relative;
-  margin: 3vh auto 20vh;
+  margin: 3vh auto 16vh;
 }
 
 .hinweise {

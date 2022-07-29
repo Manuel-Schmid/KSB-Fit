@@ -1,14 +1,31 @@
-<div class='exercises__container'>
+<div class='container'>
     <h1 class='training__heading'>Trainingspläne</h1>
 
     <div id="trainings-container">
-        <div class='card training__default' onclick="openWorkoutPopup()">
-            <div class='content training__content'>
-                <img src='../img/training.jpg' alt='bild' class='training__image'>
-                <span class='training__name'>KSB BASIC</span>
-                <i class='fa-solid fa-chevron-right fa-sm training__chevron'></i>
+        <!--  -->
+        <div class='card training__default' onclick="openWorkoutPopup(1)">
+            <div>
+                <div class='content training__content'>
+                    <img src='../img/training.jpg' alt='bild' class='training__image'>
+                    <span class='training__name'>KSB BASIC</span>
+                    <i class='fa-solid fa-chevron-right fa-sm training__chevron'></i>
+                </div>
+            </div>
+            <div class="trainings__icons__row">
+                <div class="trainings__icons__item">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <p class="trainings__icon__text">13</p>
+                </div>
+                <div class="trainings__icons__item">
+                    <i class="fa-solid fa-crown"></i>
+                    <p class="trainings__icon__text">5</p>
+                </div>
+                <div class="trainings__icons__item trainings__icons__item__session">
+                    <p class="trainings__icon__session">&#8594; 28.02.21</p>
+                </div>
             </div>
         </div>
+        <!--  -->
     </div>
         
     <div id='default-training' class='overlay'>
@@ -17,30 +34,30 @@
                 <i class='fa-solid fa-xl fa-chevron-left'></i>
             </a>
             
-            <h1 class='default-training__title'>KSB Basic</h1>
+            <h1 id="workout_title" class='default-training__title'>KSB Basic</h1>
             
             <img src='../img/geraet.jpg' alt='bild' class='default-training__image'>
             
             <div class='default-training__text'>
                 <span>Sessions total:</span>
                 <br>
-                <span>1 Session</span>
+                <span id="workout_sessions" >1 Session</span>
                 
                 <br><br>
                 
                 <span>Nächste Session:</span>
                 <br>
-                <span>Mittwoch, 20.07.</span>
+                <span id="workout_next_session">Mittwoch, 20.07.</span>
             </div>
             
-            <a class='button is-rounded training__new' href='#new-training'>
+            <div class='button is-rounded training__new openSessionCreation'>
                 <span class='icon is-small'>
                     <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
                 </span>
-            </a>
+            </div>
             
-            <div class='session__container'>
-                <h2 class='session__title'>11.07.2022</h2>
+            <div class='session__container card'>
+                <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
                 <ul>
                     <li>Chest press: 10</li>
                     <li>Leg: 10</li>
@@ -153,6 +170,11 @@
     $(document).ready(function () {
         let selectedExsList = [];
 
+        $(".openSessionCreation").click(function () {
+            // reset content 
+            // add session data 
+        });
+
         $(".openTrainingCreation").click(function () {
             // reset swiper & content
             swiper.setProgress(0, 0)
@@ -200,6 +222,8 @@
                 errormsg.innerHTML = 'Keine Übungen ausgewählt'
             } else if ($.trim(document.getElementById('training__title').value).length < 1){
                 errormsg.innerHTML = 'Kein Name für den Trainingsplan angegeben'
+            } else if ($.trim(document.getElementById('training__title').value).length >= 25){
+                errormsg.innerHTML = 'Trainingsplan-Name zu lang'
             } else {
                 let countEmpty = 0;
                 for (const el of document.getElementsByClassName('exercise__input')) {
@@ -230,21 +254,17 @@
                         notifications: (document.getElementById('cb-notifications').checked ? 1 : 0)
                     }
 
-                    console.log(workoutData);
-
                     insertWorkout(workoutData)
-                    // ... todo
+
+                    displayTrainings(); // reload workouts
+                    window.location.href = "#";
                 }
             }
         });
 
         // save workout plan -> already new 
         function insertWorkout(workoutData) { // save-workout-btn-id  *is a placeholder* || $(document).on('click', '#save-workout-btn-id', 
-            // let exercises = [21, 25, 29] // [1,5,7,9] (id's)
-            // let weekdays = ['Mo', 'Fr'] // ['Mo','Tu','Fr']
-            // let notifications = 1 // $("#cbNotifications").checked ? 1 : 0;
-            // let title = 'My Workout X.0'
-            let userID = document.getElementById('userID').innerHTML != '' ? document.getElementById('userID').innerHTML : 2; // change "2"
+            let userID = document.getElementById('userID').innerHTML;
             
             $.ajax({
                 type: "POST",  // Request type

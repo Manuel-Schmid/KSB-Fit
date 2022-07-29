@@ -333,45 +333,41 @@ function displayExercises(galleryView) {
 }
 
 function displayTrainings() {
-    // $.ajax({
-    //     type: "POST",  //Request type
-    //     url: properties.requestUrl,
-    //     data: {request: 'getWorkoutsHTML'}, // parameter für POST ($_POST['xxx'])
-    //     cache: false,
-    //     success: function (json_data) {
-    //         let workouts = Object.values(JSON.parse(json_data))
-    //         let trainingsHTMLString = ''
-    //         workouts.forEach(exercise => {
+    $.ajax({
+        type: "POST",  //Request type
+        url: properties.requestUrl,
+        data: {request: 'getWorkoutsHTML', userID: document.getElementById('userID').innerHTML}, // parameter für POST ($_POST['xxx'])
+        cache: false,
+        success: function (json_data) {
+            let workouts = Object.values(JSON.parse(json_data));
 
-    //             functionString = "openExercisePopup(false, '" + exercise['title'] + "', '" + exercise['image'] + "', '" + exercise['preparation'] + "', '" + exercise['movement'] + "', '" + exercise['muscleGroups'] + "', '" + exercise['videoURL'] + "')";
-    //             if (galleryView) {
-    //                 exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
-    //                     '<div class="row">' +
-    //                     '<p class="col s11">' + exercise['title'] + '</p>' +
-    //                     '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
-    //                     '</div>' +
-    //                     '<div class="exercise-list-img-container">' +
-    //                     '<img class="exercises-list-img" src="' + exercise['image'] + '" alt="Uebung Bild">' +
-    //                     '</div>' +
-    //                     '</div>';
-    //             } else {
-    //                 exercisesHTMLString += '<div class="box" onclick="' + functionString + '">' +
-    //                     '<div class="row">' +
-    //                     '<span class="col s11">' + exercise['title'] + '</span>' +
-    //                     '<svg class="col s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"></path></svg>' +
-    //                     '</div>' +
-    //                     '</div>';
-    //             }
-    //         });
+            if (workouts != "") { // if user has workouts
+                let trainingsHTMLString = ''
+                workouts.forEach(workout => {
+                    
+                    image = (workout.color===null) ? '<img src="../img/training.jpg" alt="bild" class="training__image"></img>' : '<div class="training__image" style="background-color:'+workout.color+'"><p class="training__image__text" style="color: '+invertColor(workout.color, true)+'">'+(workout.title.split('')[0]).toUpperCase()+'</p></div>';
 
-    //         document.getElementById('training-container').innerHTML = trainingsHTMLString
-    //     }
-    // })
+                    trainingsHTMLString += 
+                        '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+')">'+
+                            '<div><div class="content training__content">'+ image +
+                                '<span class="training__name">'+workout.title+'</span><i class="fa-solid fa-chevron-right fa-sm training__chevron"></i></div></div><div class="trainings__icons__row"><div class="trainings__icons__item"><i class="fa-solid fa-calendar-check"></i>'+
+                                '<p class="trainings__icon__text">'+workout.sessionCount+'</p></div><div class="trainings__icons__item"><i class="fa-solid fa-crown"></i>'+
+                                '<p class="trainings__icon__text">'+workout.perfectSessionCount+'</p></div><div class="trainings__icons__item trainings__icons__item__session">'+
+                                '<p class="trainings__icon__session">&#8594;&nbsp;'+workout.nextSessionDate+'</p></div>'+
+                            '</div>'+
+                        '</div>'
+
+                });
+
+                document.getElementById('trainings-container').innerHTML = trainingsHTMLString
+            }
+        }
+    })
 }
 
 function displayExerciseCheckboxes() {
     $.ajax({
-        type: "POST",  //Request type
+        type: "POST",
         url: properties.requestUrl,
         data: {request: 'getExercisesMinHTML'}, // parameter für POST ($_POST['xxx'])
         cache: false,
@@ -382,16 +378,14 @@ function displayExerciseCheckboxes() {
                 exercisesCBHTMLString += '<img class="grid__item" name="' + exercise['title'] + '||' + exercise['exerciseID'] + '" src="' + exercise['image'] + '" />'
             });
 
-            // exercisesCBHTMLString += '<script> $(".grid__item").imgCheckbox(); </script>'
-
             document.getElementById('exercise-grid').innerHTML = exercisesCBHTMLString;
             $(".grid__item").imgCheckbox();
         }
     })
 }
 
-function openWorkoutPopup() {
-    
+function openWorkoutPopup(workoutID) {
+    console.log(workoutID);
 
     window.location.href = "#default-training";
 }
@@ -583,6 +577,34 @@ function enableScroll() {
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
   window.removeEventListener('touchmove', preventDefault, wheelOpt);
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+function invertColor(hex, bw) {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+    var r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
+    if (bw) {
+        // https://stackoverflow.com/a/3943023/112731
+        return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+            ? '#000000'
+            : '#FFFFFF';
+    }
+    // invert color components
+    r = (255 - r).toString(16);
+    g = (255 - g).toString(16);
+    b = (255 - b).toString(16);
+    // pad each with zeros and return
+    return "#" + padZero(r) + padZero(g) + padZero(b);
 }
 
 // QR-Scanner
