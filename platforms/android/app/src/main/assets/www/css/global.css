@@ -74,6 +74,12 @@
   top: 9%;
   position: absolute;
 }
+.home__button--logout {
+  margin-left: 7vw;
+  top: 9%;
+  position: absolute;
+  background-color: #5db15d !important;
+}
 .home__button--qr {
   margin-right: 7vw;
   top: 9%;
@@ -286,6 +292,10 @@
   transform: translate(-50%);
   position: relative;
   margin: 3vh auto 17vh;
+}
+.training_info_text {
+  text-align: center;
+  font-size: 20px;
 }
 .trainings__icons__row {
   position: absolute;
@@ -701,6 +711,10 @@ tr {
 
 #exercises-list .col {
   text-align: left;
+}
+
+.text_center {
+  text-align: center;
 }
 
 /*# sourceMappingURL=global.css.map */

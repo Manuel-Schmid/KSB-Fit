@@ -8,6 +8,8 @@
 
 <a id='login-button' class='button is-small is-black home__button--login triggerHomePopup' onclick='resetSignup()' href='#signup'>
     Anmelden</a>
+<a id='logout-button' class='button is-small is-black home__button--logout obj--hidden' onclick='logout()'>
+    Abmelden</a>
 
 <div id='signup' class='overlay'>
     <div class='signup__container'>
@@ -234,7 +236,6 @@
         $(".triggerHomePopup").click(function () {
             disableScroll();
             scrollPosition = window.pageYOffset;
-            doAction();
         });
 
         $(".home-popup-close").click(function () {

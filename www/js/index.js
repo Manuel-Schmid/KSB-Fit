@@ -66,12 +66,13 @@ $(document).ready(function () {
                                         // if (isKSBeMail(email)) { // uncomment this
                                             document.getElementById('pw-reset__info').innerHTML = `Passwort für '<span id="pw-reset__email">` + email + `</span>' zurücksetzen?`;
                                         // }
-                                    } else if (userID != '') {
+                                    } else if (userID != '') { // login success
                                         login(userID)
-                                    } else {
-                                        alert('An error occurred');
-                                        // ...
-                                    }
+                                    } 
+                                    // else {
+                                    //     alert('An error occurred');
+                                    //     // ...
+                                    // }
                                 }
                             })
                         } else {
@@ -121,11 +122,14 @@ $(document).ready(function () {
                                         weight: weight,
                                         height: height,
                                         dob: dob
-                                    }, // parameter für POST ($_POST['xxx'])
+                                    },
                                     cache: false,
-                                    success: function (data) {
-                                        switchLogin('login')
-                                        // send eMail
+                                    success: function (userID) {
+                                        if (userID == '0') {
+                                            document.getElementById('signup-error').innerHTML = "Fehler bei der Registrierung";
+                                        } else if (userID != '') {
+                                            login(userID)
+                                        }
                                     }
                                 })
                             }
@@ -213,7 +217,15 @@ $(document).ready(function () {
 function login(userID) {
     document.getElementById('userID').innerHTML = userID;
     $('#signup__close').trigger('click'); // closes login popup
-    document.getElementById('login-button').innerHTML = "Logout"; // todo ?
+    document.getElementById('login-button').classList.add('obj--hidden')
+    document.getElementById('logout-button').classList.remove('obj--hidden')
+    // ...
+}
+
+function logout() {
+    document.getElementById('userID').innerHTML = 0;
+    document.getElementById('login-button').classList.remove('obj--hidden')
+    document.getElementById('logout-button').classList.add('obj--hidden')
 }
 
 function isKSBeMail(email) {
@@ -333,6 +345,10 @@ function displayExercises(galleryView) {
 }
 
 function displayTrainings() {
+    document.getElementById('create-workout-btn').classList.remove('obj--hidden');
+    document.getElementById('trainings-container').classList.remove('obj--hidden');
+    document.getElementById('training_info_text').classList.add('obj--hidden');
+
     $.ajax({
         type: "POST",  //Request type
         url: properties.requestUrl,
@@ -345,21 +361,24 @@ function displayTrainings() {
                 let trainingsHTMLString = ''
                 workouts.forEach(workout => {
                     
-                    image = (workout.color===null) ? '<img src="../img/training.jpg" alt="bild" class="training__image"></img>' : '<div class="training__image" style="background-color:'+workout.color+'"><p class="training__image__text" style="color: '+invertColor(workout.color, true)+'">'+(workout.title.split('')[0]).toUpperCase()+'</p></div>';
+                    let imageHTML = (workout.color===null) ? '<img src="../img/training.jpg" alt="bild" class="training__image"></img>' : '<div class="training__image" style="background-color:'+workout.color+'"><p class="training__image__text" style="color: '+invertColor(workout.color, true)+'">'+(workout.title.split('')[0]).toUpperCase()+'</p></div>';
+                    let nextSessionHTML = (workout.nextSessionDate != 0) ? '<p class="trainings__icon__session">&#8594;&nbsp;'+workout.nextSessionDate+'</p></div>' : '<p class="trainings__icon__session" style="visibility: hidden">&#8594;&nbsp;</p></div>';
 
                     trainingsHTMLString += 
                         '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+')">'+
-                            '<div><div class="content training__content">'+ image +
+                            '<div><div class="content training__content">'+ imageHTML +
                                 '<span class="training__name">'+workout.title+'</span><i class="fa-solid fa-chevron-right fa-sm training__chevron"></i></div></div><div class="trainings__icons__row"><div class="trainings__icons__item"><i class="fa-solid fa-calendar-check"></i>'+
                                 '<p class="trainings__icon__text">'+workout.sessionCount+'</p></div><div class="trainings__icons__item"><i class="fa-solid fa-crown"></i>'+
-                                '<p class="trainings__icon__text">'+workout.perfectSessionCount+'</p></div><div class="trainings__icons__item trainings__icons__item__session">'+
-                                '<p class="trainings__icon__session">&#8594;&nbsp;'+workout.nextSessionDate+'</p></div>'+
+                                '<p class="trainings__icon__text">'+workout.perfectSessionCount+'</p></div><div class="trainings__icons__item trainings__icons__item__session">'
+                                + nextSessionHTML +
                             '</div>'+
                         '</div>'
 
                 });
 
                 document.getElementById('trainings-container').innerHTML = trainingsHTMLString
+            } else {
+                document.getElementById('trainings-container').innerHTML = '';
             }
         }
     })
@@ -492,7 +511,13 @@ function goToTraining() {
 
     document.getElementById('training').className = ""
     switchToTab('training')
-    displayTrainings();
+
+    if (isLoggedIn()) displayTrainings();
+    else {
+        document.getElementById('create-workout-btn').classList.add('obj--hidden');
+        document.getElementById('trainings-container').classList.add('obj--hidden');
+        document.getElementById('training_info_text').classList.remove('obj--hidden');
+    }    
 }
 
 function goToSettings() {
@@ -536,7 +561,10 @@ function switchLogin(tab) {
         document.getElementById('login-btn').innerHTML = 'Registrieren'
         document.getElementById('login-tab').classList.toggle('is-active')
     }
-    console.log(activeTab);
+}
+
+function isLoggedIn() {
+    return (document.getElementById('userID').innerHTML > 0)
 }
 
 // left: 37, up: 38, right: 39, down: 40,

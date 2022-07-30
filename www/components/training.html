@@ -2,30 +2,7 @@
     <h1 class='training__heading'>Trainingspläne</h1>
 
     <div id="trainings-container">
-        <!--  -->
-        <div class='card training__default' onclick="openWorkoutPopup(1)">
-            <div>
-                <div class='content training__content'>
-                    <img src='../img/training.jpg' alt='bild' class='training__image'>
-                    <span class='training__name'>KSB BASIC</span>
-                    <i class='fa-solid fa-chevron-right fa-sm training__chevron'></i>
-                </div>
-            </div>
-            <div class="trainings__icons__row">
-                <div class="trainings__icons__item">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <p class="trainings__icon__text">13</p>
-                </div>
-                <div class="trainings__icons__item">
-                    <i class="fa-solid fa-crown"></i>
-                    <p class="trainings__icon__text">5</p>
-                </div>
-                <div class="trainings__icons__item trainings__icons__item__session">
-                    <p class="trainings__icon__session">&#8594; 28.02.21</p>
-                </div>
-            </div>
-        </div>
-        <!--  -->
+        <!-- gets filled dynamically -->
     </div>
         
     <div id='default-training' class='overlay'>
@@ -68,7 +45,7 @@
         </div>
     </div>
 
-    <a class='button is-rounded training__new openTrainingCreation' href='#new-training'>
+    <a id="create-workout-btn" class='button is-rounded training__new openTrainingCreation' href='#new-training'>
         <span class='icon is-small'>
             <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
         </span>
@@ -164,6 +141,8 @@
     </div>
     
     <img src='../img/logo_full.svg' alt='logo' class='training__logo'>
+
+    <p id="training_info_text" class="training_info_text obj--hidden">Um auf Ihre Trainingspläne zuzugreifen müssen Sie angemeldet sein.</p>
 </div>
 
 <script>
