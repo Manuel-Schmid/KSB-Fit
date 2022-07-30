@@ -196,8 +196,8 @@
 
             <div class="field">
                 <label class="label">Datum</label>
-                <div class="control">
-                    <input id="session_date" class="input" type="date" placeholder="dd.mm.yyyy">
+                <div class="control session_input_container">
+                    <input id="session_date" class="input" type="date" placeholder="Datum der Session">
                 </div>
             </div>
 
@@ -259,7 +259,7 @@
             document.getElementById('training_scroll_container').classList.remove('overflow_y_scroll');
             document.getElementById('session_scroll_container').scrollTop = 0;
 
-            document.getElementById('session_date').valueAsDate = new Date();
+            document.getElementById('session_date').value = getTodaysDate();
             document.getElementById('session_comment').value = "";
             document.getElementById('session_validation__error').innerHTML = "";
             displaySessionExercisesList();

@@ -165,15 +165,15 @@ $(document).ready(function () {
         let errormsg = document.getElementById('session_validation__error');
         errormsg.innerHTML = '';
         // validation
-        // if (document.getElementById('session_date').valueAsDate > new Date()) {
-        //     errormsg.innerHTML = 'Das Datum darf nicht in der Zukunft liegen'
-        // } else {
+        if (document.getElementById('session_date').value > getTodaysDate()) {
+            errormsg.innerHTML = 'Das Datum darf nicht in der Zukunft liegen'
+        } else {
             let countEmpty = 0;
             for (const el of document.getElementsByClassName('session_exercise__input')) {
                 if ($.trim(el.value).length < 1) { countEmpty++; break; }
             };
             if (countEmpty > 0) {
-                errormsg.innerHTML = 'Nicht alle Sets & Reps angegeben'
+                errormsg.innerHTML = 'Nicht alle Sets & Reps wurden angegeben'
             } else {
                 // validation successful 
                 let sessionExerciseData = []
@@ -186,9 +186,9 @@ $(document).ready(function () {
                 }
 
                 console.log(sessionExerciseData);
-                insertSession(sessionExerciseData);
+                insertSession(document.getElementById('workout_id').innerHTML, document.getElementById('session_date').value, document.getElementById('session_comment').value, sessionExerciseData);
                 // redirect & update
-            // }
+            }
         }
     });
 
@@ -219,13 +219,12 @@ $(document).ready(function () {
 }); // (document).ready
 
 
-function insertSession(sessionExerciseData) {
-    let workoutID = document.getElementById('workout_id').innerHTML;
-    if (workoutID > 0 && sessionExercises.length > 0) {
+function insertSession(workoutID, date, comment, sessionExerciseData) {
+    if (workoutID > 0 && sessionExerciseData.length > 0) {
         $.ajax({
             type: "POST",  // Request type
             url: properties.requestUrl,
-            data: {request: 'insertSession', workoutID: workoutID, sessionExerciseData: sessionExerciseData},
+            data: {request: 'insertSession', workoutID: workoutID, date:date, comment:comment, sessionExerciseData: sessionExerciseData},
             cache: false,
             success: function (data) {
                 // console.log(data)
@@ -695,6 +694,16 @@ function getWeekday(date) {
     if (dateArr.length !== 3) return '';
     const d = new Date((20+dateArr[2]), (dateArr[1]-1), dateArr[0]);
     return weekdays[d.getDay()] + ", ";
+}
+
+function getTodaysDate() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today
 }
 
 // QR-Scanner
