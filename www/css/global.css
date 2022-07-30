@@ -459,8 +459,16 @@
 .exercise__title {
   max-width: 40vw;
 }
+.session_exercise__title {
+  max-width: 40vw;
+}
 
 .exercise__input {
+  width: 25px;
+  padding: 1px 2px;
+  text-align: center;
+}
+.session_exercise__input {
   width: 25px;
   padding: 1px 2px;
   text-align: center;
@@ -505,6 +513,9 @@
   padding: 22vw 5vw 5vw;
   position: fixed;
 }
+.overflow_y_scroll {
+  overflow-y: scroll;
+}
 .default-training__back {
   position: absolute;
   left: 6vw;
@@ -516,6 +527,10 @@
   position: relative;
   left: 10vw;
   margin-bottom: 2vh;
+  width: 85vw;
+}
+.training_top_section {
+  position: relative;
 }
 .default-training__image {
   border-radius: 10px;
@@ -523,16 +538,26 @@
 }
 .default-training__text {
   position: absolute;
-  top: 20%;
-  left: 20%;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
 }
 .default-training__text > span {
   font-size: 20px;
   font-weight: bold;
   color: #ffffff;
 }
+.session_container {
 
-.session__container {
+}
+.session_validation__error {
+  color: #e01272;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 1vh 2vw;
+  text-align: right;
+}
+.session__item {
   position: relative;
   border-radius: 20px;
   padding: 10px 15px;
@@ -549,7 +574,16 @@
 .session__new {
   position: fixed;
 }
-
+.session_save_btn_container {
+  width: 100%;
+  justify-content: right;
+  display: flex;
+  margin-bottom: 1vh;
+}
+.session_save_btn {
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+}
 .logo {
   width: 45vw;
   left: 50%;
@@ -568,6 +602,10 @@
 .bild {
   padding: 15px;
   border-radius: 30px !important;
+}
+
+.training .overlay {
+  transition: opacity 0ms !important;
 }
 
 .overlay {

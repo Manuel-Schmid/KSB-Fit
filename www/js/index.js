@@ -161,30 +161,34 @@ $(document).ready(function () {
         })
     });
 
-    $(document).on('click', '#insert-session-btn-id', function () { // insert-session-btn-id  *is a placeholder*
-        var sessionExercises = [];
-        // make dynamic
-        for (var i = 1; i <= 10; i++) {
-            sessionExercises.push({
-                exerciseID: i,
-                weight: (i + 7 + (i * 0.5)),
-                reps: ((i * 2) + 15)
-            });
-        }
-
-        if (sessionExercises.length > 0) {
-            let workoutID = 1 // make dynamic
-
-            $.ajax({
-                type: "POST",  // Request type
-                url: properties.requestUrl,
-                data: {request: 'insertSession', workoutID: workoutID, sessionExercises: sessionExercises},
-                cache: false,
-                success: function (data) {
-                    // console.log(data)
-                    // ...
+    $(document).on('click', '#session_save_btn', function () {
+        let errormsg = document.getElementById('session_validation__error');
+        errormsg.innerHTML = '';
+        // validation
+        // if (document.getElementById('session_date').valueAsDate > new Date()) {
+        //     errormsg.innerHTML = 'Das Datum darf nicht in der Zukunft liegen'
+        // } else {
+            let countEmpty = 0;
+            for (const el of document.getElementsByClassName('session_exercise__input')) {
+                if ($.trim(el.value).length < 1) { countEmpty++; break; }
+            };
+            if (countEmpty > 0) {
+                errormsg.innerHTML = 'Nicht alle Sets & Reps angegeben'
+            } else {
+                // validation successful 
+                let sessionExerciseData = []
+                for (const exercise of document.getElementsByClassName('session_exercise__row')) {
+                    sessionExerciseData.push({
+                        exerciseID: exercise.dataset.id,
+                        sets: exercise.getElementsByClassName('session_exercise_sets')[0].value,
+                        reps: exercise.getElementsByClassName('session_exercise_reps')[0].value
+                    })
                 }
-            })
+
+                console.log(sessionExerciseData);
+                insertSession(sessionExerciseData);
+                // redirect & update
+            // }
         }
     });
 
@@ -213,6 +217,23 @@ $(document).ready(function () {
     );
 
 }); // (document).ready
+
+
+function insertSession(sessionExerciseData) {
+    let workoutID = document.getElementById('workout_id').innerHTML;
+    if (workoutID > 0 && sessionExercises.length > 0) {
+        $.ajax({
+            type: "POST",  // Request type
+            url: properties.requestUrl,
+            data: {request: 'insertSession', workoutID: workoutID, sessionExerciseData: sessionExerciseData},
+            cache: false,
+            success: function (data) {
+                // console.log(data)
+                // ...
+            }
+        })
+    }
+}
 
 function login(userID) {
     document.getElementById('userID').innerHTML = userID;
@@ -365,7 +386,7 @@ function displayTrainings() {
                     let nextSessionHTML = (workout.nextSessionDate != 0) ? '<p class="trainings__icon__session">&#8594;&nbsp;'+workout.nextSessionDate+'</p></div>' : '<p class="trainings__icon__session" style="visibility: hidden">&#8594;&nbsp;</p></div>';
 
                     trainingsHTMLString += 
-                        '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+')">'+
+                        '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+',`'+workout.title+'`,'+workout.sessionCount+','+workout.perfectSessionCount+',`'+workout.nextSessionDate+'`)">'+
                             '<div><div class="content training__content">'+ imageHTML +
                                 '<span class="training__name">'+workout.title+'</span><i class="fa-solid fa-chevron-right fa-sm training__chevron"></i></div></div><div class="trainings__icons__row"><div class="trainings__icons__item"><i class="fa-solid fa-calendar-check"></i>'+
                                 '<p class="trainings__icon__text">'+workout.sessionCount+'</p></div><div class="trainings__icons__item"><i class="fa-solid fa-crown"></i>'+
@@ -382,6 +403,33 @@ function displayTrainings() {
             }
         }
     })
+}
+
+function openWorkoutPopup(workoutID, title, sessionCount, perfectSessionCount, nextSessionDate) {
+    document.getElementById('training_scroll_container').classList.add('overflow_y_scroll');
+    document.getElementById('training_scroll_container').scrollTop = 0;
+
+    document.getElementById('workout_id').innerHTML = workoutID;
+    document.getElementById('workout_title').innerHTML = title;
+    document.getElementById('workout_sessions').innerHTML = (sessionCount!=1) ? sessionCount+' Sessions' : '1 Session';
+    document.getElementById('workout_next_session').innerHTML = (nextSessionDate!=0) ? getWeekday(nextSessionDate) + nextSessionDate : ' --- ';
+
+    window.location.href = "#default-training";
+}
+
+function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
+    if (switchToTab) goToExercises() // ? todo
+    document.getElementById('exercise-title').innerHTML = title;
+    document.getElementById('exercise-img').src = imgUrl;
+    updateMuscleInput(muscleGroups);
+    document.getElementById('exercise-preparation').innerHTML = prep;
+    document.getElementById('exercise-movement').innerHTML = movement;
+    document.getElementById('exercise-video').href = videoUrl;
+
+    disableScroll();
+    scrollPosition = window.pageYOffset;
+
+    window.location.href = "#exercise-popup-overlay";
 }
 
 function displayExerciseCheckboxes() {
@@ -403,26 +451,32 @@ function displayExerciseCheckboxes() {
     })
 }
 
-function openWorkoutPopup(workoutID) {
-    console.log(workoutID);
-
-    window.location.href = "#default-training";
+function displaySessionExercisesList() {
+    let workoutID = document.getElementById('workout_id').innerHTML;
+    if (workoutID > 0) {
+        $.ajax({
+            type: "POST",
+            url: properties.requestUrl,
+            data: { request: 'getWorkoutExercises', workoutID: workoutID },
+            cache: false,
+            success: function (json_data) {
+                let exercises = Object.values(JSON.parse(json_data))
+    
+                let exercisesListHTMLString = '';
+                if (exercises.length < 1) {
+                    exercisesListHTMLString += '<tr><td>Keine Übung im Trainingsplan</td></tr>'
+                } else {
+                    exercises.forEach(exercise => {
+                        exercisesListHTMLString += '<tr class="session_exercise__row" data-id="'+ exercise.exerciseID +'"> <td class="session_exercise__title">' + exercise.title + '</td> <td> <input type="number" class="session_exercise__input session_exercise_sets"> </td> <td> <input type="number" class="session_exercise__input session_exercise_reps"> </td> </tr>'
+                    });
+                }
+    
+                document.getElementById('session_exercises_list').innerHTML = exercisesListHTMLString;
+            }
+        })
+    }
 }
 
-function openExercisePopup(switchToTab, title, imgUrl, prep, movement, muscleGroups, videoUrl) {
-    if (switchToTab) goToExercises() // ? todo
-    document.getElementById('exercise-title').innerHTML = title;
-    document.getElementById('exercise-img').src = imgUrl;
-    updateMuscleInput(muscleGroups);
-    document.getElementById('exercise-preparation').innerHTML = prep;
-    document.getElementById('exercise-movement').innerHTML = movement;
-    document.getElementById('exercise-video').href = videoUrl;
-
-    disableScroll();
-    scrollPosition = window.pageYOffset;
-
-    window.location.href = "#exercise-popup-overlay";
-}
 
 // function loadNotes() {
 //     document.getElementById('notelist').innerHTML = ''
@@ -633,6 +687,14 @@ function invertColor(hex, bw) {
     b = (255 - b).toString(16);
     // pad each with zeros and return
     return "#" + padZero(r) + padZero(g) + padZero(b);
+}
+
+const weekdays = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+function getWeekday(date) {
+    let dateArr = date.split('.')
+    if (dateArr.length !== 3) return '';
+    const d = new Date((20+dateArr[2]), (dateArr[1]-1), dateArr[0]);
+    return weekdays[d.getDay()] + ", ";
 }
 
 // QR-Scanner

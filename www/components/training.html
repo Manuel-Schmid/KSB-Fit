@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container training'>
     <h1 class='training__heading'>Trainingspläne</h1>
 
     <div id="trainings-container">
@@ -6,39 +6,86 @@
     </div>
         
     <div id='default-training' class='overlay'>
-        <div class='default-training__container'>
-            <a class='default-training__back' href='#'>
+        <div id="training_scroll_container" class='default-training__container'>
+            <a class='default-training__back closeWorkoutPopup' href='#'>
                 <i class='fa-solid fa-xl fa-chevron-left'></i>
             </a>
             
-            <h1 id="workout_title" class='default-training__title'>KSB Basic</h1>
+            <h1 id="workout_title" class='default-training__title'>title</h1>
+            <div id='workout_id' class='obj--hidden'>0</div>
             
-            <img src='../img/geraet.jpg' alt='bild' class='default-training__image'>
+            <div class="training_top_section">
+                <img src='../img/geraet.jpg' alt='bild' class='default-training__image'>
             
-            <div class='default-training__text'>
-                <span>Sessions total:</span>
-                <br>
-                <span id="workout_sessions" >1 Session</span>
-                
-                <br><br>
-                
-                <span>Nächste Session:</span>
-                <br>
-                <span id="workout_next_session">Mittwoch, 20.07.</span>
+                <div class='default-training__text'>
+                    <span>Sessions total:</span>
+                    <br>
+                    <span id="workout_sessions" >0 Sessions</span>
+                    
+                    <br><br>
+                    
+                    <span>Nächste Session:</span>
+                    <br>
+                    <span id="workout_next_session"> --- </span>
+                </div>
             </div>
             
-            <div class='button is-rounded training__new openSessionCreation'>
+            <a class='button is-rounded training__new openSessionCreation' href="#session_creator">
                 <span class='icon is-small'>
                     <i class='fa-solid fa-xl fa-plus' style='color: #bfdc9e;'></i>
                 </span>
-            </div>
+            </a>
             
-            <div class='session__container card'>
-                <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+            <div class="tabs is-centered">
                 <ul>
-                    <li>Chest press: 10</li>
-                    <li>Leg: 10</li>
+                  <li id="showLastSession" class="is-active"><a>Letzte Session</a></li>
+                  <li id="showAllSessions"><a>Alle Sessions</a></li>
                 </ul>
+              </div>
+
+            <div class="session_container">
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
+                <div class='session__item card'>
+                    <h2 class='session__date'>Mittwoch, 11.07.2022</h2>
+                    <ul>
+                        <li>Chest press: 10</li>
+                        <li>Leg: 10</li>
+                    </ul>
+                </div>
             </div>
             
             <button class='button is-text default-training__delete'>Training löschen</button>
@@ -57,7 +104,7 @@
                 <div class='swiper-slide'>
                     <div class='box popup new__container'>
                         <div class='popup__header'>
-                            <a class='close' href='#'>
+                            <a class='close closeTrainingCreation' href='#'>
                                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                      style='top: auto;'>
                                     <path fill-rule='evenodd'
@@ -77,7 +124,7 @@
                 <div class='swiper-slide'>
                     <div class='box popup new__container'>
                         <div class='popup__header'>
-                            <a class='close' href='#'>
+                            <a class='close closeTrainingCreation' href='#'>
                                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='30' height='30'
                                      style='top: auto;'>
                                     <path fill-rule='evenodd'
@@ -89,7 +136,6 @@
                                    placeholder='Neuer Trainingsplan'>
                         </div>
                         
-                        <!-- <p style='font-weight: bold;'>Übungen:</p> -->
                         <div class='exerciselist'>
                             <table class="table">
                                 <thead>
@@ -139,6 +185,54 @@
         
         </div>
     </div>
+
+    <div id='session_creator' class='overlay'>
+        <div id="session_scroll_container" class='default-training__container'>
+            <a class='default-training__back session__back' href='#default-training'>
+                <i class='fa-solid fa-xl fa-chevron-left'></i>
+            </a>
+            
+            <h1 class='default-training__title'>Neue Session</h1>
+
+            <div class="field">
+                <label class="label">Datum</label>
+                <div class="control">
+                    <input id="session_date" class="input" type="date" placeholder="dd.mm.yyyy">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Bemerkung</label>
+                <div class="control">
+                    <textarea id="session_comment" class="textarea" placeholder="Optionale Bemerkungen zur Session"></textarea>
+                </div>
+            </div>
+
+            <label class="label">Leistung</label>
+            <div class="session_container card">
+                <div class='exerciselist'>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Übung</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                            </tr>
+                        </thead>
+                        <tbody id="session_exercises_list">
+                            <!-- gets filled dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p id="session_validation__error" class="session_validation__error"></p>
+            
+            <div class="session_save_btn_container">
+                <button id="session_save_btn" class="button is-success session_save_btn">Speichern</button>
+            </div>
+        </div>
+    </div>
     
     <img src='../img/logo_full.svg' alt='logo' class='training__logo'>
 
@@ -149,12 +243,31 @@
     $(document).ready(function () {
         let selectedExsList = [];
 
+        $(".closeWorkoutPopup").click(function () {
+            document.getElementById('training_scroll_container').classList.remove('overflow_y_scroll');
+            document.getElementById('workout_id').innerHTML = 0;
+        });
+
+        $(".session__back").click(function () {
+            document.getElementById('session_scroll_container').classList.remove('overflow_y_scroll');
+            document.getElementById('training_scroll_container').classList.add('overflow_y_scroll');
+            document.getElementById('training_scroll_container').scrollTop = 0;
+        });
+
         $(".openSessionCreation").click(function () {
-            // reset content 
-            // add session data 
+            document.getElementById('session_scroll_container').classList.add('overflow_y_scroll');
+            document.getElementById('training_scroll_container').classList.remove('overflow_y_scroll');
+            document.getElementById('session_scroll_container').scrollTop = 0;
+
+            document.getElementById('session_date').valueAsDate = new Date();
+            document.getElementById('session_comment').value = "";
+            document.getElementById('session_validation__error').innerHTML = "";
+            displaySessionExercisesList();
         });
 
         $(".openTrainingCreation").click(function () {
+            // document.getElementsByClassName('app__body')[0].classList.add('noscroll');
+
             // reset swiper & content
             swiper.setProgress(0, 0)
             $('#training__title').val('');
@@ -164,6 +277,10 @@
             }
             
             displayExerciseCheckboxes();
+        });
+
+        $(".closeTrainingCreation").click(function () {
+            document.getElementsByClassName('app__body')[0].classList.remove('noscroll');
         });
 
         $(".swiper__prev").click(function () {
@@ -206,7 +323,7 @@
             } else {
                 let countEmpty = 0;
                 for (const el of document.getElementsByClassName('exercise__input')) {
-                    if ($.trim(el.value).length < 1) { countEmpty++; break; }
+                    if ($.trim(el.value).length < 1 && (el.value > 0)) { countEmpty++; break; }
                 };
                 if (countEmpty > 0) {
                     errormsg.innerHTML = 'Nicht alle Sets & Reps angegeben'
@@ -240,6 +357,18 @@
                 }
             }
         });
+
+        $("#showLastSession").click(function () {
+            document.getElementById('showAllSessions').classList.remove('is-active')
+            document.getElementById('showLastSession').classList.add('is-active')
+
+        });
+        $("#showAllSessions").click(function () {
+            document.getElementById('showAllSessions').classList.add('is-active')
+            document.getElementById('showLastSession').classList.remove('is-active')
+
+        });
+
 
         // save workout plan -> already new 
         function insertWorkout(workoutData) { // save-workout-btn-id  *is a placeholder* || $(document).on('click', '#save-workout-btn-id', 
