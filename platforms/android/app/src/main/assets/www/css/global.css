@@ -547,8 +547,20 @@
   font-weight: bold;
   color: #ffffff;
 }
-.session_container {
-
+.training_control_btn_container {
+  width: 100%;
+  height: 6vh;
+  justify-content: right;
+  display: flex;
+  margin-bottom: 1vh;
+}
+.training_control_btn {
+  width: 46%;
+  height: 100%;
+  margin: 0 2%;
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+  font-size: 0.9em;
 }
 .session_validation__error {
   color: #e01272;
@@ -561,6 +573,20 @@
   position: relative;
   border-radius: 20px;
   padding: 10px 15px;
+}
+.session_comment_field {
+  padding: 10px;
+  line-height: 21px;
+  margin: 10px 0 !important;
+}
+.session_btn_text {
+  color: #bfdc9e;
+  padding-right: 8px;
+  font-size: 1.1em;
+  text-align: center;
+  height: 100%;
+  line-height: 120%;
+  font-weight: bold;
 }
 .session__date {
   font-size: 18px;

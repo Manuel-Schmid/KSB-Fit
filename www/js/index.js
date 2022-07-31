@@ -185,9 +185,9 @@ $(document).ready(function () {
                     })
                 }
 
-                console.log(sessionExerciseData);
                 insertSession(document.getElementById('workout_id').innerHTML, document.getElementById('session_date').value, document.getElementById('session_comment').value, sessionExerciseData);
-                // redirect & update
+                
+                redirectToWorkout();
             }
         }
     });
@@ -218,21 +218,6 @@ $(document).ready(function () {
 
 }); // (document).ready
 
-
-function insertSession(workoutID, date, comment, sessionExerciseData) {
-    if (workoutID > 0 && sessionExerciseData.length > 0) {
-        $.ajax({
-            type: "POST",  // Request type
-            url: properties.requestUrl,
-            data: {request: 'insertSession', workoutID: workoutID, date:date, comment:comment, sessionExerciseData: sessionExerciseData},
-            cache: false,
-            success: function (data) {
-                // console.log(data)
-                // ...
-            }
-        })
-    }
-}
 
 function login(userID) {
     document.getElementById('userID').innerHTML = userID;
@@ -311,21 +296,6 @@ function switchToTab(tabName) {
     document.getElementById(txtID).classList.add('nav__text--selected');
 }
 
-// function changePlan() {
-//     basicSelected = !basicSelected
-//     if (basicSelected) {
-//         document.getElementById('basic-btn').className = 'button is-rounded selected-btn'
-//         document.getElementById('advanced-btn').className = 'button is-rounded'
-//     } else {
-//         document.getElementById('basic-btn').className = 'button is-rounded'
-//         document.getElementById('advanced-btn').className = 'button is-rounded selected-btn'
-//     }
-//     let planElements = document.getElementsByClassName('advanced-check')
-//     for (let i = 0; i < planElements.length; i++) {
-//         planElements[i].checked = !(planElements[i].checked)
-//     }
-// }
-
 function displayExercises(galleryView) {
     // load exercises as HTML popups from DB
     $.ajax({
@@ -385,7 +355,7 @@ function displayTrainings() {
                     let nextSessionHTML = (workout.nextSessionDate != 0) ? '<p class="trainings__icon__session">&#8594;&nbsp;'+workout.nextSessionDate+'</p></div>' : '<p class="trainings__icon__session" style="visibility: hidden">&#8594;&nbsp;</p></div>';
 
                     trainingsHTMLString += 
-                        '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+',`'+workout.title+'`,'+workout.sessionCount+','+workout.perfectSessionCount+',`'+workout.nextSessionDate+'`)">'+
+                        '<div class="card training__default" onclick="openWorkoutPopup('+workout.workoutID+',`'+workout.title+'`,'+workout.sessionCount+','+workout.perfectSessionCount+',`'+workout.nextSessionDate+'`,true)">'+
                             '<div><div class="content training__content">'+ imageHTML +
                                 '<span class="training__name">'+workout.title+'</span><i class="fa-solid fa-chevron-right fa-sm training__chevron"></i></div></div><div class="trainings__icons__row"><div class="trainings__icons__item"><i class="fa-solid fa-calendar-check"></i>'+
                                 '<p class="trainings__icon__text">'+workout.sessionCount+'</p></div><div class="trainings__icons__item"><i class="fa-solid fa-crown"></i>'+
@@ -404,15 +374,18 @@ function displayTrainings() {
     })
 }
 
-function openWorkoutPopup(workoutID, title, sessionCount, perfectSessionCount, nextSessionDate) {
-    document.getElementById('training_scroll_container').classList.add('overflow_y_scroll');
-    document.getElementById('training_scroll_container').scrollTop = 0;
+function openWorkoutPopup(workoutID, title, sessionCount, perfectSessionCount, nextSessionDate, toggleScroll) {
+    if (toggleScroll) {
+        document.getElementById('training_scroll_container').classList.add('overflow_y_scroll');
+        document.getElementById('training_scroll_container').scrollTop = 0;
+    }
 
     document.getElementById('workout_id').innerHTML = workoutID;
     document.getElementById('workout_title').innerHTML = title;
     document.getElementById('workout_sessions').innerHTML = (sessionCount!=1) ? sessionCount+' Sessions' : '1 Session';
-    document.getElementById('workout_next_session').innerHTML = (nextSessionDate!=0) ? getWeekday(nextSessionDate) + nextSessionDate : ' --- ';
+    document.getElementById('workout_next_session').innerHTML = (nextSessionDate!=0) ? getWeekday(nextSessionDate, false) + nextSessionDate : ' --- ';
 
+    displayLastSession();
     window.location.href = "#default-training";
 }
 
@@ -450,6 +423,88 @@ function displayExerciseCheckboxes() {
     })
 }
 
+function displayAllSessions() {
+    document.getElementById('showAllSessions').classList.add('is-active')
+    document.getElementById('showLastSession').classList.remove('is-active')
+    let workoutID = document.getElementById('workout_id').innerHTML;
+    if (workoutID > 0) {
+        $.ajax({
+            type: "POST",
+            url: properties.requestUrl,
+            data: { request: 'getAllSessions', workoutID: workoutID },
+            cache: false,
+            success: function (json_data) {
+                if (json_data=='0') { // workout hat noch keine sessions
+                    document.getElementById('session_list_container').innerHTML = '<h2 class="text_center">Noch keine Sessions vorhanden</h2>';
+                } else {
+                    let sessions = Object.values(JSON.parse(json_data))
+
+                    let sessionListHTMLString = '';
+                    sessions.forEach(session => {
+                        let session_date = getFormattedDate(session.session_date)
+                        let session_date_formatted = getWeekday(session_date, true) + session_date;
+                        let comment_field = (session.comment != '') ? '<div class="notification session_comment_field">'+session.comment+'</div>' : '';
+
+                        let exercisesHTMLString = '';
+                        session.sessionExercises.forEach(exercise => {
+                            exercisesHTMLString += '<li>'+exercise.exercise_title+': '+exercise.sets+'x'+exercise.reps+'</li>';
+                        });
+
+                        sessionListHTMLString += 
+                            '<div class="session__item card">'+
+                                '<h2 class="session__date">'+session_date_formatted+'</h2>'+comment_field+
+                                '<ul>'+exercisesHTMLString+'</ul>'+
+                            '</div>';
+                    });
+        
+                    document.getElementById('session_list_container').innerHTML = sessionListHTMLString;
+                }
+            }
+        })
+    }
+
+}
+
+function displayLastSession() {
+    document.getElementById('showAllSessions').classList.remove('is-active')
+    document.getElementById('showLastSession').classList.add('is-active')
+    let workoutID = document.getElementById('workout_id').innerHTML;
+    if (workoutID > 0) {
+        $.ajax({
+            type: "POST",
+            url: properties.requestUrl,
+            data: { request: 'getLastSession', workoutID: workoutID },
+            cache: false,
+            success: function (json_data) {
+                if (json_data=='0') { // workout hat noch keine sessions
+                    document.getElementById('session_list_container').innerHTML = '<h2 class="text_center">Noch keine Sessions vorhanden</h2>';
+                } else {
+                    let session = Object.values(JSON.parse(json_data))[0];
+
+                    let session_date = getFormattedDate(session.session_date)
+                    let session_date_formatted = getWeekday(session_date, true) + session_date;
+                    let comment_field = (session.comment != '') ? '<div class="notification session_comment_field">'+session.comment+'</div>' : '';
+
+                    let exercisesHTMLString = '';
+                    session.sessionExercises.forEach(exercise => {
+                        exercisesHTMLString += '<li>'+exercise.exercise_title+': '+exercise.sets+'x'+exercise.reps+'</li>';
+                    });
+
+                    let sessionHTMLString = 
+                        '<div class="session__item card">'+
+                            '<h2 class="session__date">'+session_date_formatted+'</h2>'+comment_field+
+                            '<ul>'+exercisesHTMLString+'</ul>'+
+                        '</div>';
+    
+                    document.getElementById('session_list_container').innerHTML = sessionHTMLString;
+                }
+            }
+        })
+    }
+
+
+}
+
 function displaySessionExercisesList() {
     let workoutID = document.getElementById('workout_id').innerHTML;
     if (workoutID > 0) {
@@ -474,6 +529,40 @@ function displaySessionExercisesList() {
             }
         })
     }
+}
+
+function insertSession(workoutID, date, comment, sessionExerciseData) {
+    if (workoutID > 0 && sessionExerciseData.length > 0) {
+        $.ajax({
+            type: "POST",  // Request type
+            url: properties.requestUrl,
+            data: {request: 'insertSession', workoutID: workoutID, date:date, comment:comment, sessionExerciseData: sessionExerciseData},
+            cache: false,
+            success: function (data) {
+                // console.log(data)
+                // ...
+            }
+        })
+    }
+}
+
+function redirectToWorkout() { // redirect to & update workout-popup
+    document.getElementById('session_scroll_container').classList.remove('overflow_y_scroll');
+    document.getElementById('training_scroll_container').classList.add('overflow_y_scroll');
+    document.getElementById('training_scroll_container').scrollTop = 0;
+
+    let workoutID = document.getElementById('workout_id').innerHTML;
+    $.ajax({
+        type: "POST",  //Request type
+        url: properties.requestUrl,
+        data: {request: 'getSingleWorkoutHTML', workoutID:workoutID}, // parameter für POST ($_POST['xxx'])
+        cache: false,
+        success: function (json_data) {
+            console.log(json_data);
+            let workout = JSON.parse(json_data)
+            openWorkoutPopup(workout.workoutID,workout.title,workout.sessionCount,workout.perfectSessionCount,workout.nextSessionDate,false);
+        }
+    })
 }
 
 
@@ -689,11 +778,23 @@ function invertColor(hex, bw) {
 }
 
 const weekdays = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
-function getWeekday(date) {
+function getWeekday(date, fullYear) {
     let dateArr = date.split('.')
     if (dateArr.length !== 3) return '';
-    const d = new Date((20+dateArr[2]), (dateArr[1]-1), dateArr[0]);
-    return weekdays[d.getDay()] + ", ";
+    if (fullYear) {
+        const d = new Date((dateArr[2]), (dateArr[1]-1), dateArr[0]);
+        return weekdays[d.getDay()] + ", ";
+    } else {
+        const d = new Date((20+dateArr[2]), (dateArr[1]-1), dateArr[0]);
+        return weekdays[d.getDay()] + ", ";
+    }
+}
+
+function getFormattedDate(date) {
+    let d = new Date(date)
+    let datestring = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." +
+    d.getFullYear();
+    return datestring
 }
 
 function getTodaysDate() {
